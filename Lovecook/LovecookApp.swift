@@ -10,11 +10,11 @@ import SwiftUI
 @main
 struct LovecookApp: App {
     let coordinator = Coordinator()
-    let persistenceController = PersistenceController.shared
+    //let persistenceController = PersistenceController.shared
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SplashView()
                 .environmentObject(coordinator)
                 //.environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
