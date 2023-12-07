@@ -16,7 +16,7 @@ struct CategoriesRemoteService {
     }
     
     func getCategories() async throws -> [Category] {
-        let response: APIResponse<Category> = try await networkClient.get(url: "https://www.themealdb.com/api/json/v1/1/categories.php")
-        return response.results!
+        let response: APIResponse<Category> = try await networkClient.getCall(url: NetworkConstants.categoriesNetworkUrl, queryParams: nil)
+        return response.results
     }
 }

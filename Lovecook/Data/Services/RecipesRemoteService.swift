@@ -16,7 +16,9 @@ struct RecipesRemoteService {
     }
     
     func getRecipe(recipe: Recipe) async throws -> [Recipe] {
-        let response: APIResponse<Recipe> = try await networkClient.get(url: "https://www.themealdb.com/api/json/v1/1/lookup.php?i=\(recipe.idMeal)")
-        return response.results!
+        let queryParams = ["i": "\(recipe.idMeal)"]
+        
+        let response: APIResponse<Recipe> = try await networkClient.getCall(url: NetworkConstants.recipeNetworkUrl, queryParams: queryParams)
+        return response.results
     }
 }

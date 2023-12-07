@@ -8,14 +8,41 @@
 import Foundation
 
 class URLSessionNetworkClient: NetworkClient {
-    func get<T: Decodable>(url: String) async throws -> T {
+    func call<T>(urlRequest: URLRequest) async throws -> T where T : Decodable {
+        let (data, response) = try await URLSession.shared.data(for: urlRequest)
         
-        guard let url = URL(string: url) else {
-            throw NetworkClientError.badUrl
+        guard let httpUrlResponse = response as? HTTPURLResponse else {
+            throw NetworkError.nilResponse
         }
         
-        let data = try await URLSession.shared.data(from: url).0
+        switch httpUrlResponse.statusCode {
+        case 200...299:
+            break
+        default:
+            throw NetworkError.response(httpUrlResponse.statusCode)
+        }
         
-        return try JSONDecoder().decode(T.self, from: data)
+        do {
+            return try JSONDecoder().decode(T.self, from: data)
+        } catch {
+            throw NetworkError.encoding
+        }
+    }
+    
+    func getCall<T>(url: String, queryParams: [String : String]?) async throws -> T where T : Decodable {
+        let urlComponents = NSURLComponents(string: url)
+        
+        if let queryParams {
+            urlComponents?.queryItems = queryParams.map { URLQueryItem(name: $0, value: $1) }
+        }
+        
+        guard let url = urlComponents?.url else {
+            throw NetworkError.badUrl
+        }
+        
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "GET"
+        
+        return try await call(urlRequest: urlRequest)
     }
 }

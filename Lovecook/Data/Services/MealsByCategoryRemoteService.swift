@@ -16,7 +16,9 @@ struct MealsByCategoryRemoteService {
     }
     
     func getMealsByCategory(category: Category) async throws -> [Meal] {
-        let response: APIResponse<Meal> = try await networkClient.get(url: "https://www.themealdb.com/api/json/v1/1/filter.php?c=\(category)")
-        return response.results!
+        let queryParams = ["c": "\(category)"]
+        
+        let response: APIResponse<Meal> = try await networkClient.getCall(url: NetworkConstants.mealsByCategoryNetworkUrl, queryParams: queryParams)
+        return response.results
     }
 }

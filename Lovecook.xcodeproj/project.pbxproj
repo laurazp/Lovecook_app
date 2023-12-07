@@ -30,6 +30,7 @@
 		228D52F22B1FA03900C45BC9 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228D52F12B1FA03900C45BC9 /* LottieView.swift */; };
 		228D52F42B1FA26900C45BC9 /* lottie_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 228D52F32B1FA26900C45BC9 /* lottie_animation.json */; };
 		228D52F72B1FA40D00C45BC9 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228D52F62B1FA40D00C45BC9 /* SplashView.swift */; };
+		228D52FA2B21509400C45BC9 /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228D52F92B21509400C45BC9 /* NetworkConstants.swift */; };
 		22A76EB72B03E55D0055A36D /* LovecookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A76EB62B03E55D0055A36D /* LovecookApp.swift */; };
 		22A76EB92B03E55D0055A36D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A76EB82B03E55D0055A36D /* ContentView.swift */; };
 		22A76EBB2B03E55E0055A36D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22A76EBA2B03E55E0055A36D /* Assets.xcassets */; };
@@ -44,7 +45,7 @@
 		22A76EDB2B03F4A20055A36D /* GetCategoriesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A76EDA2B03F4A20055A36D /* GetCategoriesUseCase.swift */; };
 		22A76EDF2B03F5620055A36D /* CategoriesRemoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A76EDE2B03F5620055A36D /* CategoriesRemoteService.swift */; };
 		22A76EE22B03F5B30055A36D /* URLSessionNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A76EE12B03F5B30055A36D /* URLSessionNetworkClient.swift */; };
-		22A76EE42B03F5D60055A36D /* NetworkClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A76EE32B03F5D60055A36D /* NetworkClientError.swift */; };
+		22A76EE42B03F5D60055A36D /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A76EE32B03F5D60055A36D /* NetworkError.swift */; };
 		22A76EE72B03F60C0055A36D /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A76EE62B03F60C0055A36D /* APIResponse.swift */; };
 		22A76EE92B03F63C0055A36D /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A76EE82B03F63C0055A36D /* Category.swift */; };
 		22A76EEB2B03F8A80055A36D /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A76EEA2B03F8A80055A36D /* Coordinator.swift */; };
@@ -70,6 +71,7 @@
 		228D52F12B1FA03900C45BC9 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		228D52F32B1FA26900C45BC9 /* lottie_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lottie_animation.json; sourceTree = "<group>"; };
 		228D52F62B1FA40D00C45BC9 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		228D52F92B21509400C45BC9 /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
 		22A76EB32B03E55D0055A36D /* Lovecook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lovecook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22A76EB62B03E55D0055A36D /* LovecookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LovecookApp.swift; sourceTree = "<group>"; };
 		22A76EB82B03E55D0055A36D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -85,7 +87,7 @@
 		22A76EDA2B03F4A20055A36D /* GetCategoriesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCategoriesUseCase.swift; sourceTree = "<group>"; };
 		22A76EDE2B03F5620055A36D /* CategoriesRemoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesRemoteService.swift; sourceTree = "<group>"; };
 		22A76EE12B03F5B30055A36D /* URLSessionNetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionNetworkClient.swift; sourceTree = "<group>"; };
-		22A76EE32B03F5D60055A36D /* NetworkClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClientError.swift; sourceTree = "<group>"; };
+		22A76EE32B03F5D60055A36D /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		22A76EE62B03F60C0055A36D /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
 		22A76EE82B03F63C0055A36D /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		22A76EEA2B03F8A80055A36D /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -184,6 +186,14 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
+		228D52F82B21507F00C45BC9 /* NetworkConstants */ = {
+			isa = PBXGroup;
+			children = (
+				228D52F92B21509400C45BC9 /* NetworkConstants.swift */,
+			);
+			path = NetworkConstants;
+			sourceTree = "<group>";
+		};
 		22A76EAA2B03E55D0055A36D = {
 			isa = PBXGroup;
 			children = (
@@ -204,11 +214,11 @@
 		22A76EB52B03E55D0055A36D /* Lovecook */ = {
 			isa = PBXGroup;
 			children = (
-				228D52F52B1FA3F500C45BC9 /* Splash */,
 				22A76EB62B03E55D0055A36D /* LovecookApp.swift */,
 				22A76EB82B03E55D0055A36D /* ContentView.swift */,
 				22A76EBF2B03E55E0055A36D /* Persistence.swift */,
 				22A76EEA2B03F8A80055A36D /* Coordinator.swift */,
+				228D52F52B1FA3F500C45BC9 /* Splash */,
 				22A76EE52B03F5FE0055A36D /* Entities */,
 				22A76EC92B03F1B60055A36D /* Features */,
 				22A76ED92B03F4820055A36D /* UseCases */,
@@ -318,8 +328,9 @@
 		22A76EE02B03F5980055A36D /* NetworkClient */ = {
 			isa = PBXGroup;
 			children = (
+				228D52F82B21507F00C45BC9 /* NetworkConstants */,
 				22A76EE12B03F5B30055A36D /* URLSessionNetworkClient.swift */,
-				22A76EE32B03F5D60055A36D /* NetworkClientError.swift */,
+				22A76EE32B03F5D60055A36D /* NetworkError.swift */,
 				22F366602B0CAFA3007F7E8C /* NetworkClient.swift */,
 			);
 			path = NetworkClient;
@@ -436,6 +447,7 @@
 				22A76EC02B03E55E0055A36D /* Persistence.swift in Sources */,
 				222A95DF2B0EC32400E2AAD5 /* MealsByCategoryRemoteService.swift in Sources */,
 				22A76ED22B03F21C0055A36D /* HomeView.swift in Sources */,
+				228D52FA2B21509400C45BC9 /* NetworkConstants.swift in Sources */,
 				22A76ED82B03F3C60055A36D /* CategoryDetailView.swift in Sources */,
 				22A76EB92B03E55D0055A36D /* ContentView.swift in Sources */,
 				22F366612B0CAFA3007F7E8C /* NetworkClient.swift in Sources */,
@@ -459,7 +471,7 @@
 				222A95E12B0EC72A00E2AAD5 /* MealItemView.swift in Sources */,
 				22A76EE92B03F63C0055A36D /* Category.swift in Sources */,
 				222A95E82B0ECDAA00E2AAD5 /* RecipesRemoteService.swift in Sources */,
-				22A76EE42B03F5D60055A36D /* NetworkClientError.swift in Sources */,
+				22A76EE42B03F5D60055A36D /* NetworkError.swift in Sources */,
 				222A95DD2B0EC0E800E2AAD5 /* MealsByCategoryRepository.swift in Sources */,
 				22A76ED62B03F3B90055A36D /* CategoriesViewModel.swift in Sources */,
 				22A76EC32B03E55E0055A36D /* Lovecook.xcdatamodeld in Sources */,

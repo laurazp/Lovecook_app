@@ -9,6 +9,7 @@ import Foundation
 
 protocol NetworkClient {
     
-    func get<T: Decodable>(url: String) async throws -> T
+    func call<T: Decodable>(urlRequest: URLRequest) async throws -> T
+    func getCall<T: Decodable>(url: String, queryParams: [String : String]?) async throws -> T
     
 }
