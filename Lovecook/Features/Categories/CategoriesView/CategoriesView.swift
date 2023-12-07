@@ -26,7 +26,8 @@ struct CategoriesView: View {
                     NavigationLink {
                         coordinator.makeMealsByCategoryView(for: category)
                     } label: {
-                        createRow(for: category)
+                        CategoryItemView(category: category)
+                        //createRow(for: category)
                     }
                 }
                 /*.refreshable {
@@ -48,29 +49,6 @@ struct CategoriesView: View {
             await viewModel.getCategories()
         }
     }
-        
-        /*NavigationStack {
-            List(viewModel.categories) { category in
-                NavigationLink {
-                    coordinator.makeMealsByCategoryView(for: category)
-                } label: {
-                    createRow(for: category)
-                }
-            }.task {
-                // TODO: añadir loader
-                await viewModel.getCategories()
-            }
-            .navigationTitle("Categories")
-            .alert("Error", isPresented: Binding.constant(viewModel.error != nil)) {
-                Button("OK") {}
-                Button("Retry") {
-                    Task {
-                        await viewModel.getCategories()
-                    }
-                }
-            }
-        }
-    }*/
     
     private func createRow(for category: Category) -> some View {
         CategoryItemView(category: category)
@@ -84,15 +62,6 @@ struct CategoriesView: View {
                 }
             )*/
     }
-    
-    //    func makeGoToDetailNavigationLink(for category: Category) -> some View {
-    //        NavigationLink {
-    //            coordinator.makeCategoryDetailView(category: category)
-    //        } label: {
-    //            CategoryRowView(category: category)
-    //        }
-    //    }
-    //}
 }
 
 #Preview {
