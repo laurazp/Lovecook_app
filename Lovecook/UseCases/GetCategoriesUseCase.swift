@@ -10,6 +10,10 @@ import Foundation
 struct GetCategoriesUseCase {
     let categoriesRepository: CategoriesRepository
     
+    init(categoriesRepository: CategoriesRepository) {
+        self.categoriesRepository = categoriesRepository
+    }
+    
     func execute() async throws -> [Category] {
         try await categoriesRepository.getCategories()
     }

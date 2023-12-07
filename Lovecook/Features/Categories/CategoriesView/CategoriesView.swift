@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct CategoriesView: View {
     @StateObject private var viewModel: CategoriesViewModel
@@ -21,21 +22,20 @@ struct CategoriesView: View {
             if viewModel.isLoading {
                 ProgressView()
             } else {
-                List(viewModel.categories, id: \.idCategory) { category in
+                List(viewModel.categories, id: \.categoryId) { category in
                     NavigationLink {
                         coordinator.makeMealsByCategoryView(for: category)
                     } label: {
                         createRow(for: category)
-                    }.frame(
-                        maxWidth: .infinity,
-                        alignment: .topLeading
-                    )
+                    }
                 }
+                /*.refreshable {
+                 Task {
+                 await viewModel.getCategories()
+                 }
+                 }*/
             }
-        }.task {
-            await viewModel.getCategories()
-        }.navigationTitle("Categories")
-        .alert("Error", isPresented: Binding.constant(viewModel.error != nil)) {
+        }.alert("Error", isPresented: Binding.constant(viewModel.error != nil)) {
             Button("OK") {}
             Button("Retry") {
                 Task {
@@ -44,57 +44,45 @@ struct CategoriesView: View {
             }
         } message: {
             Text(viewModel.error?.localizedDescription ?? "")
+        }.task {
+            await viewModel.getCategories()
         }
-        
+    }
         
         /*NavigationStack {
-         List(viewModel.categories) {
-         category in
-         //makeGoToDetailNavigationLink(for: category)
-         
-         createRow(for: category)
-         
-         //.listRowSeparator(.hidden)
-         
-         
-         //                NavigationLink {
-         //                    //TODO: MealsByCategoryView()
-         //                    CategoryDetailView(category: category)
-         //                } label: {
-         //                    CategoryItemView(category: category)
-         //                }
-         }
-         .task {
-         // TODO: añadir loader
-         await viewModel.getCategories()
-         }
-         .navigationTitle("Categories")
-         .alert(isPresented: $viewModel.showErrorMessage, content: {
-         Alert(
-         title: Text("Error"),
-         message: Text("There was an error loading the list. Please, try again later."),
-         dismissButton: .cancel()
-         )
-         })
-         }*/
-        
-        /*List(recipes) { recipe in
-         Section {
-         createRow(for: recipe)
-         }
-         .listRowSeparator(.hidden)
-         }*/
-    }
+            List(viewModel.categories) { category in
+                NavigationLink {
+                    coordinator.makeMealsByCategoryView(for: category)
+                } label: {
+                    createRow(for: category)
+                }
+            }.task {
+                // TODO: añadir loader
+                await viewModel.getCategories()
+            }
+            .navigationTitle("Categories")
+            .alert("Error", isPresented: Binding.constant(viewModel.error != nil)) {
+                Button("OK") {}
+                Button("Retry") {
+                    Task {
+                        await viewModel.getCategories()
+                    }
+                }
+            }
+        }
+    }*/
     
     private func createRow(for category: Category) -> some View {
         CategoryItemView(category: category)
-            .background(
-                NavigationLink(destination: {
+            /*.background(
+                NavigationLink {
                     //TODO: MealsByCategoryView() ??
                     coordinator.makeMealsByCategoryView(for: category)
                     //CategoryDetailView(category: category)
-                }, label: { EmptyView() })
-            )
+                } label: { 
+                    EmptyView()
+                }
+            )*/
     }
     
     //    func makeGoToDetailNavigationLink(for category: Category) -> some View {
