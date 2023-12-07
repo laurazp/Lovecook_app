@@ -12,6 +12,8 @@ struct CategoriesView: View {
     @StateObject private var viewModel: CategoriesViewModel
     @EnvironmentObject var coordinator: Coordinator
     
+    let gridItemLayout = [GridItem(.flexible()), GridItem(.flexible())]
+    
     init(viewModel: CategoriesViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
@@ -22,17 +24,20 @@ struct CategoriesView: View {
             if viewModel.isLoading {
                 ProgressView()
             } else {
-                List(viewModel.categories, id: \.categoryId) { category in
-                    NavigationLink {
-                        coordinator.makeMealsByCategoryView(for: category)
-                    } label: {
-                        CategoryItemView(category: category)
-                        //createRow(for: category)
-                    }
+                ScrollView {
+                    LazyVGrid(columns: gridItemLayout, spacing: 12) {
+                        ForEach(viewModel.categories, id: \.categoryId) { category in
+                            CategoryItemView(category: category)
+                        }
+                    }.padding(.top, 16)
                 }
-                /*.refreshable {
-                 Task {
-                 await viewModel.getCategories()
+                
+                /*List(viewModel.categories, id: \.categoryId) { category in
+                 NavigationLink {
+                 coordinator.makeMealsByCategoryView(for: category)
+                 } label: {
+                 CategoryItemView(category: category)
+                 //createRow(for: category)
                  }
                  }*/
             }
@@ -48,19 +53,6 @@ struct CategoriesView: View {
         }.task {
             await viewModel.getCategories()
         }
-    }
-    
-    private func createRow(for category: Category) -> some View {
-        CategoryItemView(category: category)
-            /*.background(
-                NavigationLink {
-                    //TODO: MealsByCategoryView() ??
-                    coordinator.makeMealsByCategoryView(for: category)
-                    //CategoryDetailView(category: category)
-                } label: { 
-                    EmptyView()
-                }
-            )*/
     }
 }
 

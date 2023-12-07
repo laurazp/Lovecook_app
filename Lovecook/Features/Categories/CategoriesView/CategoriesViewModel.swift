@@ -11,7 +11,6 @@ class CategoriesViewModel: ObservableObject {
     
     private let getCategoriesUseCase: GetCategoriesUseCase
     @Published var categories: [Category] = []
-    //@Published var showErrorMessage = false
     @Published var isLoading = false
     @Published var error: Error?
     

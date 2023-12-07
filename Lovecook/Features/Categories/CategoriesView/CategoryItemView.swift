@@ -12,24 +12,24 @@ struct CategoryItemView: View {
     let category: Category
     
     var body: some View {
-        VStack(spacing: 16) {
+        ZStack {
             KFImage(URL(string: category.categoryImage))
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .shadow(color: .black, radius: 5, x: 3, y: 5)
-            HStack {
-                Text(category.categoryTitle)
-                    .padding(.top, 8)
-                    .font(.title)
-                    //TODO: tipografía ??
-                    //.foregroundStyle(.black)
-                Spacer()
-            }.frame(
-                maxWidth: .infinity,
-                alignment: .topLeading
-            )
+                .padding(12)
+                .frame(width: 160, height: 200)
+                .background(.brown)
+                .cornerRadius(16)
+            Text(category.categoryTitle)
+                .font(.largeTitle)
+                .foregroundStyle(.white)
+                .bold()
+                .shadow(color: .black, radius: 5, x: 3, y: 5)
+                //TODO: tipografía ??
         }
+        .frame(width: 200, height: 220)
     }
 }
 
