@@ -16,7 +16,7 @@ struct CategoriesRemoteService {
     }
     
     func getCategories() async throws -> [Category] {
-        let response: APIResponse<Category> = try await networkClient.getCall(url: NetworkConstants.categoriesNetworkUrl, queryParams: nil)
-        return response.results
+        let response: CategoriesResponse = try await networkClient.getCall(url: NetworkConstants.categoriesNetworkUrl, queryParams: nil)
+        return response.categories
     }
 }
