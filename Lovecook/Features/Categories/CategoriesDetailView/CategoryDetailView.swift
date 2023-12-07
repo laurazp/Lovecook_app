@@ -12,8 +12,8 @@ struct CategoryDetailView: View {
     
     var body: some View {
         //TODO: MealsByCategoryView()
-        Text(category.strCategory)
-            .navigationTitle(category.strCategory)
+        Text(category.categoryTitle)
+            .navigationTitle(category.categoryTitle)
 //            .toolbar {
 //                ToolbarItem {
 //                    Button(action: {

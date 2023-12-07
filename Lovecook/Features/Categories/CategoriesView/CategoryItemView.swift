@@ -13,19 +13,22 @@ struct CategoryItemView: View {
     
     var body: some View {
         VStack(spacing: 16) {
-            KFImage(URL(string: category.strCategoryThumb))
+            KFImage(URL(string: category.categoryImage))
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .shadow(color: .black, radius: 5, x: 3, y: 5)
             HStack {
-                Text(category.strCategory)
+                Text(category.categoryTitle)
                     .padding(.top, 8)
                     .font(.title)
                     //TODO: tipografía ??
                     //.foregroundStyle(.black)
                 Spacer()
-            }
+            }.frame(
+                maxWidth: .infinity,
+                alignment: .topLeading
+            )
         }
     }
 }

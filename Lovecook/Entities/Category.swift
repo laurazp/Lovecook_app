@@ -9,19 +9,26 @@ import Foundation
 
 struct Category: Decodable, Identifiable {
     var id: String {
-        idCategory
+        categoryId
+    }
+    let categoryId: String
+    let categoryTitle: String
+    let categoryImage: String
+    let categoryDescription: String
+    
+    enum CodingKeys: String, CodingKey {
+        case categoryId = "idCategory"
+        case categoryTitle = "strCategory"
+        case categoryImage = "strCategoryThumb"
+        case categoryDescription = "strCategoryDescription"
     }
     
-    let idCategory: String
-    let strCategory: String
-    let strCategoryThumb: String
-    let strCategoryDescription: String
-    
     static var example: Category {
-        Category(
-            idCategory: "1",
-            strCategory: "Beef",
-            strCategoryThumb: "https://www.themealdb.com/images/category/beef.png", 
-            strCategoryDescription: "Beef is the culinary name for meat from cattle, particularly skeletal muscle. Humans have been eating beef since prehistoric times.[1] Beef is a source of high-quality protein and essential nutrients.[2]")
+        return Category(
+            categoryId: "1",
+            categoryTitle: "Beef",
+            categoryImage: "https://www.themealdb.com/images/category/beef.png",
+            categoryDescription: "Beef is the culinary name for meat from cattle, particularly skeletal muscle. Humans have been eating beef since prehistoric times.[1] Beef is a source of high-quality protein and essential nutrients.[2]"
+        )
     }
 }
