@@ -63,6 +63,8 @@ struct Recipe: Codable, Identifiable {
     let strMeasure19: String?
     let strMeasure20: String?*/
     
+    //TODO: init from decoder
+    
     static var example: Recipe {
         Recipe(
             idMeal: "5346",

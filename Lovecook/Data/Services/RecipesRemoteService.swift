@@ -18,7 +18,7 @@ struct RecipesRemoteService {
     func getRecipe(recipe: Recipe) async throws -> [Recipe] {
         let queryParams = ["i": "\(recipe.idMeal)"]
         
-        let response: APIResponse<Recipe> = try await networkClient.getCall(url: NetworkConstants.recipeNetworkUrl, queryParams: queryParams)
-        return response.results
+        let response: RecipeResponse = try await networkClient.getCall(url: NetworkConstants.recipeNetworkUrl, queryParams: queryParams)
+        return response.meals
     }
 }
