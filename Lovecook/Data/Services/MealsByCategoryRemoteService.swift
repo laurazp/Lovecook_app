@@ -16,7 +16,7 @@ struct MealsByCategoryRemoteService {
     }
     
     func getMealsByCategory(category: Category) async throws -> [Meal] {
-        let queryParams = ["c": "\(category)"]
+        let queryParams = ["c": "\(category.categoryTitle)"]
         
         let response: MealsResponse = try await networkClient.getCall(url: NetworkConstants.mealsByCategoryNetworkUrl, queryParams: queryParams)
         return response.meals
