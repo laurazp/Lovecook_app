@@ -27,19 +27,16 @@ struct CategoriesView: View {
                 ScrollView {
                     LazyVGrid(columns: gridItemLayout, spacing: 12) {
                         ForEach(viewModel.categories, id: \.categoryId) { category in
-                            CategoryItemView(category: category)
+                            NavigationLink {
+                                coordinator.makeMealsByCategoryView(for: category)
+                            } label: {
+                                CategoryItemView(category: category)
+                            }
                         }
-                    }.padding(.top, 16)
+                    }
+                    .navigationTitle("Categories")
+                    .padding(.top, 12)
                 }
-                
-                /*List(viewModel.categories, id: \.categoryId) { category in
-                 NavigationLink {
-                 coordinator.makeMealsByCategoryView(for: category)
-                 } label: {
-                 CategoryItemView(category: category)
-                 //createRow(for: category)
-                 }
-                 }*/
             }
         }.alert("Error", isPresented: Binding.constant(viewModel.error != nil)) {
             Button("OK") {}
@@ -58,4 +55,5 @@ struct CategoriesView: View {
 
 #Preview {
     let coordinator = Coordinator()
-    return coordinator.makeCategoriesView().environmentObject(coordinator)}
+    return coordinator.makeCategoriesView().environmentObject(coordinator)
+}
