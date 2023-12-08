@@ -45,6 +45,11 @@ class Coordinator: ObservableObject {
         MealsByCategoryView(category: category, viewModel: makeMealsByCategoryViewModel())
     }
     
+    // MARK: - RecipesView
+    func makeRecipesView(for meal: Meal) -> RecipesView {
+        RecipesView(meal: meal, viewModel: makeRecipesViewModel())
+    }
+    
     // MARK: Viewmodels
     private func makeCategoriesViewModel() -> CategoriesViewModel {
         return CategoriesViewModel(getCategoriesUseCase: getCategoriesUseCase)
@@ -54,7 +59,7 @@ class Coordinator: ObservableObject {
         return MealsByCategoryViewModel(getMealsByCategoryUseCase: getMealsByCategoryUseCase)
     }
     
-    /*private func makeRecipesViewModel() -> RecipesViewModel {
+    private func makeRecipesViewModel() -> RecipesViewModel {
         return RecipesViewModel(getRecipeUseCase: getRecipeUseCase)
-    }*/
+    }
 }
