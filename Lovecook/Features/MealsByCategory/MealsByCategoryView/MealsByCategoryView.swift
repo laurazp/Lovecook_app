@@ -29,6 +29,8 @@ struct MealsByCategoryView: View {
                     } label: {
                         MealItemView(meal: meal)
                     }
+                    .listRowSeparator(.hidden)
+                    .listRowBackground(Color.clear)
                 }.navigationTitle(category.categoryTitle)
             }
         }.alert("Error", isPresented: Binding.constant(viewModel.error != nil)) {
@@ -44,96 +46,16 @@ struct MealsByCategoryView: View {
             await viewModel.getMealsByCategory(category: category)
         }
     }
+    
+    private func createRow(for meal: Meal) -> some View {
+        MealItemView(meal: meal)
+                    .background(
+                        NavigationLink {
+                            coordinator.makeRecipesView(for: meal)
+                        } label: { EmptyView() }
+                    )
+    }
 }
-
-/*NavigationStack {
- List(viewModel.mealsByCategory) {
- meal in
- //makeGoToDetailNavigationLink(for: category)
- 
- createRow(for: meal)
- 
- //.listRowSeparator(.hidden)
- 
- 
- //                NavigationLink {
- //                    //TODO: MealsByCategoryView()
- //                    CategoryDetailView(category: category)
- //                } label: {
- //                    CategoryItemView(category: category)
- //                }
- }
- .task {
- // TODO: añadir loader
- await viewModel.getMealsByCategory(category: category)
- }
- //TODO: mostrar nombre de la categoría
- .navigationTitle(category.strCategory)
- .alert(isPresented: $viewModel.showErrorMessage, content: {
- Alert(
- title: Text("Error"),
- message: Text("There was an error loading the list. Please, try again later."),
- dismissButton: .cancel()
- )
- })
- }*/
-
-
-/*
- NavigationStack {
- if viewModel.isLoading {
- ProgressView()
- } else {
- List(viewModel.categories, id: \.categoryId) { category in
- NavigationLink {
- coordinator.makeMealsByCategoryView(for: category)
- } label: {
- CategoryItemView(category: category)
- //createRow(for: category)
- }
- }
- /*.refreshable {
-  Task {
-  await viewModel.getCategories()
-  }
-  }*/
- }
- }.alert("Error", isPresented: Binding.constant(viewModel.error != nil)) {
- Button("OK") {}
- Button("Retry") {
- Task {
- await viewModel.getCategories()
- }
- }
- } message: {
- Text(viewModel.error?.localizedDescription ?? "")
- }.task {
- await viewModel.getCategories()
- }
- }
- */
-
-/*private func createRow(for meal: Meal) -> some View {
-    MealItemView(meal: meal)
-        .background(
-            NavigationLink(destination: {
-                //TODO: RecipeView()
-                RecipeDetailView(meal: meal)
-            }, label: { EmptyView() })
-        )
-}*/
-
-
-//}
-
-//    func makeGoToDetailNavigationLink(for category: Category) -> some View {
-//        NavigationLink {
-//            coordinator.makeCategoryDetailView(category: category)
-//        } label: {
-//            CategoryRowView(category: category)
-//        }
-//    }
-//}
 
 #Preview {
     let coordinator = Coordinator()
