@@ -8,5 +8,5 @@
 import Foundation
 
 struct RecipeResponse: Decodable {
-    let meals: [Recipe]
+    let meals: [ApiRecipe]
 }

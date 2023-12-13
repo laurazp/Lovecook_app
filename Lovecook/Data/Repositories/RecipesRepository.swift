@@ -14,9 +14,9 @@ struct RecipesRepository {
         self.remoteService = remoteService
     }
     
-    func getRecipe(recipe: Recipe) async throws -> Recipe {
+    func getRecipe(recipeId: Int) async throws -> Recipe {
         do {
-            return try await remoteService.getRecipe(recipe: recipe)[0]
+            return try await remoteService.getRecipe(recipeId: recipeId)
         } catch(let error) {
             print(error.localizedDescription)
             throw error

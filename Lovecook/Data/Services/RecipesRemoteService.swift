@@ -10,15 +10,20 @@ import Foundation
 struct RecipesRemoteService {
     
     let networkClient: URLSessionNetworkClient
+    let apiRecipeToRecipeMapper: ApiRecipeToRecipeMapper
     
-    init(networkClient: URLSessionNetworkClient) {
+    init(networkClient: URLSessionNetworkClient, apiRecipeToRecipeMapper: ApiRecipeToRecipeMapper) {
         self.networkClient = networkClient
+        self.apiRecipeToRecipeMapper = apiRecipeToRecipeMapper
     }
     
-    func getRecipe(recipe: Recipe) async throws -> [Recipe] {
-        let queryParams = ["i": "\(recipe.idMeal)"]
+    func getRecipe(recipeId: Int) async throws -> Recipe {
+        let queryParams = ["i": "\(recipeId)"]
         
         let response: RecipeResponse = try await networkClient.getCall(url: NetworkConstants.recipeNetworkUrl, queryParams: queryParams)
-        return response.meals
+        
+        let mappedRecipe = apiRecipeToRecipeMapper.mapToRecipe(apiRecipe: response.meals[0])
+        
+        return mappedRecipe
     }
 }

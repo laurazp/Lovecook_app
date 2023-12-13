@@ -1,5 +1,5 @@
 //
-//  Recipe.swift
+//  ApiRecipe.swift
 //  Lovecook
 //
 //  Created by Laura Zafra Prat on 22/11/23.
@@ -8,20 +8,20 @@
 
 import Foundation
 
-struct Recipe: Codable, Identifiable {
+struct ApiRecipe: Codable, Identifiable {
     var id: String {
-        idMeal
+        recipeId
     }
     
     //TODO: borrar parámetros que no vaya a usar
-    let idMeal: String
-    let strMeal: String //title
-    let strCategory: String
-    let strArea: String?
-    let strInstructions: String
-    let strMealThumb: String //url
-    let strTags: String? //"Meat,Casserole"
-    let strYoutube: String? //youtube url
+    let recipeId: String
+    let recipeTitle: String //title
+    let recipeCategory: String
+    let recipeArea: String?
+    let recipeInstructions: String
+    let recipeImage: String //url
+    let recipeTags: String? //"Meat,Casserole"
+    let recipeYoutubeUrl: String? //youtube url
     /*let strIngredient1: String?
     let strIngredient2: String?
     let strIngredient3: String?
@@ -65,20 +65,14 @@ struct Recipe: Codable, Identifiable {
     
     //TODO: init from decoder
     
-    static var example: Recipe {
-        Recipe(
-            idMeal: "5346",
-            strMeal: "Beef and Oyster pie",
-            strCategory: "Beef",
-            strArea: "UK",
-            strInstructions: "Istructions here blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla",
-            strMealThumb: "https://www.themealdb.com/images/media/meals/wrssvt1511556563.jpg",
-            strTags: "Tags",
-            strYoutube: "Youtube url here")
+    enum CodingKeys: String, CodingKey {
+        case recipeId = "idMeal"
+        case recipeTitle = "strMeal"
+        case recipeCategory = "strCategory"
+        case recipeArea = "strArea"
+        case recipeInstructions = "strInstructions"
+        case recipeImage = "strMealThumb"
+        case recipeTags = "strTags"
+        case recipeYoutubeUrl = "strYoutube"
     }
 }
-
-/*
- Lookup full meal details by id
- www.themealdb.com/api/json/v1/1/lookup.php?i=52772
- */

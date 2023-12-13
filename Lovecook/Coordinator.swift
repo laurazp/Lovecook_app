@@ -30,7 +30,8 @@ class Coordinator: ObservableObject {
         self.getMealsByCategoryUseCase = GetMealsByCategoryUseCase(mealsByCategoryRepository: mealsByCategoryRepository)
         
         // MARK: - Recipes
-        let recipesRemoteService = RecipesRemoteService(networkClient: networkClient)
+        let apiRecipeToRecipeMapper = ApiRecipeToRecipeMapper()
+        let recipesRemoteService = RecipesRemoteService(networkClient: networkClient, apiRecipeToRecipeMapper: apiRecipeToRecipeMapper)
         self.recipesRepository = RecipesRepository(remoteService: recipesRemoteService)
         self.getRecipeUseCase = GetRecipeUseCase(recipesRepository: recipesRepository)
     }

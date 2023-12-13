@@ -10,7 +10,7 @@ import Foundation
 struct GetRecipeUseCase {
     let recipesRepository: RecipesRepository
     
-    func execute(recipe: Recipe) async throws -> Recipe {
-        try await recipesRepository.getRecipe(recipe: recipe)
+    func execute(recipeId: Int) async throws -> Recipe {
+        try await recipesRepository.getRecipe(recipeId: recipeId)
     }
 }
