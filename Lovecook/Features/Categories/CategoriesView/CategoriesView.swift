@@ -25,7 +25,7 @@ struct CategoriesView: View {
                 ProgressView()
             } else {
                 ScrollView {
-                    LazyVGrid(columns: gridItemLayout, spacing: 12) {
+                    LazyVGrid(columns: gridItemLayout, spacing: 14) {
                         ForEach(viewModel.categories, id: \.categoryId) { category in
                             NavigationLink {
                                 coordinator.makeMealsByCategoryView(for: category)
@@ -35,7 +35,7 @@ struct CategoriesView: View {
                         }
                     }
                     .navigationTitle("Categories")
-                    .padding(.top, 12)
+                    .padding(12)
                 }
             }
         }.alert("Error", isPresented: Binding.constant(viewModel.error != nil)) {

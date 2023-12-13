@@ -19,7 +19,7 @@ struct CategoryItemView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .shadow(color: .black, radius: 5, x: 3, y: 5)
                 .padding(12)
-                .frame(width: 160, height: 200)
+                .frame(width: 180, height: 200)
                 .background(.brown)
                 .cornerRadius(16)
             Text(category.categoryTitle)
@@ -29,7 +29,7 @@ struct CategoryItemView: View {
                 .shadow(color: .black, radius: 5, x: 3, y: 5)
                 //TODO: tipografía ??
         }
-        .frame(width: 200, height: 220)
+        .frame(width: 190, height: 200)
     }
 }
 
