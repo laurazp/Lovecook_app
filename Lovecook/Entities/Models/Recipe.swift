@@ -17,7 +17,7 @@ struct Recipe {
     let recipeArea: String
     let recipeInstructions: String
     let recipeImage: String
-    let recipeTags: String //"Meat,Casserole"
+    let recipeTags: [String]
     let recipeYoutubeUrl: String
     
     //TODO: borrar parámetros que no vaya a usar
@@ -71,7 +71,7 @@ struct Recipe {
             recipeArea: "UK",
             recipeInstructions: "Istructions here blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla",
             recipeImage: "https://www.themealdb.com/images/media/meals/wrssvt1511556563.jpg",
-            recipeTags: "Tags",
+            recipeTags: ["Drink", "Fit", "Cool"],
             recipeYoutubeUrl: "Youtube url here")
     }
 }

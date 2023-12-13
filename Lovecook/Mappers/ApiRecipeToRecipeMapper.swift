@@ -21,8 +21,7 @@ class ApiRecipeToRecipeMapper {
             recipeYoutubeUrl: apiRecipe.recipeYoutubeUrl ?? "")
     }
     
-    private func mapRecipeTags(tags: String?) -> String {
-        var mappedTags = ""
+    private func mapRecipeTags(tags: String?) -> [String] {
         var mappedArray = [String]()
         
         if tags != nil {
@@ -30,8 +29,7 @@ class ApiRecipeToRecipeMapper {
             for tag in tagsArray {
                 mappedArray.append("#\(tag) ")
             }
-            mappedTags = mappedArray.joined()
         }
-        return mappedTags
+        return mappedArray
     }
 }

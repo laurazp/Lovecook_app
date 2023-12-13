@@ -32,7 +32,7 @@ struct RecipesView: View {
                         .frame(minWidth: nil, idealWidth: nil, maxWidth: UIScreen.main.bounds.width, minHeight: nil, idealHeight: nil, maxHeight: 300, alignment: .center)
                         .clipped()
                         .overlay(
-                            Text(viewModel.recipe?.recipeArea ?? "")
+                            Text(recipe.recipeArea)
                                 .fontWeight(Font.Weight.medium)
                                 .font(Font.system(size: 16))
                                 .foregroundColor(Color.white)
@@ -50,17 +50,20 @@ struct RecipesView: View {
                         // Tags and Category Stack
                         VStack(alignment: .leading, spacing: 4) {
                             
-                            if viewModel.recipe?.recipeTags != nil {
+                            if let recipeTags = viewModel.recipe?.recipeTags {
                                 HStack {
                                     Text("Tags:")
                                         .font(Font.system(size: 13))
                                         .fontWeight(Font.Weight.heavy)
-                                    HStack {
-                                        Text((viewModel.recipe?.recipeTags)!)
-                                            .font(Font.custom("HelveticaNeue-Medium", size: 12))
-                                            .padding([.leading, .trailing], 10)
-                                            .padding([.top, .bottom], 5)
-                                            .foregroundColor(Color.white)
+                                    
+                                    ForEach(recipeTags, id: \.self) { tag in
+                                        HStack {
+                                            Text(tag)
+                                                .font(Font.custom("HelveticaNeue-Medium", size: 12))
+                                                .padding([.leading, .trailing], 10)
+                                                .padding([.top, .bottom], 5)
+                                                .foregroundColor(Color.white)
+                                        }
                                     }
                                     .background(Color(red: 43/255, green: 175/255, blue: 187/255))
                                     .cornerRadius(7)
@@ -71,13 +74,13 @@ struct RecipesView: View {
                             HStack(alignment: .center, spacing: 0) {
                                 Text("Category: ")
                                     .foregroundColor(Color.gray)
-                                Text("recipe.recipeCategory")
+                                Text(recipe.recipeCategory)
                             }.font(Font.custom("HelveticaNeue", size: 14))
                             
                         }
                         .padding([.top, .bottom], 8)
                         
-                        Text(viewModel.recipe?.recipeInstructions ?? "")
+                        Text(recipe.recipeInstructions)
                             .font(Font.custom("HelveticaNeue-Bold", size: 16))
                             .foregroundColor(Color.gray)
                         
@@ -117,7 +120,6 @@ struct RecipesView: View {
                 .cornerRadius(15)
                 .shadow(color: Color.black.opacity(0.2), radius: 7, x: 0, y: 2)
                 .padding(20)
-                
             }
         }.task {
             await viewModel.getRecipe(mealId: Int(meal.mealId) ?? 1)
