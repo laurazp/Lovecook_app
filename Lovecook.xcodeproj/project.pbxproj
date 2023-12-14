@@ -28,6 +28,7 @@
 		222A95E82B0ECDAA00E2AAD5 /* RecipesRemoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222A95E72B0ECDAA00E2AAD5 /* RecipesRemoteService.swift */; };
 		222A95EA2B0ECE6C00E2AAD5 /* RecipesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222A95E92B0ECE6C00E2AAD5 /* RecipesRepository.swift */; };
 		222A95EC2B0ECF2600E2AAD5 /* GetRecipeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222A95EB2B0ECF2600E2AAD5 /* GetRecipeUseCase.swift */; };
+		227930502B2B72F0006C9EDA /* CheckboxToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2279304F2B2B72F0006C9EDA /* CheckboxToggleStyle.swift */; };
 		228D52EC2B1F9DAC00C45BC9 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 228D52EB2B1F9DAC00C45BC9 /* Lottie */; };
 		228D52F22B1FA03900C45BC9 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228D52F12B1FA03900C45BC9 /* LottieView.swift */; };
 		228D52F42B1FA26900C45BC9 /* lottie_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 228D52F32B1FA26900C45BC9 /* lottie_animation.json */; };
@@ -80,6 +81,7 @@
 		222A95E72B0ECDAA00E2AAD5 /* RecipesRemoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesRemoteService.swift; sourceTree = "<group>"; };
 		222A95E92B0ECE6C00E2AAD5 /* RecipesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesRepository.swift; sourceTree = "<group>"; };
 		222A95EB2B0ECF2600E2AAD5 /* GetRecipeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRecipeUseCase.swift; sourceTree = "<group>"; };
+		2279304F2B2B72F0006C9EDA /* CheckboxToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxToggleStyle.swift; sourceTree = "<group>"; };
 		228D52F12B1FA03900C45BC9 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		228D52F32B1FA26900C45BC9 /* lottie_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lottie_animation.json; sourceTree = "<group>"; };
 		228D52F62B1FA40D00C45BC9 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 			children = (
 				228D52F12B1FA03900C45BC9 /* LottieView.swift */,
 				222A8FD42B27DDA700A55B65 /* RoundedCorners.swift */,
+				2279304F2B2B72F0006C9EDA /* CheckboxToggleStyle.swift */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -535,6 +538,7 @@
 				22A76EE22B03F5B30055A36D /* URLSessionNetworkClient.swift in Sources */,
 				22A76ECF2B03F2010055A36D /* FavoritesView.swift in Sources */,
 				222A95BD2B0D70E700E2AAD5 /* MealsByCategoryView.swift in Sources */,
+				227930502B2B72F0006C9EDA /* CheckboxToggleStyle.swift in Sources */,
 				22A76EDF2B03F5620055A36D /* CategoriesRemoteService.swift in Sources */,
 				22F3665F2B0CAD6C007F7E8C /* CategoriesRepository.swift in Sources */,
 				22FFA1602B23E3F200811574 /* SignUpView.swift in Sources */,
