@@ -10,14 +10,21 @@ import SwiftUI
 struct LogInView: View {
     @State private var userEmail: String = ""
     @State private var userPassword: String = ""
+    @EnvironmentObject var viewModel: AuthenticationViewModel
     
     var body: some View {
         VStack(spacing: 18) {
             Text("WELCOME BACK!")
             Text("Log in to your account")
+                        
+            GoogleSignInButton()
+                    .padding()
+                    .onTapGesture {
+                      viewModel.signIn()
+                    }
             
-            //TODO: View para acceder a login de Google/Apple
-            
+            //TODO: Botón para acceder a login de Apple ???
+
             Text("- or continue with e-mail -")
             
             TextField("Enter your Email", text: $userEmail)

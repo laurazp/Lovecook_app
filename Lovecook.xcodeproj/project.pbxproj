@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22106CD02B2A95300090F25B /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22106CCF2B2A95300090F25B /* AuthenticationViewModel.swift */; };
+		22106CD22B2A9DC40090F25B /* GoogleSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22106CD12B2A9DC40090F25B /* GoogleSignInButton.swift */; };
 		22259F0E2B2A8E5A00C4BF84 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 22259F0D2B2A8E5A00C4BF84 /* FirebaseAnalytics */; };
 		22259F102B2A8E5A00C4BF84 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 22259F0F2B2A8E5A00C4BF84 /* FirebaseAnalyticsOnDeviceConversion */; };
 		22259F122B2A8E5A00C4BF84 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 22259F112B2A8E5A00C4BF84 /* FirebaseAnalyticsSwift */; };
@@ -127,6 +129,8 @@
 
 /* Begin PBXFileReference section */
 		22106CCD2B2A940D0090F25B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		22106CCF2B2A95300090F25B /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		22106CD12B2A9DC40090F25B /* GoogleSignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInButton.swift; sourceTree = "<group>"; };
 		22259F8C2B2A92AB00C4BF84 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		222A8FD42B27DDA700A55B65 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
 		222A8FD72B27E42A00A55B65 /* ApiRecipeToRecipeMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRecipeToRecipeMapper.swift; sourceTree = "<group>"; };
@@ -257,6 +261,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22106CCE2B2A950A0090F25B /* GoogleAuthentication */ = {
+			isa = PBXGroup;
+			children = (
+				22106CCF2B2A95300090F25B /* AuthenticationViewModel.swift */,
+			);
+			path = GoogleAuthentication;
+			sourceTree = "<group>";
+		};
 		222A8FD62B27E3C600A55B65 /* Mappers */ = {
 			isa = PBXGroup;
 			children = (
@@ -331,6 +343,7 @@
 			children = (
 				228D52F12B1FA03900C45BC9 /* LottieView.swift */,
 				222A8FD42B27DDA700A55B65 /* RoundedCorners.swift */,
+				22106CD12B2A9DC40090F25B /* GoogleSignInButton.swift */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -391,6 +404,7 @@
 				222A8FD62B27E3C600A55B65 /* Mappers */,
 				22A76EC92B03F1B60055A36D /* Features */,
 				22A76ED92B03F4820055A36D /* UseCases */,
+				22106CCE2B2A950A0090F25B /* GoogleAuthentication */,
 				22A76EDC2B03F5340055A36D /* Data */,
 				22A76EE02B03F5980055A36D /* NetworkClient */,
 				228D52EE2B1F9FE700C45BC9 /* Widgets */,
@@ -716,6 +730,7 @@
 				222A95DB2B0EBEA300E2AAD5 /* GetMealsByCategoryUseCase.swift in Sources */,
 				222A95EA2B0ECE6C00E2AAD5 /* RecipesRepository.swift in Sources */,
 				22A76EC02B03E55E0055A36D /* Persistence.swift in Sources */,
+				22106CD02B2A95300090F25B /* AuthenticationViewModel.swift in Sources */,
 				228D52FF2B224E8600C45BC9 /* CategoriesResponse.swift in Sources */,
 				228D53072B228B9C00C45BC9 /* RecipesViewModel.swift in Sources */,
 				222A95DF2B0EC32400E2AAD5 /* MealsByCategoryRemoteService.swift in Sources */,
@@ -733,6 +748,7 @@
 				228D52F72B1FA40D00C45BC9 /* SplashView.swift in Sources */,
 				222A95E62B0ECA6F00E2AAD5 /* RecipeDetailView.swift in Sources */,
 				222A95EC2B0ECF2600E2AAD5 /* GetRecipeUseCase.swift in Sources */,
+				22106CD22B2A9DC40090F25B /* GoogleSignInButton.swift in Sources */,
 				228D53052B228B8700C45BC9 /* RecipesView.swift in Sources */,
 				222A95D42B0EB9D500E2AAD5 /* MealsByCategoryViewModel.swift in Sources */,
 				228D52F22B1FA03900C45BC9 /* LottieView.swift in Sources */,
