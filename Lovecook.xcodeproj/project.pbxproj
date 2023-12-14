@@ -59,7 +59,7 @@
 		22F366612B0CAFA3007F7E8C /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F366602B0CAFA3007F7E8C /* NetworkClient.swift */; };
 		22FFA1592B23E02400811574 /* food_background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 22FFA1582B23E02400811574 /* food_background.jpg */; };
 		22FFA15C2B23E35D00811574 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFA15B2B23E35D00811574 /* MainView.swift */; };
-		22FFA15E2B23E36900811574 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFA15D2B23E36900811574 /* LoginView.swift */; };
+		22FFA15E2B23E36900811574 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFA15D2B23E36900811574 /* LogInView.swift */; };
 		22FFA1602B23E3F200811574 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFA15F2B23E3F200811574 /* SignUpView.swift */; };
 /* End PBXBuildFile section */
 
@@ -111,7 +111,7 @@
 		22F366602B0CAFA3007F7E8C /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		22FFA1582B23E02400811574 /* food_background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = food_background.jpg; sourceTree = "<group>"; };
 		22FFA15B2B23E35D00811574 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		22FFA15D2B23E36900811574 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		22FFA15D2B23E36900811574 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		22FFA15F2B23E3F200811574 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -429,7 +429,7 @@
 			isa = PBXGroup;
 			children = (
 				22FFA15B2B23E35D00811574 /* MainView.swift */,
-				22FFA15D2B23E36900811574 /* LoginView.swift */,
+				22FFA15D2B23E36900811574 /* LogInView.swift */,
 				22FFA15F2B23E3F200811574 /* SignUpView.swift */,
 			);
 			path = Main;
@@ -560,7 +560,7 @@
 				222A8FD82B27E42A00A55B65 /* ApiRecipeToRecipeMapper.swift in Sources */,
 				222A95DD2B0EC0E800E2AAD5 /* MealsByCategoryRepository.swift in Sources */,
 				22A76ED62B03F3B90055A36D /* CategoriesViewModel.swift in Sources */,
-				22FFA15E2B23E36900811574 /* LoginView.swift in Sources */,
+				22FFA15E2B23E36900811574 /* LogInView.swift in Sources */,
 				22A76EC32B03E55E0055A36D /* Lovecook.xcdatamodeld in Sources */,
 				22E32D2B2B286E0D003731E5 /* Recipe.swift in Sources */,
 			);
