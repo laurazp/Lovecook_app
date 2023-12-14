@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct MainView: View {
+    @EnvironmentObject var viewModel: AuthenticationViewModel
+
     var body: some View {
-        
         NavigationStack {
             VStack(spacing: 18) {
                 Spacer()
@@ -66,5 +67,8 @@ struct MainView: View {
 }
 
 #Preview {
-    MainView()
+    let viewModel = AuthenticationViewModel()
+
+    return MainView()
+        .environmentObject(viewModel)
 }
