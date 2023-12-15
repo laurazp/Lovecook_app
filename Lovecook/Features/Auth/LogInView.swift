@@ -15,17 +15,28 @@ struct LogInView: View {
     var body: some View {
         VStack(spacing: 18) {
             Text("WELCOME BACK!")
+                .font(Font.system(size: 20))
+                .fontWeight(Font.Weight.bold)
+                .foregroundColor(Color.darkBlue)
             Text("Log in to your account")
-                        
-            GoogleSignInButton()
-                    .padding()
-                    .onTapGesture {
-                      viewModel.signIn()
-                    }
-            
-            //TODO: Botón para acceder a login de Apple ???
+                .font(Font.system(size: 16))
+                .fontWeight(Font.Weight.bold)
+                .foregroundColor(Color.gray)
+             
+            VStack {
+                GoogleSignInButton()
+                        .padding()
+                        .onTapGesture {
+                          viewModel.signIn()
+                        }
+                
+                //TODO: Botón para acceder a login de Apple ???
+            }
+            .frame(height: 120)
 
             Text("- or continue with e-mail -")
+                .font(Font.system(size: 16))
+                .foregroundColor(Color.gray)
             
             TextField("Enter your Email", text: $userEmail)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -36,7 +47,7 @@ struct LogInView: View {
             Button {
                 //TODO: log in with email??
             } label: {
-                NavigationLink(destination: HomeView()) {
+                NavigationLink(destination: MainView()) {
                     Text("Log in")
                         .frame(maxWidth: .infinity)
                         .fontWeight(.bold)
