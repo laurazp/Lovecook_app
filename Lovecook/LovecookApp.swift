@@ -46,6 +46,7 @@ struct LovecookApp: App {
         WindowGroup {
             SplashView()
                 .environmentObject(coordinator)
+                .environmentObject(viewModel)
             //.environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

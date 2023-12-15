@@ -7,9 +7,12 @@
 
 import SwiftUI
 import CoreData
+import FirebaseCore
+import FirebaseAuth
+import Firebase
+import GoogleSignIn
 
 struct ContentView: View {
-    @EnvironmentObject var coordinator: Coordinator
     @State private var showOnboarding = true
     @EnvironmentObject var viewModel: AuthenticationViewModel
     
@@ -23,27 +26,12 @@ struct ContentView: View {
     var body: some View {
         
         //TODO: Revisar !!!!
-        /*switch viewModel.state {
-            case .signedOut: MainView()
+        switch viewModel.state {
+            case .signedOut: AuthView()
             case .signedIn: HomeView()
-        }*/
-        
-        TabView {
-            //coordinator.makeHomeView()
-            HomeView()
-                .tabItem {
-                    Label("Home", systemImage: "house.fill")
-                }
-            coordinator.makeCategoriesView()
-                .tabItem {
-                    Label("Categories", systemImage: "list.bullet")
-                }
-            //coordinator.makeFavoritesView()
-            FavoritesView()
-                .tabItem {
-                    Label("Favorites", systemImage: "star.fill")
-                }
         }
+        
+
         //        .fullScreenCover(
         //            isPresented: $showOnboarding,
         //            content: {
@@ -116,11 +104,9 @@ struct ContentView: View {
 //}()
 
 #Preview {
-    let coordinator = Coordinator()
     let viewModel = AuthenticationViewModel()
     
     return ContentView()
         .environmentObject(viewModel)
-        .environmentObject(coordinator)
     //    ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 }
