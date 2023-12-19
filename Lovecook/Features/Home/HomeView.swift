@@ -40,17 +40,24 @@ struct HomeView: View {
                 Spacer()
                 
                 //TODO: Revisar !!!
-                Button(action: {/*viewModel.signOut*/}) {
+                Button {
+                    viewModel.signOut()
+                } label: {
                     Text("Sign out")
-                        .foregroundColor(.white)
-                        .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color(.systemIndigo))
-                        .cornerRadius(12)
-                        .padding()
+                        .fontWeight(.bold)
+                        .foregroundColor(Color.white)
+                    
+                        
                 }
+                .cornerRadius(20)
+                .buttonStyle(.borderedProminent)
+                .tint(Color.darkBlue)
+                .controlSize(.large)
+                .padding(38)
             }
             .navigationTitle("Home")
+            .padding(16)
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
