@@ -28,7 +28,7 @@ struct ContentView: View {
         //TODO: Revisar !!!!
         switch viewModel.state {
             case .signedOut: AuthView()
-            case .signedIn: HomeView()
+            case .signedIn: MainView()
         }
         
 
