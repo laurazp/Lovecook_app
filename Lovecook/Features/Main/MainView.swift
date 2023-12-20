@@ -26,7 +26,7 @@ struct MainView: View {
                 .tabItem {
                     Label("Favorites", systemImage: "star.fill")
                 }
-        }
+        }.accentColor(.darkBlue)
     }
 }
 
