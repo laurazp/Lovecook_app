@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Kingfisher
+import YouTubePlayerKit
 
 struct RecipesView: View {
     var meal: Meal
@@ -83,6 +84,17 @@ struct RecipesView: View {
                         Text(recipe.recipeInstructions)
                             .font(Font.custom("HelveticaNeue-Bold", size: 16))
                             .foregroundColor(Color.gray)
+                        
+                        Spacer()
+                        
+                        //TODO: gestionar error y loadingView
+                        HStack(alignment: .center) {
+                            YouTubePlayerView(YouTubePlayer(stringLiteral: recipe.recipeYoutubeUrl))
+                        }
+                        .padding(8)
+                        .frame(width: 350, height: 200)
+                        
+                        Spacer()
                         
                         Divider()
                         //.color: Color.gray.opacity(0.3)

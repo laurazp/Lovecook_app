@@ -80,7 +80,6 @@
 		222A95C42B0D739500E2AAD5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 222A95C32B0D739500E2AAD5 /* Kingfisher */; };
 		222A95C82B0D745000E2AAD5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 222A95C72B0D745000E2AAD5 /* Kingfisher */; };
 		222A95CB2B0D753500E2AAD5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 222A95CA2B0D753500E2AAD5 /* Kingfisher */; };
-		222A95D22B0EB9C100E2AAD5 /* RecipeItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222A95D12B0EB9C100E2AAD5 /* RecipeItemView.swift */; };
 		222A95D42B0EB9D500E2AAD5 /* MealsByCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222A95D32B0EB9D500E2AAD5 /* MealsByCategoryViewModel.swift */; };
 		222A95D62B0EBB6D00E2AAD5 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222A95D52B0EBB6D00E2AAD5 /* Meal.swift */; };
 		222A95D82B0EBBB100E2AAD5 /* ApiRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222A95D72B0EBBB100E2AAD5 /* ApiRecipe.swift */; };
@@ -103,6 +102,7 @@
 		228D53052B228B8700C45BC9 /* RecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228D53042B228B8700C45BC9 /* RecipesView.swift */; };
 		228D53072B228B9C00C45BC9 /* RecipesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228D53062B228B9C00C45BC9 /* RecipesViewModel.swift */; };
 		22A027B12B2BE0CC00F44C68 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A027B02B2BE0CC00F44C68 /* MainView.swift */; };
+		22A027B42B32707F00F44C68 /* YouTubePlayerKit in Frameworks */ = {isa = PBXBuildFile; productRef = 22A027B32B32707F00F44C68 /* YouTubePlayerKit */; };
 		22A76EB72B03E55D0055A36D /* LovecookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A76EB62B03E55D0055A36D /* LovecookApp.swift */; };
 		22A76EB92B03E55D0055A36D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A76EB82B03E55D0055A36D /* ContentView.swift */; };
 		22A76EBB2B03E55E0055A36D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22A76EBA2B03E55E0055A36D /* Assets.xcassets */; };
@@ -137,7 +137,6 @@
 		222A8FD72B27E42A00A55B65 /* ApiRecipeToRecipeMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRecipeToRecipeMapper.swift; sourceTree = "<group>"; };
 		222A95B92B0D6FBD00E2AAD5 /* CategoryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemView.swift; sourceTree = "<group>"; };
 		222A95BC2B0D70E700E2AAD5 /* MealsByCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsByCategoryView.swift; sourceTree = "<group>"; };
-		222A95D12B0EB9C100E2AAD5 /* RecipeItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeItemView.swift; sourceTree = "<group>"; };
 		222A95D32B0EB9D500E2AAD5 /* MealsByCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsByCategoryViewModel.swift; sourceTree = "<group>"; };
 		222A95D52B0EBB6D00E2AAD5 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		222A95D72B0EBBB100E2AAD5 /* ApiRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRecipe.swift; sourceTree = "<group>"; };
@@ -244,6 +243,7 @@
 				22259F792B2A90CF00C4BF84 /* FirebaseRemoteConfig in Frameworks */,
 				22259F102B2A8E5A00C4BF84 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 				22259F612B2A90CF00C4BF84 /* FirebaseDynamicLinks in Frameworks */,
+				22A027B42B32707F00F44C68 /* YouTubePlayerKit in Frameworks */,
 				22259F712B2A90CF00C4BF84 /* FirebaseInstallations in Frameworks */,
 				22259F1A2B2A8E5A00C4BF84 /* FirebaseAuth in Frameworks */,
 				22259F1E2B2A8E5A00C4BF84 /* FirebaseCrashlytics in Frameworks */,
@@ -316,7 +316,6 @@
 			children = (
 				228D53042B228B8700C45BC9 /* RecipesView.swift */,
 				228D53062B228B9C00C45BC9 /* RecipesViewModel.swift */,
-				222A95D12B0EB9C100E2AAD5 /* RecipeItemView.swift */,
 			);
 			path = RecipesView;
 			sourceTree = "<group>";
@@ -671,6 +670,7 @@
 				22259F842B2A90F600C4BF84 /* FirebaseAnalyticsSwift */,
 				22259F862B2A90F600C4BF84 /* FirebaseAnalyticsWithoutAdIdSupport */,
 				22259F882B2A90F600C4BF84 /* FirebaseAppCheck */,
+				22A027B32B32707F00F44C68 /* YouTubePlayerKit */,
 			);
 			productName = Lovecook;
 			productReference = 22A76EB32B03E55D0055A36D /* Lovecook.app */;
@@ -705,6 +705,7 @@
 				228D52EA2B1F9DAC00C45BC9 /* XCRemoteSwiftPackageReference "lottie-spm" */,
 				22259F0C2B2A8E5A00C4BF84 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				22259F432B2A8ED300C4BF84 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				22A027B22B32707F00F44C68 /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */,
 			);
 			productRefGroup = 22A76EB42B03E55D0055A36D /* Products */;
 			projectDirPath = "";
@@ -766,7 +767,6 @@
 				228D52F22B1FA03900C45BC9 /* LottieView.swift in Sources */,
 				228D53012B22827600C45BC9 /* MealsResponse.swift in Sources */,
 				222A95D82B0EBBB100E2AAD5 /* ApiRecipe.swift in Sources */,
-				222A95D22B0EB9C100E2AAD5 /* RecipeItemView.swift in Sources */,
 				22A76EDB2B03F4A20055A36D /* GetCategoriesUseCase.swift in Sources */,
 				222A95D62B0EBB6D00E2AAD5 /* Meal.swift in Sources */,
 				22A76ECD2B03F1F10055A36D /* CategoriesView.swift in Sources */,
@@ -1021,6 +1021,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 4.3.4;
+			};
+		};
+		22A027B22B32707F00F44C68 /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SvenTiigi/YouTubePlayerKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.4;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1360,6 +1368,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 228D52EA2B1F9DAC00C45BC9 /* XCRemoteSwiftPackageReference "lottie-spm" */;
 			productName = Lottie;
+		};
+		22A027B32B32707F00F44C68 /* YouTubePlayerKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22A027B22B32707F00F44C68 /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */;
+			productName = YouTubePlayerKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 
