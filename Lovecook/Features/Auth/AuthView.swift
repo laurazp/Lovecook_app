@@ -39,6 +39,7 @@ struct AuthView: View {
                     .opacity(0.8)
                     .font(.caption2)
                 
+                //TODO: fix link to also work in text!!
                 NavigationLink(destination: SignUpView()) {
                     Button("Sign up") {}
                         .frame(maxWidth: .infinity)
@@ -54,7 +55,7 @@ struct AuthView: View {
                 }
                 Spacer()
             }
-            .padding(24)
+            .padding(28)
             .background(
                 Image("food_background")
                     .resizable()

@@ -13,7 +13,7 @@ import Firebase
 import GoogleSignIn
 
 struct ContentView: View {
-    @State private var showOnboarding = true
+    //@State private var showOnboarding = true
     @EnvironmentObject var viewModel: AuthenticationViewModel
     
     //    @Environment(\.managedObjectContext) private var viewContext
