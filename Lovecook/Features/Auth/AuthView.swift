@@ -42,20 +42,20 @@ struct AuthView: View {
                         .opacity(0.8)
                         .font(.caption2)
                     
-                    //TODO: fix link to also work in text!!
                     NavigationLink(destination: SignUpView()) {
-                        Button("Sign up") {}
+                        Text("Sign up")
                             .frame(maxWidth: .infinity)
                             .padding()
-                            .background(.white)
+                            .background(Color.white)
                             .cornerRadius(20)
-                            .foregroundStyle(.lightGreen)
+                            .foregroundColor(.lightGreen)
                             .fontWeight(.bold)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 20)
-                                    .stroke(.lightGreen, lineWidth: 1.7)
+                                    .stroke(Color.lightGreen, lineWidth: 1.7)
                             )
                     }
+                    .buttonStyle(PlainButtonStyle())
                     Spacer()
                 }
                 .padding(28)
