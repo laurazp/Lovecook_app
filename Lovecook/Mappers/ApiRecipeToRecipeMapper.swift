@@ -14,14 +14,14 @@ class ApiRecipeToRecipeMapper {
             recipeId: apiRecipe.recipeId,
             recipeTitle: apiRecipe.recipeTitle,
             recipeCategory: apiRecipe.recipeCategory,
-            recipeArea: apiRecipe.recipeArea ?? "N/A",
+            recipeArea: apiRecipe.recipeArea ?? "Unknown",
             recipeInstructions: apiRecipe.recipeInstructions,
             recipeImage: apiRecipe.recipeImage,
-            recipeTags: mapRecipeTags(tags: apiRecipe.recipeTags),
+            recipeTags: mapRecipeTags(tags: apiRecipe.recipeTags, category: apiRecipe.recipeCategory),
             recipeYoutubeUrl: apiRecipe.recipeYoutubeUrl ?? "")
     }
     
-    private func mapRecipeTags(tags: String?) -> [String] {
+    private func mapRecipeTags(tags: String?, category: String) -> [String] {
         var mappedArray = [String]()
         
         if tags != nil {
@@ -29,6 +29,8 @@ class ApiRecipeToRecipeMapper {
             for tag in tagsArray {
                 mappedArray.append("#\(tag) ")
             }
+        } else {
+            mappedArray.append("#\(category) ")
         }
         return mappedArray
     }
