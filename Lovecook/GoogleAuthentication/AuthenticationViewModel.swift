@@ -20,10 +20,8 @@ class AuthenticationViewModel: ObservableObject {
     
     @Published var state: SignInState = .signedOut
     
-    func signIn() {
-        //TODO: sacar este if para no tener que darle a login??
+    func  checkSignInState() -> Bool {
         if GIDSignIn.sharedInstance.hasPreviousSignIn() {
-            print("Previous sign in!")
             GIDSignIn.sharedInstance.restorePreviousSignIn { [unowned self] user, error in
                 if let error = error {
                     print("Error restoring previous sign-in: \(error.localizedDescription)")
@@ -32,23 +30,28 @@ class AuthenticationViewModel: ObservableObject {
                     authenticateUser(for: user, with: error)
                 }
             }
+            return true
         } else {
-            guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+            return false
+        }
+    }
+    
+    func signIn() {
+        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+        
+        let configuration = GIDConfiguration(clientID: clientID)
+        GIDSignIn.sharedInstance.configuration = configuration
+        
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+        guard let rootViewController = windowScene.windows.first?.rootViewController else { return }
+        
+        GIDSignIn.sharedInstance.signIn(withPresenting: rootViewController) { [unowned self] result, error in
             
-            let configuration = GIDConfiguration(clientID: clientID)
-            GIDSignIn.sharedInstance.configuration = configuration
-            
-            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
-            guard let rootViewController = windowScene.windows.first?.rootViewController else { return }
-            
-            GIDSignIn.sharedInstance.signIn(withPresenting: rootViewController) { [unowned self] result, error in
-                
-                if let error = error {
-                    print("Error restoring previous sign-in: \(error.localizedDescription)")
-                    //TODO: Handle the error if necessary
-                } else if let result = result {
-                    authenticateUser(for: result.user, with: error)
-                }
+            if let error = error {
+                print("Error restoring previous sign-in: \(error.localizedDescription)")
+                //TODO: Handle the error if necessary
+            } else if let result = result {
+                authenticateUser(for: result.user, with: error)
             }
         }
     }
