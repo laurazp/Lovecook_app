@@ -20,6 +20,7 @@ struct AccountView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 150, height: 150, alignment: .center)
                     .cornerRadius(8)
+                    .clipShape(Circle())
        
                 VStack(alignment: .leading) {
                     Text(user?.profile?.name ?? "")

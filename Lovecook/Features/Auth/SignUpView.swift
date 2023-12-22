@@ -39,7 +39,7 @@ struct SignUpView: View {
                 //TODO: check and save user data
             } label: {
                 //TODO: login o home? ckechear primero
-                NavigationLink(destination: HomeView()) {
+                NavigationLink(destination: AccountView()) {
                     Text("Sign up")
                         .frame(maxWidth: .infinity)
                         .fontWeight(.bold)
