@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Kingfisher
+import YouTubePlayerKit
 
 struct RecipesView: View {
     var meal: Meal
@@ -74,43 +75,55 @@ struct RecipesView: View {
                             HStack(alignment: .center, spacing: 0) {
                                 Text("Category: ")
                                     .foregroundColor(Color.gray)
+                                    .fontWeight(Font.Weight.bold)
                                 Text(recipe.recipeCategory)
                             }.font(Font.custom("HelveticaNeue", size: 14))
-                            
+                            Spacer()
                         }
                         .padding([.top, .bottom], 8)
                         
-                        Text(recipe.recipeInstructions)
-                            .font(Font.custom("HelveticaNeue-Bold", size: 16))
-                            .foregroundColor(Color.gray)
-                        
                         Divider()
-                        //.color: Color.gray.opacity(0.3)
                             .padding([.leading, .trailing], -12)
                         
-                        // TODO: modificar y añadir resto de ingredientes
-                        HStack(alignment: .center, spacing: 4) {
-                            Text(String.init(format: "$%.2f", arguments: ["15€"]))
-                                .fontWeight(Font.Weight.heavy)
-                            Text("for 2 people")
-                                .font(Font.system(size: 13))
+                        // TODO: añadir ingredientes
+                        HStack(alignment: .center, spacing: 6) {
+                            Spacer()
+                            Text("measure")
                                 .fontWeight(Font.Weight.bold)
                                 .foregroundColor(Color.gray)
-                            Spacer()
-                            /*Image("Plus-Icon")
-                             .resizable()
-                             .scaledToFit()
-                             .frame(width: 15, height: 15, alignment: .center)
-                             .colorMultiply(Color(red: 231/255, green: 119/255, blue: 112/255))
-                             .onTapGesture {}*/
-                            Text("BUY NOW")
+                            Text("ingredient")
                                 .fontWeight(Font.Weight.heavy)
-                                .foregroundColor(Color(red: 231/255, green: 119/255, blue: 112/255))
-                            //.onTapGesture {}
-                            
+                            Spacer()
                         }.padding([.top, .bottom], 8)
                         
+                        Divider()
+                            .padding([.leading, .trailing], -12)
                         
+                        VStack(alignment: .leading) {
+                            Spacer()
+                            Text("PREPARATION")
+                                .fontWeight(Font.Weight.heavy)
+                                .font(Font.system(size: 18))
+                                .foregroundColor(Color.gray)
+
+                            Spacer()
+                            
+                            Spacer()
+                            Text(recipe.recipeInstructions)
+                                .font(Font.custom("HelveticaNeue-Bold", size: 16))
+                                .foregroundColor(Color.gray)
+                            Spacer()
+                        }
+                        .padding(12)
+                        
+                        //TODO: gestionar error y loadingView
+                        HStack(alignment: .center) {
+                            YouTubePlayerView(YouTubePlayer(stringLiteral: recipe.recipeYoutubeUrl))
+                        }
+                        .padding(8)
+                        .frame(width: 350, height: 200)
+                        
+                        Spacer()
                     }
                     .padding(12)
                     .navigationTitle(meal.mealTitle)
