@@ -12,19 +12,20 @@ struct MainView: View {
     
     var body: some View {
         TabView {
-            //coordinator.makeHomeView()
-            HomeView()
-                .tabItem {
-                    Label("Home", systemImage: "house.fill")
-                }
             coordinator.makeCategoriesView()
                 .tabItem {
-                    Label("Categories", systemImage: "list.bullet")
+                    Label("Categories", systemImage: "fork.knife.circle")
                 }
             //coordinator.makeFavoritesView()
             FavoritesView()
                 .tabItem {
-                    Label("Favorites", systemImage: "star.fill")
+                    Label("Favorites", systemImage: "heart.fill")
+                }
+            //coordinator.makeAccountView()
+            //TODO: cambiar por AccountView
+            AccountView()
+                .tabItem {
+                    Label("Account", systemImage: "person.fill")
                 }
         }.accentColor(.darkBlue)
     }

@@ -101,9 +101,11 @@ struct RecipesView: View {
                         
                         VStack(alignment: .leading) {
                             Spacer()
-                            Text("How to make \(meal.mealTitle)")
+                            Text("PREPARATION")
                                 .fontWeight(Font.Weight.heavy)
                                 .font(Font.system(size: 18))
+                                .foregroundColor(Color.gray)
+
                             Spacer()
                             
                             Spacer()

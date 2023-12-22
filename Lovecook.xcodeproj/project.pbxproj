@@ -111,7 +111,7 @@
 		22A76EC32B03E55E0055A36D /* Lovecook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22A76EC12B03E55E0055A36D /* Lovecook.xcdatamodeld */; };
 		22A76ECD2B03F1F10055A36D /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A76ECC2B03F1F10055A36D /* CategoriesView.swift */; };
 		22A76ECF2B03F2010055A36D /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A76ECE2B03F2010055A36D /* FavoritesView.swift */; };
-		22A76ED22B03F21C0055A36D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A76ED12B03F21C0055A36D /* HomeView.swift */; };
+		22A76ED22B03F21C0055A36D /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A76ED12B03F21C0055A36D /* AccountView.swift */; };
 		22A76ED62B03F3B90055A36D /* CategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A76ED52B03F3B90055A36D /* CategoriesViewModel.swift */; };
 		22A76EDB2B03F4A20055A36D /* GetCategoriesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A76EDA2B03F4A20055A36D /* GetCategoriesUseCase.swift */; };
 		22A76EDF2B03F5620055A36D /* CategoriesRemoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A76EDE2B03F5620055A36D /* CategoriesRemoteService.swift */; };
@@ -167,7 +167,7 @@
 		22A76EC22B03E55E0055A36D /* Lovecook.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Lovecook.xcdatamodel; sourceTree = "<group>"; };
 		22A76ECC2B03F1F10055A36D /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
 		22A76ECE2B03F2010055A36D /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
-		22A76ED12B03F21C0055A36D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		22A76ED12B03F21C0055A36D /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		22A76ED52B03F3B90055A36D /* CategoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewModel.swift; sourceTree = "<group>"; };
 		22A76EDA2B03F4A20055A36D /* GetCategoriesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCategoriesUseCase.swift; sourceTree = "<group>"; };
 		22A76EDE2B03F5620055A36D /* CategoriesRemoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesRemoteService.swift; sourceTree = "<group>"; };
@@ -467,7 +467,7 @@
 		22A76ED02B03F2120055A36D /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				22A76ED12B03F21C0055A36D /* HomeView.swift */,
+				22A76ED12B03F21C0055A36D /* AccountView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -746,7 +746,7 @@
 				228D52FF2B224E8600C45BC9 /* CategoriesResponse.swift in Sources */,
 				228D53072B228B9C00C45BC9 /* RecipesViewModel.swift in Sources */,
 				222A95DF2B0EC32400E2AAD5 /* MealsByCategoryRemoteService.swift in Sources */,
-				22A76ED22B03F21C0055A36D /* HomeView.swift in Sources */,
+				22A76ED22B03F21C0055A36D /* AccountView.swift in Sources */,
 				228D52FA2B21509400C45BC9 /* NetworkConstants.swift in Sources */,
 				22A76EB92B03E55D0055A36D /* ContentView.swift in Sources */,
 				22A027B12B2BE0CC00F44C68 /* MainView.swift in Sources */,
