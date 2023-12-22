@@ -1,5 +1,5 @@
 //
-//  AccountView.swift
+//  UserAccountView.swift
 //  Lovecook
 //
 //  Created by Laura Zafra Prat on 14/11/23.
@@ -8,7 +8,7 @@
 import SwiftUI
 import GoogleSignIn
 
-struct AccountView: View {
+struct UserAccountView: View {
     @EnvironmentObject var viewModel: AuthenticationViewModel
     
     private let user = GIDSignIn.sharedInstance.currentUser
@@ -52,7 +52,7 @@ struct AccountView: View {
                 .tint(Color.darkBlue)
                 .controlSize(.large)
             }
-            .navigationTitle("Home")
+            //.navigationTitle("My Account")
             .padding(22)
         }
         .navigationViewStyle(StackNavigationViewStyle())
@@ -81,6 +81,6 @@ struct NetworkImage: View {
 #Preview {
     let viewModel = AuthenticationViewModel()
     
-    return AccountView()
+    return UserAccountView()
         .environmentObject(viewModel)
 }

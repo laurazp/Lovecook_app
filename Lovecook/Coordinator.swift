@@ -51,6 +51,16 @@ class Coordinator: ObservableObject {
         RecipesView(meal: meal, viewModel: makeRecipesViewModel())
     }
     
+    // MARK: - UserAccountView
+    func makeUserAccountView() -> UserAccountView {
+        UserAccountView()
+    }
+    
+    // MARK: - UserFavoritesView
+    func makeUserFavoritesView() -> UserFavoritesView {
+        UserFavoritesView()
+    }
+    
     // MARK: Viewmodels
     private func makeCategoriesViewModel() -> CategoriesViewModel {
         return CategoriesViewModel(getCategoriesUseCase: getCategoriesUseCase)
