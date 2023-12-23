@@ -92,6 +92,7 @@
 		222A95EA2B0ECE6C00E2AAD5 /* RecipesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222A95E92B0ECE6C00E2AAD5 /* RecipesRepository.swift */; };
 		222A95EC2B0ECF2600E2AAD5 /* GetRecipeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222A95EB2B0ECF2600E2AAD5 /* GetRecipeUseCase.swift */; };
 		22728F232B36515100C3916E /* UserMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22728F222B36515100C3916E /* UserMainView.swift */; };
+		22728F252B378C0700C3916E /* UserFavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22728F242B378C0700C3916E /* UserFavoritesViewModel.swift */; };
 		227930502B2B72F0006C9EDA /* CheckboxToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2279304F2B2B72F0006C9EDA /* CheckboxToggleStyle.swift */; };
 		228D52EC2B1F9DAC00C45BC9 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 228D52EB2B1F9DAC00C45BC9 /* Lottie */; };
 		228D52F22B1FA03900C45BC9 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228D52F12B1FA03900C45BC9 /* LottieView.swift */; };
@@ -151,6 +152,7 @@
 		222A95E92B0ECE6C00E2AAD5 /* RecipesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesRepository.swift; sourceTree = "<group>"; };
 		222A95EB2B0ECF2600E2AAD5 /* GetRecipeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRecipeUseCase.swift; sourceTree = "<group>"; };
 		22728F222B36515100C3916E /* UserMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMainView.swift; sourceTree = "<group>"; };
+		22728F242B378C0700C3916E /* UserFavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFavoritesViewModel.swift; sourceTree = "<group>"; };
 		2279304F2B2B72F0006C9EDA /* CheckboxToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxToggleStyle.swift; sourceTree = "<group>"; };
 		228D52F12B1FA03900C45BC9 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		228D52F32B1FA26900C45BC9 /* lottie_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lottie_animation.json; sourceTree = "<group>"; };
@@ -334,6 +336,15 @@
 			path = MealsByCategoryView;
 			sourceTree = "<group>";
 		};
+		22728F262B378C1D00C3916E /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				22A76ECE2B03F2010055A36D /* UserFavoritesView.swift */,
+				22728F242B378C0700C3916E /* UserFavoritesViewModel.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
 		228D52ED2B1F9F4500C45BC9 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -463,9 +474,9 @@
 		22A76ED02B03F2120055A36D /* User */ = {
 			isa = PBXGroup;
 			children = (
-				22A76ED12B03F21C0055A36D /* UserAccountView.swift */,
-				22A76ECE2B03F2010055A36D /* UserFavoritesView.swift */,
+				22728F262B378C1D00C3916E /* Favorites */,
 				22728F222B36515100C3916E /* UserMainView.swift */,
+				22A76ED12B03F21C0055A36D /* UserAccountView.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -766,6 +777,7 @@
 				222A95D42B0EB9D500E2AAD5 /* MealsByCategoryViewModel.swift in Sources */,
 				228D52F22B1FA03900C45BC9 /* LottieView.swift in Sources */,
 				228D53012B22827600C45BC9 /* MealsResponse.swift in Sources */,
+				22728F252B378C0700C3916E /* UserFavoritesViewModel.swift in Sources */,
 				222A95D82B0EBBB100E2AAD5 /* ApiRecipe.swift in Sources */,
 				22A76EDB2B03F4A20055A36D /* GetCategoriesUseCase.swift in Sources */,
 				222A95D62B0EBB6D00E2AAD5 /* Meal.swift in Sources */,
