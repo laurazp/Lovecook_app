@@ -28,6 +28,7 @@ struct UserMainView: View {
                 default:
                     EmptyView()
                 }
+                Spacer()
             }
             .navigationTitle("My account")
             .padding()
