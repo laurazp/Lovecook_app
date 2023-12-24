@@ -16,7 +16,7 @@ struct UserAccountView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 28) {
-                NetworkImage(url: user?.profile?.imageURL(withDimension: 200))
+                UserNetworkImage(url: user?.profile?.imageURL(withDimension: 200))
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 150, height: 150, alignment: .center)
                     .cornerRadius(8)
@@ -36,7 +36,6 @@ struct UserAccountView: View {
                 .background(Color(.secondarySystemBackground))
                 .cornerRadius(12)
                 
-                //TODO: Revisar !!!
                 Button {
                     viewModel.signOut()
                 } label: {
@@ -44,39 +43,17 @@ struct UserAccountView: View {
                         .frame(maxWidth: .infinity)
                         .fontWeight(.bold)
                         .foregroundColor(Color.white)
-                    
-                    
                 }
                 .cornerRadius(20)
                 .buttonStyle(.borderedProminent)
                 .tint(Color.darkBlue)
                 .controlSize(.large)
             }
-            //.navigationTitle("My Account")
             .padding(22)
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }
-
-struct NetworkImage: View {
-    let url: URL?
-    
-    var body: some View {
-        if let url = url,
-           let data = try? Data(contentsOf: url),
-           let uiImage = UIImage(data: data) {
-            Image(uiImage: uiImage)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-        } else {
-            Image(systemName: "person.circle.fill")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-            .foregroundColor(Color.lightGreen)        }
-    }
-}
-
 
 #Preview {
     let viewModel = AuthenticationViewModel()
