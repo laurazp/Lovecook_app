@@ -60,7 +60,12 @@ class Coordinator: ObservableObject {
     
     // MARK: - UserFavoritesView
     func makeUserFavoritesView() -> UserFavoritesView {
-        UserFavoritesView()
+        UserFavoritesView(viewModel: makeRecipesViewModel())
+    }
+    
+    // MARK: - UserMainView
+    func makeUserMainView() -> UserMainView {
+        UserMainView()
     }
     
     // MARK: - PhotoGalleryView
