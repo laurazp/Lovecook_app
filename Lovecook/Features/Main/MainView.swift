@@ -16,12 +16,11 @@ struct MainView: View {
                 .tabItem {
                     Label("Categories", systemImage: "fork.knife.circle")
                 }
-            coordinator.makeUserFavoritesView()
+            coordinator.makeGalleryView()
                 .tabItem {
                     Label("Favorites", systemImage: "heart.fill")
                 }
-            //TODO: coordinator.makeAccountView()
-            UserAccountView()
+            coordinator.makeUserMainView()
                 .tabItem {
                     Label("Account", systemImage: "person.fill")
                 }

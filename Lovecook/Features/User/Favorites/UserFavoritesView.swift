@@ -32,7 +32,7 @@ struct UserFavoritesView: View {
                     }
                     .listRowSeparator(.hidden)
                     .listRowBackground(Color.clear)
-                }.navigationTitle("Favorites")
+                }
             }
         }.alert("Error", isPresented: Binding.constant(viewModel.error != nil)) {
             Button("OK") {}
