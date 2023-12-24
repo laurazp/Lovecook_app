@@ -58,7 +58,7 @@ class Coordinator: ObservableObject {
     
     // MARK: - UserFavoritesView
     func makeUserFavoritesView() -> UserFavoritesView {
-        UserFavoritesView()
+        UserFavoritesView(viewModel: makeRecipesViewModel())
     }
     
     // MARK: Viewmodels
