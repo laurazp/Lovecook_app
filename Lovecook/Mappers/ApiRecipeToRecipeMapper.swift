@@ -12,11 +12,11 @@ class ApiRecipeToRecipeMapper {
     func mapToRecipe(apiRecipe: ApiRecipe) -> Recipe {
         return Recipe(
             recipeId: apiRecipe.recipeId,
-            recipeTitle: apiRecipe.recipeTitle,
+            recipeTitle: apiRecipe.recipeTitle ?? "Unknown",
             recipeCategory: apiRecipe.recipeCategory,
             recipeArea: apiRecipe.recipeArea ?? "Unknown",
-            recipeInstructions: apiRecipe.recipeInstructions,
-            recipeImage: apiRecipe.recipeImage,
+            recipeInstructions: apiRecipe.recipeInstructions ?? "Instructions coming soon...",
+            recipeImage: apiRecipe.recipeImage ?? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDE-6QWisvXUHctHi2_h1Hnxx925BJO6046Q&usqp=CAU",
             recipeTags: mapRecipeTags(tags: apiRecipe.recipeTags, category: apiRecipe.recipeCategory),
             recipeYoutubeUrl: apiRecipe.recipeYoutubeUrl ?? "")
     }

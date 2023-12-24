@@ -15,13 +15,13 @@ struct ApiRecipe: Codable, Identifiable {
     
     //TODO: borrar parámetros que no vaya a usar
     let recipeId: String
-    let recipeTitle: String //title
+    let recipeTitle: String?
     let recipeCategory: String
     let recipeArea: String?
-    let recipeInstructions: String
-    let recipeImage: String //url
-    let recipeTags: String? //"Meat,Casserole"
-    let recipeYoutubeUrl: String? //youtube url
+    let recipeInstructions: String?
+    let recipeImage: String?
+    let recipeTags: String?
+    let recipeYoutubeUrl: String?
     /*let strIngredient1: String?
     let strIngredient2: String?
     let strIngredient3: String?

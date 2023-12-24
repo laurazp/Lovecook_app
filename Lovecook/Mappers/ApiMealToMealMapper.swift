@@ -14,6 +14,6 @@ class ApiMealToMealMapper {
         return Meal(
             mealId: apiMeal.mealId,
             mealTitle: apiMeal.mealTitle ?? "Unknown",
-            mealImage: apiMeal.mealImage ?? "") //"https://drive.google.com/file/d/18deypflqhpu6u_FRqp_8pHnoRXednF8w/view?usp=sharing")
+            mealImage: apiMeal.mealImage ?? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRueIWRNPWkGM4KhjYE2J3CdU9SgFmZETapiw&usqp=CAU")
     }
 }

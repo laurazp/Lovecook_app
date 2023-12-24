@@ -27,7 +27,7 @@ struct RecipesView: View {
                 ProgressView()
             } else if let recipe = viewModel.recipe {
                 VStack(alignment: .leading, spacing: 10) {
-                    KFImage(URL(string: meal.mealImage))
+                    KFImage(URL(string: recipe.recipeImage))
                         .resizable()
                         .scaledToFill()
                         .frame(minWidth: nil, idealWidth: nil, maxWidth: UIScreen.main.bounds.width, minHeight: nil, idealHeight: nil, maxHeight: 300, alignment: .center)
@@ -44,9 +44,7 @@ struct RecipesView: View {
                             , alignment: .topLeading)
                     
                     VStack(alignment: .leading, spacing: 6) {
-                        Text(meal.mealTitle)
-                            .fontWeight(Font.Weight.heavy)
-                            .font(Font.custom("HelveticaNeue-Bold", size: 22))
+                        Spacer()
                         
                         // Tags and Category Stack
                         VStack(alignment: .leading, spacing: 4) {
