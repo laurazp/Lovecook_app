@@ -92,6 +92,7 @@
 		222A95EA2B0ECE6C00E2AAD5 /* RecipesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222A95E92B0ECE6C00E2AAD5 /* RecipesRepository.swift */; };
 		222A95EC2B0ECF2600E2AAD5 /* GetRecipeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222A95EB2B0ECF2600E2AAD5 /* GetRecipeUseCase.swift */; };
 		22728F232B36515100C3916E /* UserMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22728F222B36515100C3916E /* UserMainView.swift */; };
+		22728F2C2B37C3A900C3916E /* UserNetworkImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22728F2B2B37C3A900C3916E /* UserNetworkImage.swift */; };
 		227930502B2B72F0006C9EDA /* CheckboxToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2279304F2B2B72F0006C9EDA /* CheckboxToggleStyle.swift */; };
 		228D52EC2B1F9DAC00C45BC9 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 228D52EB2B1F9DAC00C45BC9 /* Lottie */; };
 		228D52F22B1FA03900C45BC9 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228D52F12B1FA03900C45BC9 /* LottieView.swift */; };
@@ -151,6 +152,7 @@
 		222A95E92B0ECE6C00E2AAD5 /* RecipesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesRepository.swift; sourceTree = "<group>"; };
 		222A95EB2B0ECF2600E2AAD5 /* GetRecipeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRecipeUseCase.swift; sourceTree = "<group>"; };
 		22728F222B36515100C3916E /* UserMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMainView.swift; sourceTree = "<group>"; };
+		22728F2B2B37C3A900C3916E /* UserNetworkImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNetworkImage.swift; sourceTree = "<group>"; };
 		2279304F2B2B72F0006C9EDA /* CheckboxToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxToggleStyle.swift; sourceTree = "<group>"; };
 		228D52F12B1FA03900C45BC9 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		228D52F32B1FA26900C45BC9 /* lottie_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lottie_animation.json; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 				222A8FD42B27DDA700A55B65 /* RoundedCorners.swift */,
 				22106CD12B2A9DC40090F25B /* GoogleSignInButton.swift */,
 				2279304F2B2B72F0006C9EDA /* CheckboxToggleStyle.swift */,
+				22728F2B2B37C3A900C3916E /* UserNetworkImage.swift */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -463,8 +466,8 @@
 		22A76ED02B03F2120055A36D /* User */ = {
 			isa = PBXGroup;
 			children = (
-				22A76ED12B03F21C0055A36D /* UserAccountView.swift */,
 				22A76ECE2B03F2010055A36D /* UserFavoritesView.swift */,
+				22A76ED12B03F21C0055A36D /* UserAccountView.swift */,
 				22728F222B36515100C3916E /* UserMainView.swift */,
 			);
 			path = User;
@@ -746,6 +749,7 @@
 				222A95DF2B0EC32400E2AAD5 /* MealsByCategoryRemoteService.swift in Sources */,
 				22A76ED22B03F21C0055A36D /* UserAccountView.swift in Sources */,
 				228D52FA2B21509400C45BC9 /* NetworkConstants.swift in Sources */,
+				22728F2C2B37C3A900C3916E /* UserNetworkImage.swift in Sources */,
 				22728F232B36515100C3916E /* UserMainView.swift in Sources */,
 				22A76EB92B03E55D0055A36D /* ContentView.swift in Sources */,
 				22A027B12B2BE0CC00F44C68 /* MainView.swift in Sources */,
