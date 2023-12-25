@@ -13,6 +13,9 @@ struct PhotoGalleryView: View {
     @StateObject private var viewModel: PhotoGalleryViewModel
     @EnvironmentObject var coordinator: Coordinator
     
+    //TODO: Get images from Firebase Storage!
+    let photoNames = ["Dessert", "Beef", "Chicken", "Starter", "Vegan"]
+    
     let gridItemLayout = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
     @State private var selectedItem: PhotosPickerItem? = nil
     
@@ -26,30 +29,25 @@ struct PhotoGalleryView: View {
                 ProgressView()
             } else {
                 ScrollView {
-                    LazyVGrid(columns: gridItemLayout, spacing: 14) {
-                        ForEach(viewModel.photos, id: \.self) { photoName in
+                    LazyVGrid(columns: gridItemLayout, spacing: 18) {
+                        ForEach(photoNames/*viewModel.photos*/, id: \.self) { imageName in
                             NavigationLink {
                                 //TODO: Detail?
-                                coordinator.makePhotoGalleryView()
+                                //coordinator.makePhotoDetailView()
                             } label: {
-                                ZStack {
-                                    KFImage(URL(string: photoName))
-                                    //UIImage(named: photoName)
-                                        /*.resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .clipShape(RoundedRectangle(cornerRadius: 12))
-                                        .shadow(color: .black, radius: 5, x: 3, y: 5)
-                                        .padding(12)
-                                        .frame(width: 180, height: 200)
-                                        .background(.brown)
-                                        .cornerRadius(16)*/
-                                    Text(photoName)
-                                        .font(.largeTitle)
-                                        .foregroundStyle(.white)
+                                VStack {
+                                    Image(imageName)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 110, height: 120)
+                                        .background(.black)
+                                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                                        .shadow(radius: 5)
+                                    Text(imageName)
+                                        .foregroundStyle(.black)
                                         .bold()
-                                        .shadow(color: .black, radius: 5, x: 3, y: 5)
+                                        .shadow(color: .gray, radius: 5, x: 3, y: 3)
                                 }
-                                .frame(width: 190, height: 200)
                             }
                         }
                     }
@@ -57,13 +55,21 @@ struct PhotoGalleryView: View {
                     .padding(12)
                 }
                 
-                PhotosPicker(selection: $selectedItem, matching: .images, photoLibrary: .shared()) {
-                    Image(systemName: "square.and.arrow.up")
-                        .font(.system(size: 30))
-                        .foregroundColor(.black)
-                        .shadow(color: .gray, radius: 0.2, x: 1, y: 1)
-                        .padding()
-                }
+                
+                
+                VStack {
+                    //TODO: Gestionar permisos cámara y permitir acceso a cámara de fotos
+                    PhotosPicker(selection: $selectedItem, matching: .images, photoLibrary: .shared()) {
+                        Image(systemName: "camera.fill" /*"square.and.arrow.up"*/)
+                            .font(.system(size: 30))
+                            .foregroundColor(.black)
+                            .shadow(color: .gray, radius: 0.2, x: 1, y: 1)
+                            .padding()
+                    }
+                    Text("Share your recipes with our community!")
+                        .foregroundStyle(.black)
+                        .bold()
+                }.padding()
             }
         }.alert("Error", isPresented: Binding.constant(viewModel.error != nil)) {
             Button("OK") {}
@@ -79,6 +85,7 @@ struct PhotoGalleryView: View {
         }.onChange(of: selectedItem, perform: { newValue in
             if let newValue {
                 viewModel.saveUserImage(item: newValue)
+                //TODO: añadir foto al grid y recargar
             }
         })
     }

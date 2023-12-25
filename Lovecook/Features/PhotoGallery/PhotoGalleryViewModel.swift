@@ -36,7 +36,7 @@ class PhotoGalleryViewModel: ObservableObject {
     func saveUserImage(item: PhotosPickerItem) {
         Task {
             guard let data = try await item.loadTransferable(type: Data.self) else { return }
-            let (path, name) = try await StorageManager.shared.saveImage(data: data)
+            let (path, name) = try await StorageManager.shared.saveImage(data: data/*, userId: user.userId*/)
             print("SUCCESS!")
             print(path)
             print(name)
