@@ -127,6 +127,8 @@
 		22A76EE92B03F63C0055A36D /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A76EE82B03F63C0055A36D /* Category.swift */; };
 		22A76EEB2B03F8A80055A36D /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A76EEA2B03F8A80055A36D /* Coordinator.swift */; };
 		22B047B32B3CD6090086094A /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B047B22B3CD6090086094A /* SignUpViewModel.swift */; };
+		22B047B52B3CE1C90086094A /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B047B42B3CE1C90086094A /* AuthenticationManager.swift */; };
+		22B047B82B3CE39F0086094A /* AuthDataResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B047B72B3CE39F0086094A /* AuthDataResultModel.swift */; };
 		22E32D2B2B286E0D003731E5 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E32D2A2B286E0D003731E5 /* Recipe.swift */; };
 		22F3665F2B0CAD6C007F7E8C /* CategoriesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F3665E2B0CAD6C007F7E8C /* CategoriesRepository.swift */; };
 		22F366612B0CAFA3007F7E8C /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F366602B0CAFA3007F7E8C /* NetworkClient.swift */; };
@@ -195,6 +197,8 @@
 		22A76EE82B03F63C0055A36D /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		22A76EEA2B03F8A80055A36D /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		22B047B22B3CD6090086094A /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		22B047B42B3CE1C90086094A /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		22B047B72B3CE39F0086094A /* AuthDataResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataResultModel.swift; sourceTree = "<group>"; };
 		22E32D2A2B286E0D003731E5 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		22F3665E2B0CAD6C007F7E8C /* CategoriesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesRepository.swift; sourceTree = "<group>"; };
 		22F366602B0CAFA3007F7E8C /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
@@ -567,6 +571,7 @@
 		22A76EE52B03F5FE0055A36D /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				22B047B62B3CE38E0086094A /* AuthModel */,
 				228D52FD2B224E6F00C45BC9 /* APIResponses */,
 				22E32D292B286E00003731E5 /* Models */,
 			);
@@ -580,6 +585,14 @@
 				22B047B22B3CD6090086094A /* SignUpViewModel.swift */,
 			);
 			path = SignUp;
+			sourceTree = "<group>";
+		};
+		22B047B62B3CE38E0086094A /* AuthModel */ = {
+			isa = PBXGroup;
+			children = (
+				22B047B72B3CE39F0086094A /* AuthDataResultModel.swift */,
+			);
+			path = AuthModel;
 			sourceTree = "<group>";
 		};
 		22E32D262B286D82003731E5 /* Categories */ = {
@@ -632,6 +645,7 @@
 			isa = PBXGroup;
 			children = (
 				22FFA15B2B23E35D00811574 /* AuthView.swift */,
+				22B047B42B3CE1C90086094A /* AuthenticationManager.swift */,
 				221BD0CD2B3CD468000726EB /* LogIn */,
 				22B047B12B3CD5EC0086094A /* SignUp */,
 			);
@@ -804,6 +818,7 @@
 				22A76EB92B03E55D0055A36D /* ContentView.swift in Sources */,
 				22A027B12B2BE0CC00F44C68 /* MainView.swift in Sources */,
 				22F366612B0CAFA3007F7E8C /* NetworkClient.swift in Sources */,
+				22B047B52B3CE1C90086094A /* AuthenticationManager.swift in Sources */,
 				22A76EE22B03F5B30055A36D /* URLSessionNetworkClient.swift in Sources */,
 				222A95BD2B0D70E700E2AAD5 /* MealsByCategoryView.swift in Sources */,
 				22728F382B37CF2800C3916E /* StorageManager.swift in Sources */,
@@ -833,6 +848,7 @@
 				222A95E12B0EC72A00E2AAD5 /* MealItemView.swift in Sources */,
 				22A76EE92B03F63C0055A36D /* Category.swift in Sources */,
 				222A8FD52B27DDA700A55B65 /* RoundedCorners.swift in Sources */,
+				22B047B82B3CE39F0086094A /* AuthDataResultModel.swift in Sources */,
 				222A95E82B0ECDAA00E2AAD5 /* RecipesRemoteService.swift in Sources */,
 				22A76EE42B03F5D60055A36D /* NetworkError.swift in Sources */,
 				228D53032B2282F800C45BC9 /* RecipeResponse.swift in Sources */,
