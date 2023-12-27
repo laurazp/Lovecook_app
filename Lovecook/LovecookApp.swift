@@ -11,35 +11,15 @@ import FirebaseAuth
 import Firebase
 import GoogleSignIn
 
-class AppDelegate: NSObject, UIApplicationDelegate {
-    func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        
-        if FirebaseApp.app() == nil {
-            FirebaseApp.configure()
-            }
-        
-        return true
-    }
-    
-    func application(_ app: UIApplication,
-                     open url: URL,
-                     options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
-      return GIDSignIn.sharedInstance.handle(url)
-    }
-}
-
 @main
 struct LovecookApp: App {
     let coordinator = Coordinator()
+    @StateObject var viewModel = AuthenticationViewModel()
+
     //let persistenceController = PersistenceController.shared
     
-    // Firebase setup
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    @StateObject var viewModel = AuthenticationViewModel()
-    
     init() {
-        setupAuthentication()
+        setupFirebase()
     }
     
     var body: some Scene {
@@ -53,7 +33,7 @@ struct LovecookApp: App {
 }
 
 extension LovecookApp {
-    private func setupAuthentication() {
+    private func setupFirebase() {
         FirebaseApp.configure()
     }
 }
