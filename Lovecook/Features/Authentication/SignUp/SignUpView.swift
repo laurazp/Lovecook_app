@@ -8,27 +8,21 @@
 import SwiftUI
 
 struct SignUpView: View {
-    @State private var newUserName: String = ""
-    @State private var newUserEmail: String = ""
-    @State private var newUserPassword: String = ""
-    @State private var isAccepted: Bool = false
+    @EnvironmentObject var coordinator: Coordinator
+    @EnvironmentObject var viewModel: SignUpViewModel
     
     var body: some View {
-        VStack(spacing: 18) {
+        VStack(spacing: 24) {
             Text("SIGN UP")
             Text("Thanks for joining us!")
-                
-            TextField("Enter your name", text: $newUserName)
+            
+            TextField("Enter your email", text: $viewModel.userEmail)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             
-            TextField("Enter your email", text: $newUserEmail)
+            SecureField("Choose a password", text: $viewModel.userPassword)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             
-            SecureField("Choose a password", text: $newUserPassword)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            
-            //TODO: Checkbox
-            Toggle(isOn: $isAccepted) {
+            Toggle(isOn: $viewModel.isAccepted) {
                 Text("I have read and agree to the Terms and Conditions")
                     .foregroundStyle(.gray)
                     .font(.footnote)
@@ -36,10 +30,9 @@ struct SignUpView: View {
             .toggleStyle(CheckboxToggleStyle.init())
             
             Button {
-                //TODO: check and save user data
+                viewModel.register()
             } label: {
-                //TODO: login o home? ckechear primero
-                NavigationLink(destination: UserAccountView()) {
+                NavigationLink(destination: coordinator.makeUserMainView) {
                     Text("Sign up")
                         .frame(maxWidth: .infinity)
                         .fontWeight(.bold)
@@ -55,5 +48,10 @@ struct SignUpView: View {
 }
 
 #Preview {
-    SignUpView()
+    let coordinator = Coordinator()
+    let viewModel = SignUpViewModel()
+    
+    return SignUpView()
+        .environmentObject(viewModel)
+        .environmentObject(coordinator)
 }
