@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct LogInView: View {
+    @EnvironmentObject var viewModel: AuthenticationViewModel
+
     @State private var userEmail: String = ""
     @State private var userPassword: String = ""
-    @EnvironmentObject var viewModel: AuthenticationViewModel
     
     var body: some View {
         VStack(spacing: 18) {
