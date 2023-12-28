@@ -20,8 +20,6 @@ enum SignInState {
 
 final class AuthenticationManager {
     
-    var state: SignInState = .signedOut
-    
     init() { }
     
     func checkSignInState(completion: @escaping AuthenticationManagerCompletion) -> Bool {
