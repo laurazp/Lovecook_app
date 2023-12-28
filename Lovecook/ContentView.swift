@@ -27,9 +27,12 @@ struct ContentView: View {
         
         //TODO: Revisar !!!!
         switch viewModel.state {
-            case .signedOut: AuthView()
+        case .signedOut, .sessionError: AuthView().overlay {
+            if viewModel.state == .sessionError {
+                errorView
+            }
+        }
             case .signedIn: MainView()
-            case .sessionError: errorView
                 
         }
         
