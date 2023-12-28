@@ -13,9 +13,6 @@ struct PhotoGalleryView: View {
     @StateObject private var viewModel: PhotoGalleryViewModel
     @EnvironmentObject var coordinator: Coordinator
     
-    //TODO: Get images from Firebase Storage!
-    let photoNames = ["Dessert", "Beef", "Chicken", "Starter", "Vegan"]
-    
     let gridItemLayout = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
     @State private var selectedItem: PhotosPickerItem? = nil
     
@@ -30,20 +27,16 @@ struct PhotoGalleryView: View {
             } else {
                 ScrollView {
                     LazyVGrid(columns: gridItemLayout, spacing: 18) {
-                        ForEach(photoNames/*viewModel.photos*/, id: \.self) { imageName in
+                        ForEach(viewModel.photos, id: \.self) { photoName in
                             NavigationLink {
                                 //TODO: Detail?
                                 //coordinator.makePhotoDetailView()
                             } label: {
-                                VStack {
-                                    Image(imageName)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
+                                VStack(alignment: .center) {
+                                    RemoteImageView(downloadURL: photoName)
                                         .frame(width: 110, height: 120)
-                                        .background(.black)
-                                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                                        .shadow(radius: 5)
-                                    Text(imageName)
+                                    
+                                    Text("photo name")
                                         .foregroundStyle(.black)
                                         .bold()
                                         .shadow(color: .gray, radius: 5, x: 3, y: 3)
@@ -52,15 +45,12 @@ struct PhotoGalleryView: View {
                         }
                     }
                     .navigationTitle("Gallery")
-                    .padding(12)
-                }
-                
-                
+                }.padding()
                 
                 VStack {
                     //TODO: Gestionar permisos cámara y permitir acceso a cámara de fotos
                     PhotosPicker(selection: $selectedItem, matching: .images, photoLibrary: .shared()) {
-                        Image(systemName: "camera.fill" /*"square.and.arrow.up"*/)
+                        Image(systemName: "camera.fill")
                             .font(.system(size: 30))
                             .foregroundColor(.black)
                             .shadow(color: .gray, radius: 0.2, x: 1, y: 1)
@@ -75,13 +65,13 @@ struct PhotoGalleryView: View {
             Button("OK") {}
             Button("Retry") {
                 Task {
-                    await viewModel.getPhotos()
+                    viewModel.getPhotosFromFirebase()
                 }
             }
         } message: {
             Text(viewModel.error?.localizedDescription ?? "")
         }.task {
-            await viewModel.getPhotos()
+            viewModel.getPhotosFromFirebase()
         }.onChange(of: selectedItem, perform: { newValue in
             if let newValue {
                 viewModel.saveUserImage(item: newValue)

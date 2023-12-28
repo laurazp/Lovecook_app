@@ -6,31 +6,42 @@
 //
 
 import Foundation
+import FirebaseStorage
 import _PhotosUI_SwiftUI
 
 class PhotoGalleryViewModel: ObservableObject {
     
-    private let getPhotosUseCase: GetPhotosUseCase
-    @Published var photos: [String] = [] //TODO: Revisar tipo
+    private let storage = Storage.storage().reference()
+    
+    @Published var photos: [URL] = []
     @Published var isLoading = false
     @Published var error: Error?
     
-    init(getPhotosUseCase: GetPhotosUseCase) {
-        self.getPhotosUseCase = getPhotosUseCase
-    }
-    
     @MainActor
-    func getPhotos() async {
-        error = nil
-        isLoading = true
+    func getPhotosFromFirebase() {
+        let storageRef = storage.child("images")
         
-        do {
-            photos = try await getPhotosUseCase.execute()
-        } catch(let error) {
-            self.error = error
+        storageRef.listAll { (result, error) in
+            if let error = error {
+                print("Error while listing all files: ", error)
+            }
+            
+            if let result = result {
+                for item in result.items {
+                    
+                    item.downloadURL { (url, error) in
+                        if let error = error {
+                            print("Error getting download URL: \(error)")
+                        } else {
+                            if let downloadURL = url {
+                                self.photos.append(downloadURL)
+                                print("Download URL: \(downloadURL)")
+                            }
+                        }
+                    }
+                }
+            }
         }
-        
-        isLoading = false
     }
     
     func saveUserImage(item: PhotosPickerItem) {
