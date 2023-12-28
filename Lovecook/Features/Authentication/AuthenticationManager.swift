@@ -10,40 +10,38 @@ import FirebaseAuth
 import GoogleSignIn
 import FirebaseCore
 
-final class AuthenticationManager: ObservableObject {
+typealias AuthenticationManagerCompletion = (SignInState)->Void
+
+enum SignInState {
+    case signedIn
+    case signedOut
+    case sessionError
+}
+
+final class AuthenticationManager {
     
-    enum SignInState {
-        case signedIn
-        case signedOut
-    }
+    var state: SignInState = .signedOut
     
-    @Published var state: SignInState = .signedOut
-    static let shared = AuthenticationManager()
-    private init() { }
+    init() { }
     
-    func checkSignInState() -> Bool {
-        checkGoogleSignInState()
-    }
-    
-    func  checkGoogleSignInState() -> Bool {
+    func checkSignInState(completion: @escaping AuthenticationManagerCompletion) -> Bool {
         if GIDSignIn.sharedInstance.hasPreviousSignIn() {
             GIDSignIn.sharedInstance.restorePreviousSignIn { [unowned self] user, error in
                 if let error = error {
                     print("Error restoring previous sign-in: \(error.localizedDescription)")
                     //TODO: Handle the error if necessary
+                    completion(.sessionError)
                 } else if let user = user {
-                    authenticateGoogleUser(for: user, with: error)
+                    authenticateUser(for: user, with: error, completion: completion)
                 }
             }
-            self.state = .signedIn
             return true
         } else {
-            self.state = .signedOut
             return false
         }
     }
     
-    func signInWithGoogle() {
+    func signIn(completion: @escaping AuthenticationManagerCompletion) {
         guard let clientID = FirebaseApp.app()?.options.clientID else { return }
         
         let configuration = GIDConfiguration(clientID: clientID)
@@ -57,13 +55,16 @@ final class AuthenticationManager: ObservableObject {
             if let error = error {
                 print("Error restoring previous sign-in: \(error.localizedDescription)")
                 //TODO: Handle the error if necessary
+                completion(.sessionError)
             } else if let result = result {
-                authenticateGoogleUser(for: result.user, with: error)
+                authenticateUser(for: result.user, with: error, completion: completion)
             }
         }
     }
     
-    func authenticateGoogleUser(for user: GIDGoogleUser?, with error: Error?) {
+    private func authenticateUser(for user: GIDGoogleUser?, 
+                                  with error: Error?,
+                                  completion: @escaping AuthenticationManagerCompletion) {
         if let error = error {
             print(error.localizedDescription)
             return
@@ -78,39 +79,25 @@ final class AuthenticationManager: ObservableObject {
         let credential = GoogleAuthProvider.credential(withIDToken: idToken,
                                                        accessToken: user.accessToken.tokenString)
         
-        Auth.auth().signIn(with: credential) { [unowned self] (_, error) in
+        Auth.auth().signIn(with: credential) { (_, error) in
             if let error = error {
                 print(error.localizedDescription)
+                completion(.sessionError)
             } else {
-                self.state = .signedIn
+                completion(.signedIn)
             }
         }
     }
     
-    func getAuthenticatedUser() throws  -> AuthDataResultModel {
-        guard let user = Auth.auth().currentUser else {
-            throw URLError(.badServerResponse)
-        }
-        
-        return AuthDataResultModel(user: user)
-    }
-    
-    func createUser(email: String, password: String) async throws -> AuthDataResultModel {
-        let authDataResult = try await Auth.auth().createUser(withEmail: email, password: password)
-        return AuthDataResultModel(user: authDataResult.user)
-    }
-    
-    func signOut() throws {
-        try Auth.auth().signOut()
-    }
-    
-    func googleSignOut() {
+    func signOut(completion: @escaping AuthenticationManagerCompletion) {
         do {
             try Auth.auth().signOut()
             GIDSignIn.sharedInstance.signOut()
-            self.state = .signedOut
+            completion(.signedOut)
         } catch {
             print(error.localizedDescription)
+            completion(.sessionError)
         }
     }
+
 }

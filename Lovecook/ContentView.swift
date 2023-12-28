@@ -29,6 +29,8 @@ struct ContentView: View {
         switch viewModel.state {
             case .signedOut: AuthView()
             case .signedIn: MainView()
+            case .sessionError: errorView
+                
         }
         
 
@@ -94,6 +96,10 @@ struct ContentView: View {
     //            }
     //        }
     //    }
+    
+    var errorView: some View {
+        Text("Something went wrong...")
+    }
 }
 
 //private let itemFormatter: DateFormatter = {
