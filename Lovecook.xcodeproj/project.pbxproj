@@ -96,7 +96,6 @@
 		22728F2C2B37C3A900C3916E /* UserNetworkImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22728F2B2B37C3A900C3916E /* UserNetworkImage.swift */; };
 		22728F2F2B37C4D700C3916E /* PhotoGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22728F2E2B37C4D700C3916E /* PhotoGalleryView.swift */; };
 		22728F332B37C64D00C3916E /* PhotoGalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22728F322B37C64D00C3916E /* PhotoGalleryViewModel.swift */; };
-		22728F352B37C6B600C3916E /* GetPhotosUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22728F342B37C6B600C3916E /* GetPhotosUseCase.swift */; };
 		22728F382B37CF2800C3916E /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22728F372B37CF2800C3916E /* StorageManager.swift */; };
 		227930502B2B72F0006C9EDA /* CheckboxToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2279304F2B2B72F0006C9EDA /* CheckboxToggleStyle.swift */; };
 		228D52EC2B1F9DAC00C45BC9 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 228D52EB2B1F9DAC00C45BC9 /* Lottie */; };
@@ -129,6 +128,7 @@
 		22B047B32B3CD6090086094A /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B047B22B3CD6090086094A /* SignUpViewModel.swift */; };
 		22B047B52B3CE1C90086094A /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B047B42B3CE1C90086094A /* AuthenticationManager.swift */; };
 		22B047B82B3CE39F0086094A /* AuthDataResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B047B72B3CE39F0086094A /* AuthDataResultModel.swift */; };
+		22B047BA2B3DE8A30086094A /* RemoteImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B047B92B3DE8A30086094A /* RemoteImageView.swift */; };
 		22E32D2B2B286E0D003731E5 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E32D2A2B286E0D003731E5 /* Recipe.swift */; };
 		22F3665F2B0CAD6C007F7E8C /* CategoriesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F3665E2B0CAD6C007F7E8C /* CategoriesRepository.swift */; };
 		22F366612B0CAFA3007F7E8C /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F366602B0CAFA3007F7E8C /* NetworkClient.swift */; };
@@ -167,7 +167,6 @@
 		22728F2B2B37C3A900C3916E /* UserNetworkImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNetworkImage.swift; sourceTree = "<group>"; };
 		22728F2E2B37C4D700C3916E /* PhotoGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryView.swift; sourceTree = "<group>"; };
 		22728F322B37C64D00C3916E /* PhotoGalleryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryViewModel.swift; sourceTree = "<group>"; };
-		22728F342B37C6B600C3916E /* GetPhotosUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPhotosUseCase.swift; sourceTree = "<group>"; };
 		22728F372B37CF2800C3916E /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		2279304F2B2B72F0006C9EDA /* CheckboxToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxToggleStyle.swift; sourceTree = "<group>"; };
 		228D52F12B1FA03900C45BC9 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
@@ -199,6 +198,7 @@
 		22B047B22B3CD6090086094A /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		22B047B42B3CE1C90086094A /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		22B047B72B3CE39F0086094A /* AuthDataResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataResultModel.swift; sourceTree = "<group>"; };
+		22B047B92B3DE8A30086094A /* RemoteImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageView.swift; sourceTree = "<group>"; };
 		22E32D2A2B286E0D003731E5 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		22F3665E2B0CAD6C007F7E8C /* CategoriesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesRepository.swift; sourceTree = "<group>"; };
 		22F366602B0CAFA3007F7E8C /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
@@ -366,6 +366,7 @@
 			children = (
 				22728F2E2B37C4D700C3916E /* PhotoGalleryView.swift */,
 				22728F322B37C64D00C3916E /* PhotoGalleryViewModel.swift */,
+				22B047B92B3DE8A30086094A /* RemoteImageView.swift */,
 			);
 			path = PhotoGallery;
 			sourceTree = "<group>";
@@ -533,7 +534,6 @@
 				22A76EDA2B03F4A20055A36D /* GetCategoriesUseCase.swift */,
 				222A95DA2B0EBEA300E2AAD5 /* GetMealsByCategoryUseCase.swift */,
 				222A95EB2B0ECF2600E2AAD5 /* GetRecipeUseCase.swift */,
-				22728F342B37C6B600C3916E /* GetPhotosUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -842,7 +842,6 @@
 				22728F332B37C64D00C3916E /* PhotoGalleryViewModel.swift in Sources */,
 				22A76EDB2B03F4A20055A36D /* GetCategoriesUseCase.swift in Sources */,
 				222A95D62B0EBB6D00E2AAD5 /* ApiMeal.swift in Sources */,
-				22728F352B37C6B600C3916E /* GetPhotosUseCase.swift in Sources */,
 				22B047B32B3CD6090086094A /* SignUpViewModel.swift in Sources */,
 				22A76ECD2B03F1F10055A36D /* CategoriesView.swift in Sources */,
 				222A95E12B0EC72A00E2AAD5 /* MealItemView.swift in Sources */,
@@ -850,6 +849,7 @@
 				222A8FD52B27DDA700A55B65 /* RoundedCorners.swift in Sources */,
 				22B047B82B3CE39F0086094A /* AuthDataResultModel.swift in Sources */,
 				222A95E82B0ECDAA00E2AAD5 /* RecipesRemoteService.swift in Sources */,
+				22B047BA2B3DE8A30086094A /* RemoteImageView.swift in Sources */,
 				22A76EE42B03F5D60055A36D /* NetworkError.swift in Sources */,
 				228D53032B2282F800C45BC9 /* RecipeResponse.swift in Sources */,
 				222A8FD82B27E42A00A55B65 /* ApiRecipeToRecipeMapper.swift in Sources */,
