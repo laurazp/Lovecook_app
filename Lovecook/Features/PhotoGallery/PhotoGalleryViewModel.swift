@@ -16,6 +16,7 @@ class PhotoGalleryViewModel: ObservableObject {
     @Published var photos: [URL] = []
     @Published var isLoading = false
     @Published var error: Error?
+    //@Published var refreshView = false
     
     @MainActor
     func getPhotosFromFirebase() {
@@ -48,9 +49,23 @@ class PhotoGalleryViewModel: ObservableObject {
         Task {
             guard let data = try await item.loadTransferable(type: Data.self) else { return }
             let (path, name) = try await StorageManager.shared.saveImage(data: data/*, userId: user.userId*/)
+            //refreshView.toggle()
+            //await getPhotosFromFirebase()
             print("SUCCESS!")
             print(path)
             print(name)
+        }
+    }
+    
+    //TODO: revisar!!
+    func delete() {
+        let storageRef = storage.child("images")
+
+        // Delete the file
+        storageRef.delete {error in
+            if let error = error {
+                print("Error deleting item", error)
+            }
         }
     }
 }

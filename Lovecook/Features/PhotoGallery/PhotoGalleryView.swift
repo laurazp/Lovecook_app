@@ -44,7 +44,12 @@ struct PhotoGalleryView: View {
                             }
                         }
                     }
+                    //.id(UUID())
+                    //.id(viewModel.refreshView)
                     .navigationTitle("Gallery")
+                    /*.onChange(of: viewModel.photos) {
+                        viewModel.getPhotosFromFirebase()
+                    }*/
                 }.padding()
                 
                 VStack {
@@ -76,6 +81,7 @@ struct PhotoGalleryView: View {
             if let newValue {
                 viewModel.saveUserImage(item: newValue)
                 //TODO: añadir foto al grid y recargar
+                //viewModel.getPhotosFromFirebase()
             }
         })
     }
