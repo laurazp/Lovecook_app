@@ -83,7 +83,6 @@
 		222A95DD2B0EC0E800E2AAD5 /* MealsByCategoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222A95DC2B0EC0E800E2AAD5 /* MealsByCategoryRepository.swift */; };
 		222A95DF2B0EC32400E2AAD5 /* MealsByCategoryRemoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222A95DE2B0EC32400E2AAD5 /* MealsByCategoryRemoteService.swift */; };
 		222A95E12B0EC72A00E2AAD5 /* MealItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222A95E02B0EC72A00E2AAD5 /* MealItemView.swift */; };
-		222A95E62B0ECA6F00E2AAD5 /* RecipeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222A95E52B0ECA6F00E2AAD5 /* RecipeDetailView.swift */; };
 		222A95E82B0ECDAA00E2AAD5 /* RecipesRemoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222A95E72B0ECDAA00E2AAD5 /* RecipesRemoteService.swift */; };
 		222A95EA2B0ECE6C00E2AAD5 /* RecipesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222A95E92B0ECE6C00E2AAD5 /* RecipesRepository.swift */; };
 		222A95EC2B0ECF2600E2AAD5 /* GetRecipeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222A95EB2B0ECF2600E2AAD5 /* GetRecipeUseCase.swift */; };
@@ -129,6 +128,7 @@
 		22B047B52B3CE1C90086094A /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B047B42B3CE1C90086094A /* AuthenticationManager.swift */; };
 		22B047B82B3CE39F0086094A /* AuthDataResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B047B72B3CE39F0086094A /* AuthDataResultModel.swift */; };
 		22B047BA2B3DE8A30086094A /* RemoteImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B047B92B3DE8A30086094A /* RemoteImageView.swift */; };
+		22B047BC2B3F83A90086094A /* AddRecipeToFavoritesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B047BB2B3F83A90086094A /* AddRecipeToFavoritesUseCase.swift */; };
 		22E32D2B2B286E0D003731E5 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E32D2A2B286E0D003731E5 /* Recipe.swift */; };
 		22F3665F2B0CAD6C007F7E8C /* CategoriesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F3665E2B0CAD6C007F7E8C /* CategoriesRepository.swift */; };
 		22F366612B0CAFA3007F7E8C /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F366602B0CAFA3007F7E8C /* NetworkClient.swift */; };
@@ -154,7 +154,6 @@
 		222A95DC2B0EC0E800E2AAD5 /* MealsByCategoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsByCategoryRepository.swift; sourceTree = "<group>"; };
 		222A95DE2B0EC32400E2AAD5 /* MealsByCategoryRemoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsByCategoryRemoteService.swift; sourceTree = "<group>"; };
 		222A95E02B0EC72A00E2AAD5 /* MealItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealItemView.swift; sourceTree = "<group>"; };
-		222A95E52B0ECA6F00E2AAD5 /* RecipeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailView.swift; sourceTree = "<group>"; };
 		222A95E72B0ECDAA00E2AAD5 /* RecipesRemoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesRemoteService.swift; sourceTree = "<group>"; };
 		222A95E92B0ECE6C00E2AAD5 /* RecipesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesRepository.swift; sourceTree = "<group>"; };
 		222A95EB2B0ECF2600E2AAD5 /* GetRecipeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRecipeUseCase.swift; sourceTree = "<group>"; };
@@ -199,6 +198,7 @@
 		22B047B42B3CE1C90086094A /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		22B047B72B3CE39F0086094A /* AuthDataResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataResultModel.swift; sourceTree = "<group>"; };
 		22B047B92B3DE8A30086094A /* RemoteImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageView.swift; sourceTree = "<group>"; };
+		22B047BB2B3F83A90086094A /* AddRecipeToFavoritesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeToFavoritesUseCase.swift; sourceTree = "<group>"; };
 		22E32D2A2B286E0D003731E5 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		22F3665E2B0CAD6C007F7E8C /* CategoriesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesRepository.swift; sourceTree = "<group>"; };
 		22F366602B0CAFA3007F7E8C /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
@@ -305,7 +305,6 @@
 			isa = PBXGroup;
 			children = (
 				222A95E32B0ECA4100E2AAD5 /* RecipesView */,
-				222A95E22B0ECA3400E2AAD5 /* RecipeDetailView */,
 			);
 			path = Recipes;
 			sourceTree = "<group>";
@@ -323,14 +322,6 @@
 				222A95E42B0ECA5500E2AAD5 /* MealsByCategoryView */,
 			);
 			path = MealsByCategory;
-			sourceTree = "<group>";
-		};
-		222A95E22B0ECA3400E2AAD5 /* RecipeDetailView */ = {
-			isa = PBXGroup;
-			children = (
-				222A95E52B0ECA6F00E2AAD5 /* RecipeDetailView.swift */,
-			);
-			path = RecipeDetailView;
 			sourceTree = "<group>";
 		};
 		222A95E32B0ECA4100E2AAD5 /* RecipesView */ = {
@@ -534,6 +525,7 @@
 				22A76EDA2B03F4A20055A36D /* GetCategoriesUseCase.swift */,
 				222A95DA2B0EBEA300E2AAD5 /* GetMealsByCategoryUseCase.swift */,
 				222A95EB2B0ECF2600E2AAD5 /* GetRecipeUseCase.swift */,
+				22B047BB2B3F83A90086094A /* AddRecipeToFavoritesUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -828,7 +820,6 @@
 				22FFA1602B23E3F200811574 /* SignUpView.swift in Sources */,
 				22A76EB72B03E55D0055A36D /* LovecookApp.swift in Sources */,
 				228D52F72B1FA40D00C45BC9 /* SplashView.swift in Sources */,
-				222A95E62B0ECA6F00E2AAD5 /* RecipeDetailView.swift in Sources */,
 				222A95EC2B0ECF2600E2AAD5 /* GetRecipeUseCase.swift in Sources */,
 				22106CD22B2A9DC40090F25B /* GoogleSignInButton.swift in Sources */,
 				228D53052B228B8700C45BC9 /* RecipesView.swift in Sources */,
@@ -855,6 +846,7 @@
 				222A8FD82B27E42A00A55B65 /* ApiRecipeToRecipeMapper.swift in Sources */,
 				222A95DD2B0EC0E800E2AAD5 /* MealsByCategoryRepository.swift in Sources */,
 				22A76ED62B03F3B90055A36D /* CategoriesViewModel.swift in Sources */,
+				22B047BC2B3F83A90086094A /* AddRecipeToFavoritesUseCase.swift in Sources */,
 				22FFA15E2B23E36900811574 /* LogInView.swift in Sources */,
 				22A76EC32B03E55E0055A36D /* Lovecook.xcdatamodeld in Sources */,
 				22E32D2B2B286E0D003731E5 /* Recipe.swift in Sources */,
