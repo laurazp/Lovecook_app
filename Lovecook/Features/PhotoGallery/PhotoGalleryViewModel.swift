@@ -54,6 +54,15 @@ class PhotoGalleryViewModel: ObservableObject {
             print("SUCCESS!")
             print(path)
             print(name)
+            // Retrieve uploaded image path and append to current photos
+            let storageRef = storage.child("images").child(name)
+            storageRef.downloadURL(completion: { [unowned self] (url, error) in
+                guard error == nil, let url = url else {
+                    print("Failed to download url:", error!)
+                    return
+                }
+                self.photos.append(url)
+            })
         }
     }
     
