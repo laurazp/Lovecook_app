@@ -137,6 +137,7 @@
 		22FFA15C2B23E35D00811574 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFA15B2B23E35D00811574 /* AuthView.swift */; };
 		22FFA15E2B23E36900811574 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFA15D2B23E36900811574 /* LogInView.swift */; };
 		22FFA1602B23E3F200811574 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFA15F2B23E3F200811574 /* SignUpView.swift */; };
+		B64A931D2B40219600E39A2D /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A931C2B40219600E39A2D /* Photo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -208,6 +209,7 @@
 		22FFA15B2B23E35D00811574 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		22FFA15D2B23E36900811574 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		22FFA15F2B23E3F200811574 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		B64A931C2B40219600E39A2D /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -622,6 +624,7 @@
 			children = (
 				22E32D2A2B286E0D003731E5 /* Recipe.swift */,
 				2262B7A52B385E3B0008B17E /* Meal.swift */,
+				B64A931C2B40219600E39A2D /* Photo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -818,6 +821,7 @@
 				222A95BD2B0D70E700E2AAD5 /* MealsByCategoryView.swift in Sources */,
 				22728F382B37CF2800C3916E /* StorageManager.swift in Sources */,
 				227930502B2B72F0006C9EDA /* CheckboxToggleStyle.swift in Sources */,
+				B64A931D2B40219600E39A2D /* Photo.swift in Sources */,
 				22A76EDF2B03F5620055A36D /* CategoriesRemoteService.swift in Sources */,
 				22F3665F2B0CAD6C007F7E8C /* CategoriesRepository.swift in Sources */,
 				22FFA1602B23E3F200811574 /* SignUpView.swift in Sources */,
