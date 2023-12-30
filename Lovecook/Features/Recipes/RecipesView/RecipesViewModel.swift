@@ -6,16 +6,20 @@
 //
 
 import Foundation
+import SwiftUI
 
 class RecipesViewModel: ObservableObject {
     
-    private let getRecipeUseCase: GetRecipeUseCase
+    var recipe: Recipe?
     @Published var isLoading = false
     @Published var error: Error?
-    var recipe: Recipe?
     
-    init(getRecipeUseCase: GetRecipeUseCase) {
+    private let getRecipeUseCase: GetRecipeUseCase
+    private let addRecipeToFavoritesUseCase: AddRecipeToFavoritesUseCase
+    
+    init(getRecipeUseCase: GetRecipeUseCase, addRecipeToFavoritesUseCase: AddRecipeToFavoritesUseCase) {
         self.getRecipeUseCase = getRecipeUseCase
+        self.addRecipeToFavoritesUseCase = addRecipeToFavoritesUseCase
     }
     
     @MainActor
@@ -30,5 +34,17 @@ class RecipesViewModel: ObservableObject {
         }
         
         isLoading = false
+    }
+    
+    func addRecipeToFavorites(recipe: Recipe) {
+        addRecipeToFavoritesUseCase.execute(for: recipe)
+    }
+    
+    func getFavIconForegroundColor(isFavorite: Bool) -> Color {
+        if (isFavorite) {
+            return Color.pink
+        } else {
+            return Color.gray
+        }
     }
 }

@@ -15,7 +15,7 @@ class Coordinator: ObservableObject {
     private let getCategoriesUseCase: GetCategoriesUseCase
     private let getMealsByCategoryUseCase: GetMealsByCategoryUseCase
     private let getRecipeUseCase: GetRecipeUseCase
-    //private let getPhotosUseCase: GetPhotosUseCase
+    private let addRecipeToFavoritesUseCase: AddRecipeToFavoritesUseCase
     
     init() {
         let networkClient = URLSessionNetworkClient()
@@ -34,9 +34,10 @@ class Coordinator: ObservableObject {
         // MARK: - Recipes
         let apiRecipeToRecipeMapper = ApiRecipeToRecipeMapper()
         let recipesRemoteService = RecipesRemoteService(networkClient: networkClient, apiRecipeToRecipeMapper: apiRecipeToRecipeMapper)
-        self.recipesRepository = RecipesRepository(remoteService: recipesRemoteService)
+        let recipesLocalService = RecipesLocalService()
+        self.recipesRepository = RecipesRepository(remoteService: recipesRemoteService, localService: recipesLocalService)
         self.getRecipeUseCase = GetRecipeUseCase(recipesRepository: recipesRepository)
-        //self.getPhotosUseCase = GetPhotosUseCase()
+        self.addRecipeToFavoritesUseCase = AddRecipeToFavoritesUseCase(recipesRepository: recipesRepository)
     }
     
     // MARK: - CategoriesView
@@ -84,7 +85,7 @@ class Coordinator: ObservableObject {
     }
     
     private func makeRecipesViewModel() -> RecipesViewModel {
-        return RecipesViewModel(getRecipeUseCase: getRecipeUseCase)
+        return RecipesViewModel(getRecipeUseCase: getRecipeUseCase, addRecipeToFavoritesUseCase: addRecipeToFavoritesUseCase)
     }
     private func makePhotoGalleryViewModel() -> PhotoGalleryViewModel {
         return PhotoGalleryViewModel(/*getPhotosUseCase: getPhotosUseCase*/)

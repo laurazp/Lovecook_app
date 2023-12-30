@@ -9,9 +9,11 @@ import Foundation
 
 struct RecipesRepository {
     private let remoteService: RecipesRemoteService
+    private let localService: RecipesLocalService
     
-    init(remoteService: RecipesRemoteService) {
+    init(remoteService: RecipesRemoteService, localService: RecipesLocalService) {
         self.remoteService = remoteService
+        self.localService = localService
     }
     
     func getRecipe(recipeId: Int) async throws -> Recipe {
@@ -20,6 +22,15 @@ struct RecipesRepository {
         } catch(let error) {
             print(error.localizedDescription)
             throw error
+        }
+    }
+    
+    func addRecipeToFavorites(recipe: Recipe) {
+        do {
+            localService.addRecipeToFavorites(recipe: recipe)
+        } catch(let error) {
+            print(error.localizedDescription)
+            //throw error
         }
     }
 }

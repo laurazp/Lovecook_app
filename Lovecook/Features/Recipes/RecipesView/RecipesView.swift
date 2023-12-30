@@ -50,7 +50,7 @@ struct RecipesView: View {
                         Button {
                             //TODO: add to favorites and change color
                             isFavorite.toggle()
-                            viewModel.addRecipeToFavorites(recipe)
+                            viewModel.addRecipeToFavorites(recipe: recipe)
                         } label: {
                             Image(systemName: "heart.fill")
                                 .resizable()
