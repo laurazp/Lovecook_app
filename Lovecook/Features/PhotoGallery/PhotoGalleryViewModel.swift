@@ -13,7 +13,7 @@ class PhotoGalleryViewModel: ObservableObject {
     
     private let storage = Storage.storage().reference()
     
-    @Published var photos: [URL] = []
+    @Published var photos: [Photo] = []
     @Published var isLoading = false
     @Published var error: Error?
     //@Published var refreshView = false
@@ -35,7 +35,9 @@ class PhotoGalleryViewModel: ObservableObject {
                             print("Error getting download URL: \(error)")
                         } else {
                             if let downloadURL = url {
-                                self.photos.append(downloadURL)
+                                self.photos.append(
+                                    Photo(url: downloadURL, name: item.name)
+                                )
                                 print("Download URL: \(downloadURL)")
                             }
                         }
@@ -61,7 +63,7 @@ class PhotoGalleryViewModel: ObservableObject {
                     print("Failed to download url:", error!)
                     return
                 }
-                self.photos.append(url)
+                self.photos.append(Photo(url: url, name: name))
             })
         }
     }

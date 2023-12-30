@@ -27,16 +27,17 @@ struct PhotoGalleryView: View {
             } else {
                 ScrollView {
                     LazyVGrid(columns: gridItemLayout, spacing: 18) {
-                        ForEach(viewModel.photos, id: \.self) { photoName in
+                        ForEach(viewModel.photos, id: \.self) { photo in
                             NavigationLink {
                                 //TODO: Detail?
                                 //coordinator.makePhotoDetailView()
                             } label: {
                                 VStack(alignment: .center) {
-                                    RemoteImageView(downloadURL: photoName)
+                                    RemoteImageView(downloadURL: photo.url)
                                         .frame(width: 110, height: 120)
                                     
-                                    Text("photo name")
+                                    Text(photo.name)
+                                        .lineLimit(1)
                                         .foregroundStyle(.black)
                                         .bold()
                                         .shadow(color: .gray, radius: 5, x: 3, y: 3)
@@ -78,11 +79,8 @@ struct PhotoGalleryView: View {
         }.task {
             viewModel.getPhotosFromFirebase()
         }.onChange(of: selectedItem, perform: { newValue in
-            if let newValue {
-                viewModel.saveUserImage(item: newValue)
-                //TODO: añadir foto al grid y recargar
-                //viewModel.getPhotosFromFirebase()
-            }
+            guard let newValue else { return }
+            viewModel.saveUserImage(item: newValue)
         })
     }
 }

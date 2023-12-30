@@ -30,7 +30,6 @@ final class StorageManager {
         let returnedMetaData = try await imagesReference.child(path).putDataAsync(data, metadata: metaData)
         //let returnedMetaData = try await userReference(userId: userId).child(path).putDataAsync(data, metadata: metaData)
 
-        
         guard let returnedPath = returnedMetaData.path, let returnedName = returnedMetaData.name else {
             throw URLError(.badServerResponse)
         }
