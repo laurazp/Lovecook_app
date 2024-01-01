@@ -34,6 +34,17 @@ struct UserFavoritesView: View {
                         }
                         .listRowSeparator(.hidden)
                         .listRowBackground(Color.clear)
+                        .swipeActions(edge: .leading) {
+                            Button {
+                                if let index = viewModel.favoritesList.firstIndex(of: favorite) {
+                                    viewModel.favoritesList.remove(at: index)
+                                    viewModel.deleteFavorite(recipe: favorite)
+                                }
+                            } label: {
+                                Label("Delete", systemImage: "trash")
+                            }
+                            .tint(.red)
+                        }
                     }
                 }
             }
