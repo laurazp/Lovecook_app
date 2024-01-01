@@ -12,8 +12,7 @@ struct UserFavoritesView: View {
     @StateObject var viewModel: UserFavoritesViewModel
     @Environment(\.managedObjectContext) var viewContext
     
-    //TODO: hace falta???
-    //@FetchRequest(entity: CDFavoriteRecipe.entity(), sortDescriptors: []) var favoriteRecipes: FetchedResults<CDFavoriteRecipe>
+    private let favoriteRecipeToMealMapper = FavoriteRecipeToMealMapper()
     
     init(viewModel: UserFavoritesViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
@@ -27,7 +26,7 @@ struct UserFavoritesView: View {
                 List {
                     ForEach(viewModel.favoritesList, id: \.id) { favorite in
                         NavigationLink {
-                            //TODO: coordinator.makeRecipesView(for: favorite)
+                            coordinator.makeRecipesView(for: favoriteRecipeToMealMapper.mapFavoriteToMeal(favorite: favorite))
                         } label: {
                             //TODO: FavoriteItemView(favorite: favorite)
                             Text(favorite.title ?? "Untitled")
