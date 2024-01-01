@@ -10,16 +10,10 @@ import SwiftUI
 struct UserFavoritesView: View {
     @EnvironmentObject var coordinator: Coordinator
     @StateObject var viewModel: UserFavoritesViewModel
-    //@EnvironmentObject var persistenceController: CoreDataPersistenceController
     @Environment(\.managedObjectContext) var viewContext
     
     //TODO: hace falta???
-    @FetchRequest(entity: CDFavoriteRecipe.entity(), sortDescriptors: []) var favoriteRecipes: FetchedResults<CDFavoriteRecipe>
-    
-    //private var favorites: FetchedResults<CDFavoriteRecipe>
-    
-    //TODO: borrar al terminar de usar
-    var favoritesList: [Recipe]  = [Recipe.example, Recipe.example, Recipe.example, Recipe.example]
+    //@FetchRequest(entity: CDFavoriteRecipe.entity(), sortDescriptors: []) var favoriteRecipes: FetchedResults<CDFavoriteRecipe>
     
     init(viewModel: UserFavoritesViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
@@ -33,46 +27,28 @@ struct UserFavoritesView: View {
                 List {
                     ForEach(viewModel.favoritesList, id: \.id) { favorite in
                         NavigationLink {
-                            /*coordinator.makeRecipesView(for: favorite)*/
+                            //TODO: coordinator.makeRecipesView(for: favorite)
                         } label: {
-                            /*FavoriteItemView(favorite: favorite)*/
+                            //TODO: FavoriteItemView(favorite: favorite)
                             Text(favorite.title ?? "Untitled")
                         }
                         .listRowSeparator(.hidden)
                         .listRowBackground(Color.clear)
                     }
                 }
-                
-                /*List(favoritesList, id: \.recipeId /*viewModel.favoritesList*/) { favorite in
-                    NavigationLink {
-                        Text(favorite.recipeTitle)
-                        /*coordinator.makeRecipesView(for: favorite)*/
-                    } label: {
-                        /*FavoriteItemView(favorite: favorite)*/
-                    }
-                    .listRowSeparator(.hidden)
-                    .listRowBackground(Color.clear)
-                }*/
             }
         }.alert("Error", isPresented: Binding.constant(viewModel.error != nil)) {
             Button("OK") {}
             Button("Retry") {
                 Task {
-                    //await getFavoritesList()
-                    await viewModel.getAllFavorites()
+                    viewModel.getAllFavorites()
                 }
             }
         } message: {
             Text(viewModel.error?.localizedDescription ?? "")
         }.task {
-            //await getFavoritesList()
-            await viewModel.getAllFavorites()
+            viewModel.getAllFavorites()
         }
-    }
-    
-    //TODO: borrar si no sirve!
-    func getFavoritesList() async -> [Recipe] {
-        return self.favoritesList
     }
 }
 

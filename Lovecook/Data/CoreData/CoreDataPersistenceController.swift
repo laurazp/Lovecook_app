@@ -26,7 +26,6 @@ class CoreDataPersistenceController/*: ObservableObject*/ {
     func saveContext() {
         do {
             try viewContext.save()
-            print("Favorite saved!")
         } catch {
             viewContext.rollback()
             print("Whoops, something went wrong... \(error.localizedDescription)")
@@ -51,15 +50,6 @@ class CoreDataPersistenceController/*: ObservableObject*/ {
         newFavorite.image = recipe.recipeImage
         
         saveContext()
-        
-        //TODO: es lo mismo? si lo es, añadir do catch!!
-        /*do {
-            try viewContext.save()
-        } catch {
-            // Replace this implementation to handle the error appropriately
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-        }*/
     }
     
     func deleteFavorite(recipe: Recipe) {

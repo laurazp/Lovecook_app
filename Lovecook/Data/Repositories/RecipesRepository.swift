@@ -35,7 +35,7 @@ struct RecipesRepository {
         }
     }
     
-    func getAllRecipes() -> [FavoriteRecipe] {
+    func getAllFavoriteRecipes() -> [FavoriteRecipe] {
         localService.getAllFavorites()
             .compactMap({ cdFavorite in
                 guard let title = cdFavorite.title, let id = cdFavorite.id else { return nil }

@@ -6,10 +6,11 @@
 //
 
 import Foundation
+
 struct GetFavoriteRecipesUseCase {
     let recipesRepository: RecipesRepository
 
     func execute() -> [FavoriteRecipe] {
-        recipesRepository.getAllRecipes()
+        recipesRepository.getAllFavoriteRecipes()
     }
 }
