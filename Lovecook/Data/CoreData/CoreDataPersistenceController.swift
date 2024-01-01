@@ -52,17 +52,6 @@ class CoreDataPersistenceController/*: ObservableObject*/ {
         saveContext()
     }
     
-    func deleteFavorite(recipe: Recipe) {
-        let favoriteToDelete = CDFavoriteRecipe(context: viewContext)
-        favoriteToDelete.title = recipe.recipeTitle
-        favoriteToDelete.id = recipe.recipeId
-        favoriteToDelete.image = recipe.recipeImage
-        
-        viewContext.delete(favoriteToDelete)
-        
-        saveContext()
-    }
-    
     func deleteFavorite(recipe: FavoriteRecipe) {
         let fetchRequest: NSFetchRequest<CDFavoriteRecipe> = CDFavoriteRecipe.fetchRequest()
             fetchRequest.predicate = NSPredicate(format: "id == %@", recipe.id)

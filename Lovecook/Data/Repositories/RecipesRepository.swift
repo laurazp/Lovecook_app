@@ -31,7 +31,7 @@ struct RecipesRepository {
             localService.addRecipeToFavorites(recipe: recipe)
         } catch(let error) {
             print(error.localizedDescription)
-            //throw error
+            //TODO: revisar - throw error
         }
     }
     
@@ -42,8 +42,8 @@ struct RecipesRepository {
                 return FavoriteRecipe(title: title, id: id, image: cdFavorite.image ?? "")
             })
     }
-    
-    func deleteRecipe(recipe: Recipe) {
+  
+    func deleteRecipe(recipe: FavoriteRecipe) {
         localService.deleteFavorite(recipe: recipe)
     }
 }

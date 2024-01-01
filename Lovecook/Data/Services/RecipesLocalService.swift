@@ -7,7 +7,6 @@
 
 import Foundation
 import SwiftUI
-import CoreData
 
 struct RecipesLocalService {
     private let persistanceController: CoreDataPersistenceController
@@ -20,7 +19,7 @@ struct RecipesLocalService {
         persistanceController.addRecipeToFavorites(recipe: recipe)
     }
     
-    func deleteFavorite(recipe: Recipe) {
+    func deleteFavorite(recipe: FavoriteRecipe) {
         persistanceController.deleteFavorite(recipe: recipe)
     }
     
