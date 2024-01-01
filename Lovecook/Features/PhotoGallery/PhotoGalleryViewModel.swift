@@ -34,11 +34,13 @@ class PhotoGalleryViewModel: ObservableObject {
                         if let error = error {
                             print("Error getting download URL: \(error)")
                         } else {
-                            if let downloadURL = url {
-                                self.photos.append(
-                                    Photo(url: downloadURL, name: item.name)
-                                )
-                                print("Download URL: \(downloadURL)")
+                            item.getMetadata { metadata, _ in
+                                if let downloadURL = url {
+                                    self.photos.append(
+                                        Photo(url: downloadURL, name: metadata?.customMetadata?["title"] ?? item.name)
+                                    )
+                                    print("Download URL: \(downloadURL)")
+                                }
                             }
                         }
                     }
@@ -47,12 +49,11 @@ class PhotoGalleryViewModel: ObservableObject {
         }
     }
     
-    func saveUserImage(item: PhotosPickerItem) {
+    func saveUserImage(item: PhotosPickerItem, title: String) {
         Task {
             guard let data = try await item.loadTransferable(type: Data.self) else { return }
-            let (path, name) = try await StorageManager.shared.saveImage(data: data/*, userId: user.userId*/)
+            let (path, name, title) = try await StorageManager.shared.saveImage(data: data, title: title/*, userId: user.userId*/)
             //refreshView.toggle()
-            //await getPhotosFromFirebase()
             print("SUCCESS!")
             print(path)
             print(name)
@@ -63,7 +64,7 @@ class PhotoGalleryViewModel: ObservableObject {
                     print("Failed to download url:", error!)
                     return
                 }
-                self.photos.append(Photo(url: url, name: name))
+                self.photos.append(Photo(url: url, name: title ?? name))
             })
         }
     }
