@@ -11,14 +11,17 @@ class UserFavoritesViewModel: ObservableObject {
     
     private let getFavoritesUseCase: GetFavoriteRecipesUseCase
     private let addRecipeToFavoritesUseCase: AddRecipeToFavoritesUseCase
+    private let deleteFavoriteRecipeUseCase: DeleteFavoriteRecipeUseCase
     @Published var favoritesList = [FavoriteRecipe]()
     @Published var isLoading = false
     @Published var error: Error?
     
     init(getFavoritesUseCase: GetFavoriteRecipesUseCase,
-         addRecipeToFavoritesUseCase: AddRecipeToFavoritesUseCase) {
+         addRecipeToFavoritesUseCase: AddRecipeToFavoritesUseCase,
+         deleteFavoriteRecipeUseCase: DeleteFavoriteRecipeUseCase) {
         self.getFavoritesUseCase = getFavoritesUseCase
         self.addRecipeToFavoritesUseCase = addRecipeToFavoritesUseCase
+        self.deleteFavoriteRecipeUseCase = deleteFavoriteRecipeUseCase
     }
     
     //@MainActor
@@ -35,8 +38,7 @@ class UserFavoritesViewModel: ObservableObject {
     }
     
     func deleteFavorite(recipe: Recipe) {
-        // TODO: Add delete favorite use case 
-//        CoreDataPersistenceController.shared.deleteFavorite(recipe: recipe)
+        deleteFavoriteRecipeUseCase.execute(for: recipe)
         getAllFavorites()
     }
 }

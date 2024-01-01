@@ -42,4 +42,8 @@ struct RecipesRepository {
                 return FavoriteRecipe(title: title, id: id, image: cdFavorite.image ?? "")
             })
     }
+    
+    func deleteRecipe(recipe: Recipe) {
+        localService.deleteFavorite(recipe: recipe)
+    }
 }

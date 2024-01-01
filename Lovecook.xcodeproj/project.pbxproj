@@ -142,6 +142,7 @@
 		B64A931D2B40219600E39A2D /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A931C2B40219600E39A2D /* Photo.swift */; };
 		B64A931F2B42CD0500E39A2D /* FavoriteRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A931E2B42CD0500E39A2D /* FavoriteRecipe.swift */; };
 		B64A93212B42D0B400E39A2D /* GetFavoriteRecipesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A93202B42D0B400E39A2D /* GetFavoriteRecipesUseCase.swift */; };
+		B64A93242B42D3FA00E39A2D /* DeleteFavoriteRecipeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A93232B42D3FA00E39A2D /* DeleteFavoriteRecipeUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -218,6 +219,7 @@
 		B64A931C2B40219600E39A2D /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		B64A931E2B42CD0500E39A2D /* FavoriteRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRecipe.swift; sourceTree = "<group>"; };
 		B64A93202B42D0B400E39A2D /* GetFavoriteRecipesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFavoriteRecipesUseCase.swift; sourceTree = "<group>"; };
+		B64A93232B42D3FA00E39A2D /* DeleteFavoriteRecipeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteFavoriteRecipeUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -537,6 +539,7 @@
 				222A95EB2B0ECF2600E2AAD5 /* GetRecipeUseCase.swift */,
 				22B047BB2B3F83A90086094A /* AddRecipeToFavoritesUseCase.swift */,
 				B64A93202B42D0B400E39A2D /* GetFavoriteRecipesUseCase.swift */,
+				B64A93232B42D3FA00E39A2D /* DeleteFavoriteRecipeUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -875,6 +878,7 @@
 				228D53032B2282F800C45BC9 /* RecipeResponse.swift in Sources */,
 				222A8FD82B27E42A00A55B65 /* ApiRecipeToRecipeMapper.swift in Sources */,
 				222A95DD2B0EC0E800E2AAD5 /* MealsByCategoryRepository.swift in Sources */,
+				B64A93242B42D3FA00E39A2D /* DeleteFavoriteRecipeUseCase.swift in Sources */,
 				22A76ED62B03F3B90055A36D /* CategoriesViewModel.swift in Sources */,
 				22B047BC2B3F83A90086094A /* AddRecipeToFavoritesUseCase.swift in Sources */,
 				22FFA15E2B23E36900811574 /* LogInView.swift in Sources */,

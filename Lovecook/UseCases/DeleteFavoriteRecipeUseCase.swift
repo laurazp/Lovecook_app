@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct AddRecipeToFavoritesUseCase {
+struct DeleteFavoriteRecipeUseCase {
     let recipesRepository: RecipesRepository
 
     func execute(for recipe: Recipe) {
-        recipesRepository.addRecipeToFavorites(recipe: recipe)
+        recipesRepository.deleteRecipe(recipe: recipe)
     }
 }

@@ -17,6 +17,7 @@ class Coordinator: ObservableObject {
     private let getRecipeUseCase: GetRecipeUseCase
     private let addRecipeToFavoritesUseCase: AddRecipeToFavoritesUseCase
     private let getFavoriteRecipesUseCase: GetFavoriteRecipesUseCase
+    private let deleteFavoriteRecipeUseCase: DeleteFavoriteRecipeUseCase
     
     init() {
         let networkClient = URLSessionNetworkClient()
@@ -41,6 +42,7 @@ class Coordinator: ObservableObject {
         self.getRecipeUseCase = GetRecipeUseCase(recipesRepository: recipesRepository)
         self.addRecipeToFavoritesUseCase = AddRecipeToFavoritesUseCase(recipesRepository: recipesRepository)
         self.getFavoriteRecipesUseCase = GetFavoriteRecipesUseCase(recipesRepository: recipesRepository)
+        self.deleteFavoriteRecipeUseCase  = DeleteFavoriteRecipeUseCase(recipesRepository: recipesRepository)
     }
     
     // MARK: - CategoriesView
@@ -95,6 +97,7 @@ class Coordinator: ObservableObject {
     }
     private func makeUserFavoritesViewModel() -> UserFavoritesViewModel {
         return UserFavoritesViewModel(getFavoritesUseCase: getFavoriteRecipesUseCase,
-                                      addRecipeToFavoritesUseCase: addRecipeToFavoritesUseCase)
+                                      addRecipeToFavoritesUseCase: addRecipeToFavoritesUseCase, 
+                                      deleteFavoriteRecipeUseCase: deleteFavoriteRecipeUseCase)
     }
 }
