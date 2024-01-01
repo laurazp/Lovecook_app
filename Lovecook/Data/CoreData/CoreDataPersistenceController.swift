@@ -62,4 +62,19 @@ class CoreDataPersistenceController/*: ObservableObject*/ {
         
         saveContext()
     }
+    
+    func deleteFavorite(recipe: FavoriteRecipe) {
+        let fetchRequest: NSFetchRequest<CDFavoriteRecipe> = CDFavoriteRecipe.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "id == %@", recipe.id)
+            
+            do {
+                if let favoriteToDelete = try viewContext.fetch(fetchRequest).first {
+                    viewContext.delete(favoriteToDelete)
+                    saveContext()
+                }
+            } catch {
+                //TODO: Gestionar error ??
+                print("Error deleting favorite recipe: \(error)")
+            }
+    }
 }
