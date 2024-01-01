@@ -41,7 +41,3 @@ final class StorageManager {
         return (returnedPath, returnedName, title)
     }
 }
-
-private extension String {
-    
-}
