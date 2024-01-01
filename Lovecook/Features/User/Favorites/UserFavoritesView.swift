@@ -31,12 +31,12 @@ struct UserFavoritesView: View {
                 ProgressView()
             } else {
                 List {
-                    ForEach(viewModel.favoritesList, id: \.self) { favorite in
+                    ForEach(viewModel.favoritesList, id: \.id) { favorite in
                         NavigationLink {
-                            Text(favorite.recipeTitle)
                             /*coordinator.makeRecipesView(for: favorite)*/
                         } label: {
                             /*FavoriteItemView(favorite: favorite)*/
+                            Text(favorite.title ?? "Untitled")
                         }
                         .listRowSeparator(.hidden)
                         .listRowBackground(Color.clear)

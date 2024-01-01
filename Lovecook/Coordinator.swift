@@ -16,9 +16,11 @@ class Coordinator: ObservableObject {
     private let getMealsByCategoryUseCase: GetMealsByCategoryUseCase
     private let getRecipeUseCase: GetRecipeUseCase
     private let addRecipeToFavoritesUseCase: AddRecipeToFavoritesUseCase
+    private let getFavoriteRecipesUseCase: GetFavoriteRecipesUseCase
     
     init() {
         let networkClient = URLSessionNetworkClient()
+        let persistanceController = CoreDataPersistenceController()
         
         // MARK: - Categories
         let categoriesRemoteService = CategoriesRemoteService(networkClient: networkClient)
@@ -34,10 +36,11 @@ class Coordinator: ObservableObject {
         // MARK: - Recipes
         let apiRecipeToRecipeMapper = ApiRecipeToRecipeMapper()
         let recipesRemoteService = RecipesRemoteService(networkClient: networkClient, apiRecipeToRecipeMapper: apiRecipeToRecipeMapper)
-        let recipesLocalService = RecipesLocalService()
+        let recipesLocalService = RecipesLocalService(persistanceController: persistanceController)
         self.recipesRepository = RecipesRepository(remoteService: recipesRemoteService, localService: recipesLocalService)
         self.getRecipeUseCase = GetRecipeUseCase(recipesRepository: recipesRepository)
         self.addRecipeToFavoritesUseCase = AddRecipeToFavoritesUseCase(recipesRepository: recipesRepository)
+        self.getFavoriteRecipesUseCase = GetFavoriteRecipesUseCase(recipesRepository: recipesRepository)
     }
     
     // MARK: - CategoriesView
@@ -62,7 +65,7 @@ class Coordinator: ObservableObject {
     
     // MARK: - UserFavoritesView
     func makeUserFavoritesView() -> UserFavoritesView {
-        UserFavoritesView(viewModel: makeRecipesViewModel())
+        UserFavoritesView(viewModel: makeUserFavoritesViewModel())
     }
     
     // MARK: - UserMainView
@@ -89,5 +92,9 @@ class Coordinator: ObservableObject {
     }
     private func makePhotoGalleryViewModel() -> PhotoGalleryViewModel {
         return PhotoGalleryViewModel(/*getPhotosUseCase: getPhotosUseCase*/)
+    }
+    private func makeUserFavoritesViewModel() -> UserFavoritesViewModel {
+        return UserFavoritesViewModel(getFavoritesUseCase: getFavoriteRecipesUseCase,
+                                      addRecipeToFavoritesUseCase: addRecipeToFavoritesUseCase)
     }
 }

@@ -8,7 +8,6 @@
 import CoreData
 
 class CoreDataPersistenceController/*: ObservableObject*/ {
-    static let shared = CoreDataPersistenceController()
     let container: NSPersistentContainer
     
     var viewContext: NSManagedObjectContext {
@@ -40,6 +39,7 @@ class CoreDataPersistenceController/*: ObservableObject*/ {
         do {
             return try viewContext.fetch(request)
         } catch {
+            print(error)
             return []
         }
     }

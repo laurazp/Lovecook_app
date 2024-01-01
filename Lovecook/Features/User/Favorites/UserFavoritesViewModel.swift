@@ -9,30 +9,34 @@ import Foundation
 
 class UserFavoritesViewModel: ObservableObject {
     
-    //TODO: --- private let getFavoritesUseCase: GetFavoritesUseCase
-    @Published var favoritesList = [CDFavoriteRecipe]()
+    private let getFavoritesUseCase: GetFavoriteRecipesUseCase
+    private let addRecipeToFavoritesUseCase: AddRecipeToFavoritesUseCase
+    @Published var favoritesList = [FavoriteRecipe]()
     @Published var isLoading = false
     @Published var error: Error?
     
-    /*init(getFavoritesUseCase: GetFavoritesUseCase) {
-     self.getFavoritesUseCase = getFavoritesUseCase
-     }*/
+    init(getFavoritesUseCase: GetFavoriteRecipesUseCase,
+         addRecipeToFavoritesUseCase: AddRecipeToFavoritesUseCase) {
+        self.getFavoritesUseCase = getFavoritesUseCase
+        self.addRecipeToFavoritesUseCase = addRecipeToFavoritesUseCase
+    }
     
     //@MainActor
     func getAllFavorites() {
         //TODO: favorites = try getFavoritesUseCase.execute() ??
         //TODO: gestionar carga o errores?
         
-        favoritesList =  CoreDataPersistenceController.shared.getAllFavorites()
+        favoritesList =  getFavoritesUseCase.execute()
     }
     
     func addFavorite(recipe: Recipe) {
-        CoreDataPersistenceController.shared.addRecipeToFavorites(recipe: recipe)
+        addRecipeToFavoritesUseCase.execute(for: recipe)
         getAllFavorites()
     }
     
     func deleteFavorite(recipe: Recipe) {
-        CoreDataPersistenceController.shared.deleteFavorite(recipe: recipe)
+        // TODO: Add delete favorite use case 
+//        CoreDataPersistenceController.shared.deleteFavorite(recipe: recipe)
         getAllFavorites()
     }
 }

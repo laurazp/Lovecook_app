@@ -11,7 +11,8 @@ struct RecipesRepository {
     private let remoteService: RecipesRemoteService
     private let localService: RecipesLocalService
     
-    init(remoteService: RecipesRemoteService, localService: RecipesLocalService) {
+    init(remoteService: RecipesRemoteService, 
+         localService: RecipesLocalService) {
         self.remoteService = remoteService
         self.localService = localService
     }
@@ -32,5 +33,13 @@ struct RecipesRepository {
             print(error.localizedDescription)
             //throw error
         }
+    }
+    
+    func getAllRecipes() -> [FavoriteRecipe] {
+        localService.getAllFavorites()
+            .compactMap({ cdFavorite in
+                guard let title = cdFavorite.title, let id = cdFavorite.id else { return nil }
+                return FavoriteRecipe(title: title, id: id, image: cdFavorite.image ?? "")
+            })
     }
 }

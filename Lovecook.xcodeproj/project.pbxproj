@@ -140,6 +140,8 @@
 		22FFA15E2B23E36900811574 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFA15D2B23E36900811574 /* LogInView.swift */; };
 		22FFA1602B23E3F200811574 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFA15F2B23E3F200811574 /* SignUpView.swift */; };
 		B64A931D2B40219600E39A2D /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A931C2B40219600E39A2D /* Photo.swift */; };
+		B64A931F2B42CD0500E39A2D /* FavoriteRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A931E2B42CD0500E39A2D /* FavoriteRecipe.swift */; };
+		B64A93212B42D0B400E39A2D /* GetFavoriteRecipesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A93202B42D0B400E39A2D /* GetFavoriteRecipesUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -214,6 +216,8 @@
 		22FFA15D2B23E36900811574 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		22FFA15F2B23E3F200811574 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		B64A931C2B40219600E39A2D /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		B64A931E2B42CD0500E39A2D /* FavoriteRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRecipe.swift; sourceTree = "<group>"; };
+		B64A93202B42D0B400E39A2D /* GetFavoriteRecipesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFavoriteRecipesUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -532,6 +536,7 @@
 				222A95DA2B0EBEA300E2AAD5 /* GetMealsByCategoryUseCase.swift */,
 				222A95EB2B0ECF2600E2AAD5 /* GetRecipeUseCase.swift */,
 				22B047BB2B3F83A90086094A /* AddRecipeToFavoritesUseCase.swift */,
+				B64A93202B42D0B400E39A2D /* GetFavoriteRecipesUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -639,6 +644,7 @@
 				22E32D2A2B286E0D003731E5 /* Recipe.swift */,
 				2262B7A52B385E3B0008B17E /* Meal.swift */,
 				B64A931C2B40219600E39A2D /* Photo.swift */,
+				B64A931E2B42CD0500E39A2D /* FavoriteRecipe.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -818,6 +824,7 @@
 				222A95EA2B0ECE6C00E2AAD5 /* RecipesRepository.swift in Sources */,
 				22106CD02B2A95300090F25B /* AuthenticationViewModel.swift in Sources */,
 				2262B7A42B38494E0008B17E /* UserFavoritesView.swift in Sources */,
+				B64A931F2B42CD0500E39A2D /* FavoriteRecipe.swift in Sources */,
 				228D52FF2B224E8600C45BC9 /* CategoriesResponse.swift in Sources */,
 				228D53072B228B9C00C45BC9 /* RecipesViewModel.swift in Sources */,
 				22B047C12B4077F00086094A /* CoreDataPersistenceController.swift in Sources */,
@@ -859,6 +866,7 @@
 				22A76ECD2B03F1F10055A36D /* CategoriesView.swift in Sources */,
 				222A95E12B0EC72A00E2AAD5 /* MealItemView.swift in Sources */,
 				22A76EE92B03F63C0055A36D /* Category.swift in Sources */,
+				B64A93212B42D0B400E39A2D /* GetFavoriteRecipesUseCase.swift in Sources */,
 				222A8FD52B27DDA700A55B65 /* RoundedCorners.swift in Sources */,
 				22B047B82B3CE39F0086094A /* AuthDataResultModel.swift in Sources */,
 				222A95E82B0ECDAA00E2AAD5 /* RecipesRemoteService.swift in Sources */,

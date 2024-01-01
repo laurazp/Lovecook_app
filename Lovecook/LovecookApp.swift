@@ -16,8 +16,6 @@ import CoreData
 struct LovecookApp: App {
     let coordinator = Coordinator()
     @StateObject var viewModel = AuthenticationViewModel()
-
-    let coreDataPersistenceController = CoreDataPersistenceController()
   
     init() {
         setupFirebase()
@@ -28,7 +26,7 @@ struct LovecookApp: App {
             SplashView()
                 .environmentObject(coordinator)
                 .environmentObject(viewModel)
-                .environment(\.managedObjectContext, CoreDataPersistenceController.shared.viewContext)
+//                .environment(\.managedObjectContext, CoreDataPersistenceController.shared.viewContext)
             //.environment(\.managedObjectContext, coreDataPersistenceController.container.viewContext)
         }
     }
