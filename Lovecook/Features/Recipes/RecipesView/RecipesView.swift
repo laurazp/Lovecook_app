@@ -8,12 +8,15 @@
 import SwiftUI
 import Kingfisher
 import YouTubePlayerKit
+import CoreData
 
 struct RecipesView: View {
     var meal: Meal
     @StateObject private var viewModel: RecipesViewModel
     @EnvironmentObject var coordinator: Coordinator
     @State var isFavorite: Bool = false
+    
+    @Environment(\.managedObjectContext) private var viewContext
     
     init(meal: Meal, viewModel: RecipesViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)

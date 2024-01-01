@@ -6,18 +6,9 @@
 //
 
 import Foundation
+import SwiftUI
+import CoreData
 
 struct RecipesLocalService {
-    //TODO: CoreData ??
     
-    func addRecipeToFavorites(recipe: Recipe) {
-        
-    }
 }
-
-
-//TODO: los services deberían ser sólo protocols?
-/*protocol CharactersLocalService {
-    func getCharacters() throws -> [Character]
-    func save(characters: [Character]) throws
-}*/

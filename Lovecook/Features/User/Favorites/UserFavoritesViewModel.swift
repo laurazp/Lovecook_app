@@ -10,25 +10,29 @@ import Foundation
 class UserFavoritesViewModel: ObservableObject {
     
     //TODO: --- private let getFavoritesUseCase: GetFavoritesUseCase
-    @Published var favoritesList = [Recipe]()
+    @Published var favoritesList = [CDFavoriteRecipe]()
     @Published var isLoading = false
     @Published var error: Error?
     
     /*init(getFavoritesUseCase: GetFavoritesUseCase) {
-        self.getFavoritesUseCase = getFavoritesUseCase
-    }*/
+     self.getFavoritesUseCase = getFavoritesUseCase
+     }*/
     
-    @MainActor
-    func getFavorites() {
-        error = nil
-        isLoading = true
+    //@MainActor
+    func getAllFavorites() {
+        //TODO: favorites = try getFavoritesUseCase.execute() ??
+        //TODO: gestionar carga o errores?
         
-        do {
-            //TODO: --- mealsByCategory = try getFavoritesUseCase.execute()
-        } catch(let error) {
-            self.error = error
-        }
-        
-        isLoading = false
+        favoritesList =  CoreDataPersistenceController.shared.getAllFavorites()
+    }
+    
+    func addFavorite(recipe: Recipe) {
+        CoreDataPersistenceController.shared.addRecipeToFavorites(recipe: recipe)
+        getAllFavorites()
+    }
+    
+    func deleteFavorite(recipe: Recipe) {
+        CoreDataPersistenceController.shared.deleteFavorite(recipe: recipe)
+        getAllFavorites()
     }
 }
