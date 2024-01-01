@@ -18,6 +18,7 @@ class Coordinator: ObservableObject {
     private let addRecipeToFavoritesUseCase: AddRecipeToFavoritesUseCase
     private let getFavoriteRecipesUseCase: GetFavoriteRecipesUseCase
     private let deleteFavoriteRecipeUseCase: DeleteFavoriteRecipeUseCase
+    private let checkFavoriteAddedUseCase: CheckFavoriteAddedUseCase
     
     init() {
         let networkClient = URLSessionNetworkClient()
@@ -43,6 +44,7 @@ class Coordinator: ObservableObject {
         self.addRecipeToFavoritesUseCase = AddRecipeToFavoritesUseCase(recipesRepository: recipesRepository)
         self.getFavoriteRecipesUseCase = GetFavoriteRecipesUseCase(recipesRepository: recipesRepository)
         self.deleteFavoriteRecipeUseCase  = DeleteFavoriteRecipeUseCase(recipesRepository: recipesRepository)
+        self.checkFavoriteAddedUseCase = CheckFavoriteAddedUseCase(recipesRepository: recipesRepository)
     }
     
     // MARK: - CategoriesView
@@ -90,10 +92,10 @@ class Coordinator: ObservableObject {
     }
     
     private func makeRecipesViewModel() -> RecipesViewModel {
-        return RecipesViewModel(getRecipeUseCase: getRecipeUseCase, addRecipeToFavoritesUseCase: addRecipeToFavoritesUseCase)
+        return RecipesViewModel(getRecipeUseCase: getRecipeUseCase, addRecipeToFavoritesUseCase: addRecipeToFavoritesUseCase, deleteFavoriteRecipeUseCase: deleteFavoriteRecipeUseCase, checkFavoriteAddedUseCase: checkFavoriteAddedUseCase)
     }
     private func makePhotoGalleryViewModel() -> PhotoGalleryViewModel {
-        return PhotoGalleryViewModel(/*getPhotosUseCase: getPhotosUseCase*/)
+        return PhotoGalleryViewModel()
     }
     private func makeUserFavoritesViewModel() -> UserFavoritesViewModel {
         return UserFavoritesViewModel(getFavoritesUseCase: getFavoriteRecipesUseCase,

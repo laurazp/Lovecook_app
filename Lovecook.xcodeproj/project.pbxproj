@@ -132,6 +132,7 @@
 		22B047C12B4077F00086094A /* CoreDataPersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B047C02B4077F00086094A /* CoreDataPersistenceController.swift */; };
 		22B047D32B40E0140086094A /* CDFavoriteRecipe+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B047D12B40E0140086094A /* CDFavoriteRecipe+CoreDataClass.swift */; };
 		22B047D42B40E0140086094A /* CDFavoriteRecipe+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B047D22B40E0140086094A /* CDFavoriteRecipe+CoreDataProperties.swift */; };
+		22B047D62B43011E0086094A /* CheckFavoriteAddedUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B047D52B43011E0086094A /* CheckFavoriteAddedUseCase.swift */; };
 		22E32D2B2B286E0D003731E5 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E32D2A2B286E0D003731E5 /* Recipe.swift */; };
 		22F3665F2B0CAD6C007F7E8C /* CategoriesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F3665E2B0CAD6C007F7E8C /* CategoriesRepository.swift */; };
 		22F366612B0CAFA3007F7E8C /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F366602B0CAFA3007F7E8C /* NetworkClient.swift */; };
@@ -209,6 +210,7 @@
 		22B047C02B4077F00086094A /* CoreDataPersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataPersistenceController.swift; sourceTree = "<group>"; };
 		22B047D12B40E0140086094A /* CDFavoriteRecipe+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDFavoriteRecipe+CoreDataClass.swift"; sourceTree = "<group>"; };
 		22B047D22B40E0140086094A /* CDFavoriteRecipe+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDFavoriteRecipe+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		22B047D52B43011E0086094A /* CheckFavoriteAddedUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckFavoriteAddedUseCase.swift; sourceTree = "<group>"; };
 		22E32D2A2B286E0D003731E5 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		22F3665E2B0CAD6C007F7E8C /* CategoriesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesRepository.swift; sourceTree = "<group>"; };
 		22F366602B0CAFA3007F7E8C /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
@@ -540,6 +542,7 @@
 				22B047BB2B3F83A90086094A /* AddRecipeToFavoritesUseCase.swift */,
 				B64A93202B42D0B400E39A2D /* GetFavoriteRecipesUseCase.swift */,
 				B64A93232B42D3FA00E39A2D /* DeleteFavoriteRecipeUseCase.swift */,
+				22B047D52B43011E0086094A /* CheckFavoriteAddedUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -877,6 +880,7 @@
 				22A76EE42B03F5D60055A36D /* NetworkError.swift in Sources */,
 				228D53032B2282F800C45BC9 /* RecipeResponse.swift in Sources */,
 				222A8FD82B27E42A00A55B65 /* ApiRecipeToRecipeMapper.swift in Sources */,
+				22B047D62B43011E0086094A /* CheckFavoriteAddedUseCase.swift in Sources */,
 				222A95DD2B0EC0E800E2AAD5 /* MealsByCategoryRepository.swift in Sources */,
 				B64A93242B42D3FA00E39A2D /* DeleteFavoriteRecipeUseCase.swift in Sources */,
 				22A76ED62B03F3B90055A36D /* CategoriesViewModel.swift in Sources */,

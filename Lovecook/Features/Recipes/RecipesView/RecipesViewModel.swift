@@ -16,10 +16,14 @@ class RecipesViewModel: ObservableObject {
     
     private let getRecipeUseCase: GetRecipeUseCase
     private let addRecipeToFavoritesUseCase: AddRecipeToFavoritesUseCase
+    private let deleteFavoriteRecipeUseCase: DeleteFavoriteRecipeUseCase
+    private let checkFavoriteAddedUseCase: CheckFavoriteAddedUseCase
     
-    init(getRecipeUseCase: GetRecipeUseCase, addRecipeToFavoritesUseCase: AddRecipeToFavoritesUseCase) {
+    init(getRecipeUseCase: GetRecipeUseCase, addRecipeToFavoritesUseCase: AddRecipeToFavoritesUseCase, deleteFavoriteRecipeUseCase: DeleteFavoriteRecipeUseCase, checkFavoriteAddedUseCase: CheckFavoriteAddedUseCase) {
         self.getRecipeUseCase = getRecipeUseCase
         self.addRecipeToFavoritesUseCase = addRecipeToFavoritesUseCase
+        self.deleteFavoriteRecipeUseCase = deleteFavoriteRecipeUseCase
+        self.checkFavoriteAddedUseCase = checkFavoriteAddedUseCase
     }
     
     @MainActor
@@ -37,7 +41,17 @@ class RecipesViewModel: ObservableObject {
     }
     
     func addRecipeToFavorites(recipe: Recipe) {
-        addRecipeToFavoritesUseCase.execute(for: recipe)
+        if (checkFavoriteAddedUseCase.checkFavorite(recipeTitle: recipe.recipeTitle)) {
+            //TODO: mostrar snackBar avisando que ya está añadido ??
+            print("Recipe is already added to Favorites!")
+            return
+        } else {
+            addRecipeToFavoritesUseCase.execute(for: recipe)
+        }
+    }
+    
+    func deleteRecipeFromFavorites(recipe: Recipe) {
+        deleteFavoriteRecipeUseCase.execute(for: recipe)
     }
     
     func getFavIconForegroundColor(isFavorite: Bool) -> Color {
