@@ -17,7 +17,7 @@ struct UserFavoritesView: View {
     init(viewModel: UserFavoritesViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
-
+    
     var body: some View {
         NavigationStack {
             if viewModel.isLoading {
@@ -25,27 +25,25 @@ struct UserFavoritesView: View {
             } else {
                 List {
                     ForEach(viewModel.favoritesList, id: \.id) { favorite in
-                        NavigationLink {
-                            coordinator.makeRecipesView(for: favoriteRecipeToMealMapper.mapFavoriteToMeal(favorite: favorite))
-                        } label: {
-                            //TODO: FavoriteItemView(favorite: favorite)
-                            Text(favorite.title ?? "Untitled")
-                        }
-                        .listRowSeparator(.hidden)
-                        .listRowBackground(Color.clear)
-                        .swipeActions(edge: .leading) {
-                            Button {
-                                if let index = viewModel.favoritesList.firstIndex(of: favorite) {
-                                    viewModel.favoritesList.remove(at: index)
-                                    viewModel.deleteFavorite(recipe: favorite)
+                        createRow(for: favorite)
+                            .frame(maxWidth: .infinity)
+                            .listRowSeparator(.hidden)
+                            .listRowBackground(Color.clear)
+                            .swipeActions(edge: .leading) {
+                                Button {
+                                    if let index = viewModel.favoritesList.firstIndex(of: favorite) {
+                                        viewModel.favoritesList.remove(at: index)
+                                        viewModel.deleteFavorite(recipe: favorite)
+                                    }
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
                                 }
-                            } label: {
-                                Label("Delete", systemImage: "trash")
+                                .tint(.red)
                             }
-                            .tint(.red)
-                        }
                     }
                 }
+                .listStyle(PlainListStyle())
+                .listRowInsets(EdgeInsets())
             }
         }.alert("Error", isPresented: Binding.constant(viewModel.error != nil)) {
             Button("OK") {}
@@ -59,6 +57,17 @@ struct UserFavoritesView: View {
         }.task {
             viewModel.getAllFavorites()
         }
+    }
+    
+    private func createRow(for favorite: FavoriteRecipe) -> some View {
+        FavoriteItemView(favoriteItem: favorite)
+            .background(
+                NavigationLink {
+                    coordinator.makeRecipesView(for: favoriteRecipeToMealMapper.mapFavoriteToMeal(favorite: favorite))
+                } label: { EmptyView() }
+                    .buttonStyle(PlainButtonStyle())
+            )
+            .buttonStyle(PlainButtonStyle())
     }
 }
 

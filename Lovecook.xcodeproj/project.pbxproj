@@ -134,6 +134,8 @@
 		22B047D42B40E0140086094A /* CDFavoriteRecipe+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B047D22B40E0140086094A /* CDFavoriteRecipe+CoreDataProperties.swift */; };
 		22B047D62B43011E0086094A /* CheckFavoriteAddedUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B047D52B43011E0086094A /* CheckFavoriteAddedUseCase.swift */; };
 		22B047D82B4329850086094A /* FavoriteRecipeToMealMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B047D72B4329850086094A /* FavoriteRecipeToMealMapper.swift */; };
+		22B047DA2B449D4B0086094A /* FavoriteItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B047D92B449D4B0086094A /* FavoriteItemView.swift */; };
+		22B047DC2B44A1270086094A /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B047DB2B44A1270086094A /* CustomImageView.swift */; };
 		22E32D2B2B286E0D003731E5 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E32D2A2B286E0D003731E5 /* Recipe.swift */; };
 		22F3665F2B0CAD6C007F7E8C /* CategoriesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F3665E2B0CAD6C007F7E8C /* CategoriesRepository.swift */; };
 		22F366612B0CAFA3007F7E8C /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F366602B0CAFA3007F7E8C /* NetworkClient.swift */; };
@@ -213,6 +215,8 @@
 		22B047D22B40E0140086094A /* CDFavoriteRecipe+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDFavoriteRecipe+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		22B047D52B43011E0086094A /* CheckFavoriteAddedUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckFavoriteAddedUseCase.swift; sourceTree = "<group>"; };
 		22B047D72B4329850086094A /* FavoriteRecipeToMealMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRecipeToMealMapper.swift; sourceTree = "<group>"; };
+		22B047D92B449D4B0086094A /* FavoriteItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemView.swift; sourceTree = "<group>"; };
+		22B047DB2B44A1270086094A /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		22E32D2A2B286E0D003731E5 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		22F3665E2B0CAD6C007F7E8C /* CategoriesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesRepository.swift; sourceTree = "<group>"; };
 		22F366602B0CAFA3007F7E8C /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
@@ -367,6 +371,7 @@
 			children = (
 				22728F242B378C0700C3916E /* UserFavoritesViewModel.swift */,
 				2262B7A32B38494E0008B17E /* UserFavoritesView.swift */,
+				22B047D92B449D4B0086094A /* FavoriteItemView.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -407,6 +412,7 @@
 				22106CD12B2A9DC40090F25B /* GoogleSignInButton.swift */,
 				2279304F2B2B72F0006C9EDA /* CheckboxToggleStyle.swift */,
 				22728F2B2B37C3A900C3916E /* UserNetworkImage.swift */,
+				22B047DB2B44A1270086094A /* CustomImageView.swift */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -876,6 +882,7 @@
 				22A76ECD2B03F1F10055A36D /* CategoriesView.swift in Sources */,
 				222A95E12B0EC72A00E2AAD5 /* MealItemView.swift in Sources */,
 				22A76EE92B03F63C0055A36D /* Category.swift in Sources */,
+				22B047DA2B449D4B0086094A /* FavoriteItemView.swift in Sources */,
 				B64A93212B42D0B400E39A2D /* GetFavoriteRecipesUseCase.swift in Sources */,
 				222A8FD52B27DDA700A55B65 /* RoundedCorners.swift in Sources */,
 				22B047B82B3CE39F0086094A /* AuthDataResultModel.swift in Sources */,
@@ -884,6 +891,7 @@
 				22A76EE42B03F5D60055A36D /* NetworkError.swift in Sources */,
 				228D53032B2282F800C45BC9 /* RecipeResponse.swift in Sources */,
 				222A8FD82B27E42A00A55B65 /* ApiRecipeToRecipeMapper.swift in Sources */,
+				22B047DC2B44A1270086094A /* CustomImageView.swift in Sources */,
 				22B047D62B43011E0086094A /* CheckFavoriteAddedUseCase.swift in Sources */,
 				222A95DD2B0EC0E800E2AAD5 /* MealsByCategoryRepository.swift in Sources */,
 				B64A93242B42D3FA00E39A2D /* DeleteFavoriteRecipeUseCase.swift in Sources */,
