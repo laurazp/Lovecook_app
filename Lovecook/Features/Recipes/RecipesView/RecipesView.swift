@@ -51,14 +51,9 @@ struct RecipesView: View {
                         // MARK: - Favorite Button
                         Button {
                             isFavorite.toggle()
-                            if (isFavorite) {
-                                viewModel.addRecipeToFavorites(recipe: recipe)
-                                print("favorite added")
-                            } else {
-                                viewModel.deleteRecipeFromFavorites(recipe: recipe)
-                                print("favorite deleted")
-                            }
-                            
+                            isFavorite ? viewModel.addRecipeToFavorites(recipe: recipe) : viewModel.deleteRecipeFromFavorites(recipe: recipe)
+                            //TODO: añadir snackbar??
+                            print(isFavorite ? "favorite added" : "favorite deleted")
                         } label: {
                             Image(systemName: "heart.fill")
                                 .resizable()

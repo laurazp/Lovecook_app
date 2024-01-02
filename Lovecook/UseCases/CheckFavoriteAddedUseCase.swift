@@ -11,13 +11,7 @@ struct CheckFavoriteAddedUseCase {
     let recipesRepository: RecipesRepository
 
     func checkFavorite(recipeTitle: String) -> Bool {
-        //var isAlreadyInFavorites = false
         let favorites = recipesRepository.getAllFavoriteRecipes()
-        for favorite in favorites {
-            if (favorite.title == recipeTitle) {
-                return true
-            }
-        }
-        return false
+        return favorites.contains { $0.title == recipeTitle }
     }
 }
