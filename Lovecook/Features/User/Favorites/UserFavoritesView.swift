@@ -68,6 +68,7 @@ struct UserFavoritesView: View {
                     .buttonStyle(PlainButtonStyle())
             )
             .buttonStyle(PlainButtonStyle())
+            .shadow(color: .gray, radius: 5, x: 3, y: 3)
     }
 }
 
