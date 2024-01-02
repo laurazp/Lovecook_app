@@ -15,6 +15,7 @@ struct PhotoGalleryView: View {
     
     let gridItemLayout = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
     @State private var selectedItem: PhotosPickerItem? = nil
+    @State private var imageName: String = ""
     
     init(viewModel: PhotoGalleryViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
@@ -27,7 +28,7 @@ struct PhotoGalleryView: View {
             } else {
                 ScrollView {
                     LazyVGrid(columns: gridItemLayout, spacing: 18) {
-                        ForEach(viewModel.photos, id: \.self) { photo in
+                        ForEach(viewModel.photos, id: \.id) { photo in
                             NavigationLink {
                                 //TODO: Detail?
                                 //coordinator.makePhotoDetailView()
@@ -51,16 +52,19 @@ struct PhotoGalleryView: View {
                     /*.onChange(of: viewModel.photos) {
                         viewModel.getPhotosFromFirebase()
                     }*/
-                }.padding()
+                }.padding(.horizontal)
                 
-                VStack {
+                VStack(spacing: 16) {
+                    TextField("Enter image name", text: $imageName)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding(.horizontal)
                     //TODO: Gestionar permisos cámara y permitir acceso a cámara de fotos
                     PhotosPicker(selection: $selectedItem, matching: .images, photoLibrary: .shared()) {
                         Image(systemName: "camera.fill")
                             .font(.system(size: 30))
                             .foregroundColor(.black)
                             .shadow(color: .gray, radius: 0.2, x: 1, y: 1)
-                            .padding()
+//                            .padding()
                     }
                     Text("Share your recipes with our community!")
                         .foregroundStyle(.black)
@@ -80,7 +84,7 @@ struct PhotoGalleryView: View {
             viewModel.getPhotosFromFirebase()
         }.onChange(of: selectedItem, perform: { newValue in
             guard let newValue else { return }
-            viewModel.saveUserImage(item: newValue)
+            viewModel.saveUserImage(item: newValue, title: imageName)
         })
     }
 }
