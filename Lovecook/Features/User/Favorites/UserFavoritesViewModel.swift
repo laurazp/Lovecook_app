@@ -9,26 +9,34 @@ import Foundation
 
 class UserFavoritesViewModel: ObservableObject {
     
-    //TODO: --- private let getFavoritesUseCase: GetFavoritesUseCase
-    @Published var favoritesList = [Recipe]()
+    private let getFavoritesUseCase: GetFavoriteRecipesUseCase
+    private let addRecipeToFavoritesUseCase: AddRecipeToFavoritesUseCase
+    private let deleteFavoriteRecipeUseCase: DeleteFavoriteRecipeUseCase
+    @Published var favoritesList = [FavoriteRecipe]()
     @Published var isLoading = false
     @Published var error: Error?
     
-    /*init(getFavoritesUseCase: GetFavoritesUseCase) {
+    init(getFavoritesUseCase: GetFavoriteRecipesUseCase,
+         addRecipeToFavoritesUseCase: AddRecipeToFavoritesUseCase,
+         deleteFavoriteRecipeUseCase: DeleteFavoriteRecipeUseCase) {
         self.getFavoritesUseCase = getFavoritesUseCase
-    }*/
+        self.addRecipeToFavoritesUseCase = addRecipeToFavoritesUseCase
+        self.deleteFavoriteRecipeUseCase = deleteFavoriteRecipeUseCase
+    }
     
-    @MainActor
-    func getFavorites() {
-        error = nil
-        isLoading = true
-        
-        do {
-            //TODO: --- mealsByCategory = try getFavoritesUseCase.execute()
-        } catch(let error) {
-            self.error = error
-        }
-        
-        isLoading = false
+    //TODO: @MainActor
+    func getAllFavorites() {
+        //TODO: gestionar carga o errores?
+        favoritesList =  getFavoritesUseCase.execute()
+    }
+    
+    func addFavorite(recipe: Recipe) {
+        addRecipeToFavoritesUseCase.execute(for: recipe)
+        getAllFavorites()
+    }
+    
+    func deleteFavorite(recipe: FavoriteRecipe) {
+        deleteFavoriteRecipeUseCase.execute(for: recipe)
+        getAllFavorites()
     }
 }

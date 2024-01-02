@@ -27,8 +27,13 @@ struct ContentView: View {
         
         //TODO: Revisar !!!!
         switch viewModel.state {
-            case .signedOut: AuthView()
+        case .signedOut, .sessionError: AuthView().overlay {
+            if viewModel.state == .sessionError {
+                errorView
+            }
+        }
             case .signedIn: MainView()
+                
         }
         
 
@@ -94,6 +99,10 @@ struct ContentView: View {
     //            }
     //        }
     //    }
+    
+    var errorView: some View {
+        Text("Something went wrong...")
+    }
 }
 
 //private let itemFormatter: DateFormatter = {

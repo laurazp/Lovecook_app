@@ -16,9 +16,9 @@ struct MainView: View {
                 .tabItem {
                     Label("Categories", systemImage: "fork.knife.circle")
                 }
-            coordinator.makeUserFavoritesView()
+            coordinator.makePhotoGalleryView()
                 .tabItem {
-                    Label("Favorites", systemImage: "heart.fill")
+                    Label("Gallery", systemImage: "photo.fill")
                 }
             coordinator.makeUserMainView()
                 .tabItem {

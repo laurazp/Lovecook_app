@@ -13,18 +13,29 @@ struct MealItemView: View {
     
     var body: some View {
         ZStack {
-            KFImage(URL(string: meal.mealImage))
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
-                .shadow(color: .black, radius: 7, x: 3, y: 5)
-                //.padding(12)
-                .frame(width: 320, height: 170)
-                .background(.black)
-                .cornerRadius(16)
+            if !meal.mealImage.isEmpty, let url = URL(string: meal.mealImage) {
+                KFImage(url)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .shadow(color: .black, radius: 7, x: 3, y: 5)
+                    .frame(width: 350, height: 170)
+                    .background(.black)
+                    .cornerRadius(16)
+            } else {
+                Image("meal_placeholder")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .shadow(color: .black, radius: 7, x: 3, y: 5)
+                    .frame(width: 350, height: 170)
+                    .background(.black)
+                    .cornerRadius(16)
+            }
+            
             
                 Text(meal.mealTitle)
-                    .padding(.leading, 18)
+                    .padding()
                     .font(.title)
                     .foregroundStyle(.white)
                     .bold()

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="23C64" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="CDRecipe" representedClassName="CDRecipe" syncable="YES" codeGenerationType="class">
+        <attribute name="recipeArea" optional="YES" attributeType="String"/>
+        <attribute name="recipeCategory" optional="YES" attributeType="String"/>
+        <attribute name="recipeId" optional="YES" attributeType="String"/>
+        <attribute name="recipeImage" optional="YES" attributeType="String"/>
+        <attribute name="recipeInstructions" optional="YES" attributeType="String"/>
+        <attribute name="recipeTags" optional="YES" attributeType="Transformable" customClassName="[String]"/>
+        <attribute name="recipeTitle" optional="YES" attributeType="String"/>
+        <attribute name="recipeYoutubeUrl" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Entity" representedClassName="Entity" syncable="YES" codeGenerationType="class"/>
+</model>

@@ -24,14 +24,12 @@ struct MealsByCategoryView: View {
                 ProgressView()
             } else {
                 List(viewModel.mealsByCategory, id: \.mealId) { meal in
-                    NavigationLink {
-                        coordinator.makeRecipesView(for: meal)
-                    } label: {
-                        MealItemView(meal: meal)
-                    }
-                    .listRowSeparator(.hidden)
-                    .listRowBackground(Color.clear)
-                }.navigationTitle(category.categoryTitle)
+                    createRow(for: meal)
+                        .frame(maxWidth: .infinity)
+                        .listRowSeparator(.hidden)
+                }
+                .navigationTitle(category.categoryTitle)
+                .listStyle(PlainListStyle())
             }
         }.alert("Error", isPresented: Binding.constant(viewModel.error != nil)) {
             Button("OK") {}
@@ -49,11 +47,13 @@ struct MealsByCategoryView: View {
     
     private func createRow(for meal: Meal) -> some View {
         MealItemView(meal: meal)
-                    .background(
-                        NavigationLink {
-                            coordinator.makeRecipesView(for: meal)
-                        } label: { EmptyView() }
-                    )
+            .background(
+                NavigationLink {
+                    coordinator.makeRecipesView(for: meal)
+                } label: { EmptyView() }
+                    .buttonStyle(PlainButtonStyle())
+            )
+            .buttonStyle(PlainButtonStyle())
     }
 }
 

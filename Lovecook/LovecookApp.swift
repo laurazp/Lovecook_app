@@ -10,36 +10,15 @@ import FirebaseCore
 import FirebaseAuth
 import Firebase
 import GoogleSignIn
-
-class AppDelegate: NSObject, UIApplicationDelegate {
-    func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        
-        if FirebaseApp.app() == nil {
-            FirebaseApp.configure()
-            }
-        
-        return true
-    }
-    
-    func application(_ app: UIApplication,
-                     open url: URL,
-                     options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
-      return GIDSignIn.sharedInstance.handle(url)
-    }
-}
+import CoreData
 
 @main
 struct LovecookApp: App {
     let coordinator = Coordinator()
-    //let persistenceController = PersistenceController.shared
-    
-    // Firebase setup
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject var viewModel = AuthenticationViewModel()
-    
+  
     init() {
-        setupAuthentication()
+        setupFirebase()
     }
     
     var body: some Scene {
@@ -47,13 +26,14 @@ struct LovecookApp: App {
             SplashView()
                 .environmentObject(coordinator)
                 .environmentObject(viewModel)
-            //.environment(\.managedObjectContext, persistenceController.container.viewContext)
+//                .environment(\.managedObjectContext, CoreDataPersistenceController.shared.viewContext)
+            //.environment(\.managedObjectContext, coreDataPersistenceController.container.viewContext)
         }
     }
 }
 
 extension LovecookApp {
-    private func setupAuthentication() {
+    private func setupFirebase() {
         FirebaseApp.configure()
     }
 }
