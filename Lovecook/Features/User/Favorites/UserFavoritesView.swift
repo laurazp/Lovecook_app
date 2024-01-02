@@ -9,12 +9,12 @@ import SwiftUI
 
 struct UserFavoritesView: View {
     @EnvironmentObject var coordinator: Coordinator
-    @StateObject var viewModel: RecipesViewModel
+    @StateObject var viewModel: UserFavoritesViewModel
+    @Environment(\.managedObjectContext) var viewContext
     
-    //TODO: borrar al terminar de usar
-    var favoritesList: [Recipe]  = [Recipe.example, Recipe.example, Recipe.example, Recipe.example]
+    private let favoriteRecipeToMealMapper = FavoriteRecipeToMealMapper()
     
-    init(viewModel: RecipesViewModel) {
+    init(viewModel: UserFavoritesViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
 
@@ -23,33 +23,42 @@ struct UserFavoritesView: View {
             if viewModel.isLoading {
                 ProgressView()
             } else {
-                List(favoritesList, id: \.recipeId /*viewModel.favoritesList*/) { favorite in
-                    NavigationLink {
-                        Text(favorite.recipeTitle)
-                        /*coordinator.makeRecipesView(for: favorite)*/
-                    } label: {
-                        /*FavoriteItemView(favorite: favorite)*/
+                List {
+                    ForEach(viewModel.favoritesList, id: \.id) { favorite in
+                        NavigationLink {
+                            coordinator.makeRecipesView(for: favoriteRecipeToMealMapper.mapFavoriteToMeal(favorite: favorite))
+                        } label: {
+                            //TODO: FavoriteItemView(favorite: favorite)
+                            Text(favorite.title ?? "Untitled")
+                        }
+                        .listRowSeparator(.hidden)
+                        .listRowBackground(Color.clear)
+                        .swipeActions(edge: .leading) {
+                            Button {
+                                if let index = viewModel.favoritesList.firstIndex(of: favorite) {
+                                    viewModel.favoritesList.remove(at: index)
+                                    viewModel.deleteFavorite(recipe: favorite)
+                                }
+                            } label: {
+                                Label("Delete", systemImage: "trash")
+                            }
+                            .tint(.red)
+                        }
                     }
-                    .listRowSeparator(.hidden)
-                    .listRowBackground(Color.clear)
                 }
             }
         }.alert("Error", isPresented: Binding.constant(viewModel.error != nil)) {
             Button("OK") {}
             Button("Retry") {
                 Task {
-                    await /*viewModel.*/getFavoritesList()
+                    viewModel.getAllFavorites()
                 }
             }
         } message: {
             Text(viewModel.error?.localizedDescription ?? "")
         }.task {
-            await /*viewModel.*/getFavoritesList()
+            viewModel.getAllFavorites()
         }
-    }
-    
-    func getFavoritesList() async -> [Recipe] {
-        return self.favoritesList
     }
 }
 

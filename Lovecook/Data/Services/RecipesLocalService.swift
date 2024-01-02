@@ -6,18 +6,24 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct RecipesLocalService {
-    //TODO: CoreData ??
+    private let persistanceController: CoreDataPersistenceController
+    
+    init(persistanceController: CoreDataPersistenceController) {
+        self.persistanceController = persistanceController
+    }
     
     func addRecipeToFavorites(recipe: Recipe) {
-        
+        persistanceController.addRecipeToFavorites(recipe: recipe)
+    }
+    
+    func deleteFavorite(recipe: FavoriteRecipe) {
+        persistanceController.deleteFavorite(recipe: recipe)
+    }
+    
+    func getAllFavorites() -> [CDFavoriteRecipe] {
+        persistanceController.getAllFavorites()
     }
 }
-
-
-//TODO: los services deberían ser sólo protocols?
-/*protocol CharactersLocalService {
-    func getCharacters() throws -> [Character]
-    func save(characters: [Character]) throws
-}*/

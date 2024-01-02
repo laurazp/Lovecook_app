@@ -8,21 +8,23 @@
 import SwiftUI
 import Kingfisher
 import YouTubePlayerKit
+import CoreData
 
 struct RecipesView: View {
     var meal: Meal
     @StateObject private var viewModel: RecipesViewModel
     @EnvironmentObject var coordinator: Coordinator
-    @State var isFavorite: Bool = false
+    @State var isFavorite: Bool
     
-    init(meal: Meal, viewModel: RecipesViewModel) {
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    init(meal: Meal, viewModel: RecipesViewModel, isFavorite: Bool) {
         _viewModel = StateObject(wrappedValue: viewModel)
         self.meal = meal
+        self.isFavorite = viewModel.checkIfFavorite(meal: self.meal)
     }
     
     var body: some View {
-        
-        //let recipe = viewModel.getRecipe(mealId: Int(meal.mealId)
         ScrollView {
             if viewModel.isLoading {
                 ProgressView()
@@ -46,11 +48,12 @@ struct RecipesView: View {
                                     .mask(RoundedCorners(tl: 0, tr: 0, bl: 0, br: 15))
                             }
                         
-                        // MARK: - Favorite FAB
+                        // MARK: - Favorite Button
                         Button {
-                            //TODO: add to favorites and change color
                             isFavorite.toggle()
-                            viewModel.addRecipeToFavorites(recipe: recipe)
+                            isFavorite ? viewModel.addRecipeToFavorites(recipe: recipe) : viewModel.deleteRecipeFromFavorites(recipe: recipe)
+                            //TODO: añadir snackbar??
+                            print(isFavorite ? "favorite added" : "favorite deleted")
                         } label: {
                             Image(systemName: "heart.fill")
                                 .resizable()
@@ -59,7 +62,7 @@ struct RecipesView: View {
                                 .padding(12)
                         }
                         .background(.white)
-                        .foregroundColor(viewModel.getFavIconForegroundColor(isFavorite: isFavorite))
+                        .foregroundColor(viewModel.getFavIconForegroundColor(recipe: recipe, isFavorite: isFavorite))
                         .cornerRadius(.infinity)
                         .padding()
                     }

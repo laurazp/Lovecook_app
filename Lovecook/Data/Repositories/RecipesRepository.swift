@@ -11,7 +11,8 @@ struct RecipesRepository {
     private let remoteService: RecipesRemoteService
     private let localService: RecipesLocalService
     
-    init(remoteService: RecipesRemoteService, localService: RecipesLocalService) {
+    init(remoteService: RecipesRemoteService, 
+         localService: RecipesLocalService) {
         self.remoteService = remoteService
         self.localService = localService
     }
@@ -30,7 +31,19 @@ struct RecipesRepository {
             localService.addRecipeToFavorites(recipe: recipe)
         } catch(let error) {
             print(error.localizedDescription)
-            //throw error
+            //TODO: revisar - throw error
         }
+    }
+    
+    func getAllFavoriteRecipes() -> [FavoriteRecipe] {
+        localService.getAllFavorites()
+            .compactMap({ cdFavorite in
+                guard let title = cdFavorite.title, let id = cdFavorite.id else { return nil }
+                return FavoriteRecipe(title: title, id: id, image: cdFavorite.image ?? "")
+            })
+    }
+  
+    func deleteRecipe(recipe: FavoriteRecipe) {
+        localService.deleteFavorite(recipe: recipe)
     }
 }

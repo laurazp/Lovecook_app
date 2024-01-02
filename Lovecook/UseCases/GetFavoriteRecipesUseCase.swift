@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct AddRecipeToFavoritesUseCase {
+struct GetFavoriteRecipesUseCase {
     let recipesRepository: RecipesRepository
 
-    func execute(for recipe: Recipe) {
-        recipesRepository.addRecipeToFavorites(recipe: recipe)
+    func execute() -> [FavoriteRecipe] {
+        recipesRepository.getAllFavoriteRecipes()
     }
 }

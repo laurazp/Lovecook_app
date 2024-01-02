@@ -10,14 +10,13 @@ import FirebaseCore
 import FirebaseAuth
 import Firebase
 import GoogleSignIn
+import CoreData
 
 @main
 struct LovecookApp: App {
     let coordinator = Coordinator()
     @StateObject var viewModel = AuthenticationViewModel()
-
-    //let persistenceController = PersistenceController.shared
-    
+  
     init() {
         setupFirebase()
     }
@@ -27,7 +26,8 @@ struct LovecookApp: App {
             SplashView()
                 .environmentObject(coordinator)
                 .environmentObject(viewModel)
-            //.environment(\.managedObjectContext, persistenceController.container.viewContext)
+//                .environment(\.managedObjectContext, CoreDataPersistenceController.shared.viewContext)
+            //.environment(\.managedObjectContext, coreDataPersistenceController.container.viewContext)
         }
     }
 }
