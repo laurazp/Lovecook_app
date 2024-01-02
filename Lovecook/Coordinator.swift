@@ -59,7 +59,7 @@ class Coordinator: ObservableObject {
     
     // MARK: - RecipesView
     func makeRecipesView(for meal: Meal) -> RecipesView {
-        RecipesView(meal: meal, viewModel: makeRecipesViewModel())
+        RecipesView(meal: meal, viewModel: makeRecipesViewModel(), isFavorite: false)
     }
     
     // MARK: - UserAccountView

@@ -51,14 +51,23 @@ class RecipesViewModel: ObservableObject {
     }
     
     func deleteRecipeFromFavorites(recipe: Recipe) {
-        deleteFavoriteRecipeUseCase.execute(for: recipe)
+        let favoriteToDelete = FavoriteRecipe(
+            title: recipe.recipeTitle,
+            id: recipe.id,
+            image: recipe.recipeImage)
+        
+        deleteFavoriteRecipeUseCase.execute(for: favoriteToDelete)
     }
     
-    func getFavIconForegroundColor(isFavorite: Bool) -> Color {
-        if (isFavorite) {
-            return Color.pink
+    func getFavIconForegroundColor(recipe: Recipe, isFavorite: Bool) -> Color {
+        return if checkFavoriteAddedUseCase.checkFavorite(recipeTitle: recipe.recipeTitle) || isFavorite {
+            Color.pink
         } else {
-            return Color.gray
+            Color.gray
         }
+    }
+    
+    func checkIfFavorite(meal: Meal) -> Bool {
+        return checkFavoriteAddedUseCase.checkFavorite(recipeTitle: meal.mealTitle)
     }
 }
