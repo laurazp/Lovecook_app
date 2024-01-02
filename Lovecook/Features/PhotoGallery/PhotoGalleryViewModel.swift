@@ -5,7 +5,7 @@
 //  Created by Laura Zafra Prat on 24/12/23.
 //
 
-import Foundation
+import SwiftUI
 import FirebaseStorage
 import _PhotosUI_SwiftUI
 
@@ -20,6 +20,8 @@ class PhotoGalleryViewModel: ObservableObject {
     
     @MainActor
     func getPhotosFromFirebase() {
+        photos.removeAll()
+        
         let storageRef = storage.child("images")
         
         storageRef.listAll { (result, error) in
@@ -39,7 +41,6 @@ class PhotoGalleryViewModel: ObservableObject {
                                     self.photos.append(
                                         Photo(url: downloadURL, name: metadata?.customMetadata?["title"] ?? item.name)
                                     )
-                                    print("Download URL: \(downloadURL)")
                                 }
                             }
                         }
@@ -49,15 +50,12 @@ class PhotoGalleryViewModel: ObservableObject {
         }
     }
     
-    func saveUserImage(item: PhotosPickerItem, title: String) {
+    func saveUserImage(item: PhotosPickerItem, title: String, completion: @escaping (String) -> Void) {
         Task {
             guard let data = try await item.loadTransferable(type: Data.self) else { return }
             let (path, name, title) = try await StorageManager.shared.saveImage(data: data, title: title/*, userId: user.userId*/)
             //refreshView.toggle()
             print("SUCCESS!")
-            print(path)
-            print(name)
-            // Retrieve uploaded image path and append to current photos
             let storageRef = storage.child("images").child(name)
             storageRef.downloadURL(completion: { [unowned self] (url, error) in
                 guard error == nil, let url = url else {
@@ -65,6 +63,7 @@ class PhotoGalleryViewModel: ObservableObject {
                     return
                 }
                 self.photos.append(Photo(url: url, name: title ?? name))
+                completion("")
             })
         }
     }

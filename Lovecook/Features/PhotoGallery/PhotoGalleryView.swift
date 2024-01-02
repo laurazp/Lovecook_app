@@ -29,33 +29,27 @@ struct PhotoGalleryView: View {
                 ScrollView {
                     LazyVGrid(columns: gridItemLayout, spacing: 18) {
                         ForEach(viewModel.photos, id: \.id) { photo in
-                            NavigationLink {
-                                //TODO: Detail?
-                                //coordinator.makePhotoDetailView()
-                            } label: {
-                                VStack(alignment: .center) {
-                                    RemoteImageView(downloadURL: photo.url)
-                                        .frame(width: 110, height: 120)
-                                    
-                                    Text(photo.name)
-                                        .lineLimit(1)
-                                        .foregroundStyle(.black)
-                                        .bold()
-                                        .shadow(color: .gray, radius: 5, x: 3, y: 3)
-                                }
+                            VStack(alignment: .center) {
+                                RemoteImageView(downloadURL: photo.url)
+                                    .frame(width: 110, height: 120)
+                                
+                                Text(photo.name)
+                                    .lineLimit(1)
+                                    .foregroundStyle(.black)
+                                    .bold()
+                                    .shadow(color: .gray, radius: 5, x: 3, y: 3)
                             }
                         }
                     }
-                    //.id(UUID())
-                    //.id(viewModel.refreshView)
                     .navigationTitle("Gallery")
-                    /*.onChange(of: viewModel.photos) {
-                        viewModel.getPhotosFromFirebase()
-                    }*/
                 }.padding(.horizontal)
                 
-                VStack(spacing: 16) {
-                    TextField("Enter image name", text: $imageName)
+                VStack(spacing: 14) {
+                    Text("Enter a name for your image before choosing one!")
+                        .foregroundStyle(.black)
+                        .bold()
+                        .font(.caption)
+                    TextField("Your image name", text: $imageName)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.horizontal)
                     //TODO: Gestionar permisos cámara y permitir acceso a cámara de fotos
@@ -64,12 +58,17 @@ struct PhotoGalleryView: View {
                             .font(.system(size: 30))
                             .foregroundColor(.black)
                             .shadow(color: .gray, radius: 0.2, x: 1, y: 1)
-//                            .padding()
                     }
                     Text("Share your recipes with our community!")
                         .foregroundStyle(.black)
                         .bold()
-                }.padding()
+                }
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(Color.lightGreen.opacity(0.5))
+                .cornerRadius(15)
+                .shadow(color: Color.black.opacity(0.2), radius: 7, x: 0, y: 2)
+                .padding([.horizontal, .vertical], 20)
             }
         }.alert("Error", isPresented: Binding.constant(viewModel.error != nil)) {
             Button("OK") {}
@@ -82,10 +81,12 @@ struct PhotoGalleryView: View {
             Text(viewModel.error?.localizedDescription ?? "")
         }.task {
             viewModel.getPhotosFromFirebase()
-        }.onChange(of: selectedItem, perform: { newValue in
+        }.onChange(of: selectedItem) { newValue in
             guard let newValue else { return }
-            viewModel.saveUserImage(item: newValue, title: imageName)
-        })
+            viewModel.saveUserImage(item: newValue, title: imageName) { clearedText in
+                imageName = clearedText
+            }
+        }
     }
 }
 
