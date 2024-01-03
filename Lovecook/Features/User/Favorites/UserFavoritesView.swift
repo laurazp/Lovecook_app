@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Toast
 
 struct UserFavoritesView: View {
     @EnvironmentObject var coordinator: Coordinator
@@ -34,6 +35,10 @@ struct UserFavoritesView: View {
                                     if let index = viewModel.favoritesList.firstIndex(of: favorite) {
                                         viewModel.favoritesList.remove(at: index)
                                         viewModel.deleteFavorite(recipe: favorite)
+                                        
+                                        Toast.default(
+                                            image: UIImage(systemName: "heart")!,
+                                            title: "Favorite deleted").show()
                                     }
                                 } label: {
                                     Label("Delete", systemImage: "trash")

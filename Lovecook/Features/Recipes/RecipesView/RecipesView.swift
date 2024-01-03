@@ -9,6 +9,7 @@ import SwiftUI
 import Kingfisher
 import YouTubePlayerKit
 import CoreData
+import Toast
 
 struct RecipesView: View {
     var meal: Meal
@@ -52,8 +53,12 @@ struct RecipesView: View {
                         Button {
                             isFavorite.toggle()
                             isFavorite ? viewModel.addRecipeToFavorites(recipe: recipe) : viewModel.deleteRecipeFromFavorites(recipe: recipe)
-                            //TODO: añadir snackbar??
-                            print(isFavorite ? "favorite added" : "favorite deleted")
+                            
+                            isFavorite ? Toast.default(
+                                image: UIImage(systemName: "heart.fill")!,
+                                title: "Favorite added").show() : Toast.default(
+                                    image: UIImage(systemName: "heart")!,
+                                    title: "Favorite deleted").show()
                         } label: {
                             Image(systemName: "heart.fill")
                                 .resizable()

@@ -11,6 +11,7 @@
 		22106CD22B2A9DC40090F25B /* GoogleSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22106CD12B2A9DC40090F25B /* GoogleSignInButton.swift */; };
 		22166FC22B4585B200D061AD /* SignInWithAppleSwiftUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22166FC12B4585B200D061AD /* SignInWithAppleSwiftUIButton.swift */; };
 		22166FC62B45DD3E00D061AD /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22166FC52B45DD3E00D061AD /* Ingredient.swift */; };
+		22166FC92B46250700D061AD /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 22166FC82B46250700D061AD /* Toast */; };
 		22259F102B2A8E5A00C4BF84 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 22259F0F2B2A8E5A00C4BF84 /* FirebaseAnalyticsOnDeviceConversion */; };
 		22259F122B2A8E5A00C4BF84 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 22259F112B2A8E5A00C4BF84 /* FirebaseAnalyticsSwift */; };
 		22259F162B2A8E5A00C4BF84 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 22259F152B2A8E5A00C4BF84 /* FirebaseAppCheck */; };
@@ -153,7 +154,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		22106CCD2B2A940D0090F25B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		22106CCD2B2A940D0090F25B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22106CCF2B2A95300090F25B /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		22106CD12B2A9DC40090F25B /* GoogleSignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInButton.swift; sourceTree = "<group>"; };
 		22166FC02B45851000D061AD /* Lovecook.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lovecook.entitlements; sourceTree = "<group>"; };
@@ -270,6 +271,7 @@
 				22259F1C2B2A8E5A00C4BF84 /* FirebaseAuthCombine-Community in Frameworks */,
 				22259F202B2A8E5A00C4BF84 /* FirebaseDatabase in Frameworks */,
 				22259F752B2A90CF00C4BF84 /* FirebaseMessaging in Frameworks */,
+				22166FC92B46250700D061AD /* Toast in Frameworks */,
 				22259F732B2A90CF00C4BF84 /* FirebaseMLModelDownloader in Frameworks */,
 				22259F572B2A90CF00C4BF84 /* FirebaseAuth in Frameworks */,
 				22259F2C2B2A8E5A00C4BF84 /* FirebaseFunctions in Frameworks */,
@@ -479,8 +481,6 @@
 		22A76EB52B03E55D0055A36D /* Lovecook */ = {
 			isa = PBXGroup;
 			children = (
-				22166FC02B45851000D061AD /* Lovecook.entitlements */,
-				22106CCD2B2A940D0090F25B /* Info.plist */,
 				22A76EB62B03E55D0055A36D /* LovecookApp.swift */,
 				22A76EB82B03E55D0055A36D /* ContentView.swift */,
 				22A76EEA2B03F8A80055A36D /* Coordinator.swift */,
@@ -496,6 +496,8 @@
 				22B047E02B44DEDA0086094A /* Utils */,
 				228D52ED2B1F9F4500C45BC9 /* Assets */,
 				22259F8C2B2A92AB00C4BF84 /* GoogleService-Info.plist */,
+				22106CCD2B2A940D0090F25B /* Info.plist */,
+				22166FC02B45851000D061AD /* Lovecook.entitlements */,
 				22A76EBA2B03E55E0055A36D /* Assets.xcassets */,
 				22A76EBC2B03E55E0055A36D /* Preview Content */,
 			);
@@ -785,6 +787,7 @@
 				22259F862B2A90F600C4BF84 /* FirebaseAnalyticsWithoutAdIdSupport */,
 				22259F882B2A90F600C4BF84 /* FirebaseAppCheck */,
 				22A027B32B32707F00F44C68 /* YouTubePlayerKit */,
+				22166FC82B46250700D061AD /* Toast */,
 			);
 			productName = Lovecook;
 			productReference = 22A76EB32B03E55D0055A36D /* Lovecook.app */;
@@ -820,6 +823,7 @@
 				22259F0C2B2A8E5A00C4BF84 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				22259F432B2A8ED300C4BF84 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				22A027B22B32707F00F44C68 /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */,
+				22166FC72B46250700D061AD /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = 22A76EB42B03E55D0055A36D /* Products */;
 			projectDirPath = "";
@@ -1137,6 +1141,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		22166FC72B46250700D061AD /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BastiaanJansen/Toast-Swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.1;
+			};
+		};
 		22259F0C2B2A8E5A00C4BF84 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1180,6 +1192,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		22166FC82B46250700D061AD /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22166FC72B46250700D061AD /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
 		22259F0F2B2A8E5A00C4BF84 /* FirebaseAnalyticsOnDeviceConversion */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 22259F0C2B2A8E5A00C4BF84 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
