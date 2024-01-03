@@ -30,14 +30,18 @@ struct CategoryItemView: View {
             
             
             VStack {
-                Spacer()
                 Text(category.categoryTitle)
                     .font(.largeTitle)
                     .foregroundStyle(.white)
                     .bold()
-                .shadow(color: .black, radius: 5, x: 3, y: 5)
+                    .shadow(color: .black, radius: 5, x: 3, y: 5)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.5)
+                    .padding(.horizontal)
+                    .padding(.top, 120)
+                Spacer()
             }
-                //TODO: tipografía ??
         }
         .frame(width: 190, height: 200)
     }

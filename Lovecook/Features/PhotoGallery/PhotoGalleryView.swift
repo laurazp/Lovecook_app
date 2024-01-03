@@ -42,7 +42,7 @@ struct PhotoGalleryView: View {
                         }
                     }
                     .navigationTitle("Gallery")
-                }.padding(.horizontal)
+                }.padding()
                 
                 VStack(spacing: 14) {
                     Text("Enter a name for your image before choosing one!")
