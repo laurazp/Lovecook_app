@@ -29,8 +29,8 @@ struct RecipesView: View {
             if viewModel.isLoading {
                 ProgressView()
             } else if let recipe = viewModel.recipe {
-                    VStack(alignment: .leading, spacing: 10) {
-                        ZStack(alignment: Alignment(horizontal: .trailing, vertical: .bottom)) {
+                VStack(alignment: .leading, spacing: 10) {
+                    ZStack(alignment: Alignment(horizontal: .trailing, vertical: .bottom)) {
                         KFImage(URL(string: recipe.recipeImage))
                             .resizable()
                             .scaledToFill()
@@ -66,90 +66,101 @@ struct RecipesView: View {
                         .cornerRadius(.infinity)
                         .padding()
                     }
+                    
+                    VStack(alignment: .leading, spacing: 8) {
+                        // MARK: - Category
+                        HStack(alignment: .center, spacing: 0) {
+                            Text("Category:  ")
+                                .foregroundColor(Color.black)
+                                .fontWeight(Font.Weight.bold)
+                            Text(recipe.recipeCategory)
+                                .foregroundColor(Color.gray)
+                        }
+                        .font(Font.custom("HelveticaNeue", size: 14))
+                        .padding(.horizontal, 16)
                         
-                        VStack(alignment: .leading, spacing: 8) {
-                            // MARK: - Category
-                            HStack(alignment: .center, spacing: 0) {
-                                Text("Category:  ")
-                                    .foregroundColor(Color.black)
-                                    .fontWeight(Font.Weight.bold)
-                                Text(recipe.recipeCategory)
-                                    .foregroundColor(Color.gray)
-                            }.font(Font.custom("HelveticaNeue", size: 14))
-                            
-                            // MARK: - Tags
-                            if let recipeTags = viewModel.recipe?.recipeTags {
-                                HStack {
-                                    Text("Tags:")
-                                        .font(Font.system(size: 13))
-                                        .fontWeight(Font.Weight.heavy)
-                                    
-                                    ForEach(recipeTags, id: \.self) { tag in
-                                        HStack {
-                                            Text(tag)
-                                                .font(Font.custom("HelveticaNeue-Medium", size: 12))
-                                                .padding([.leading, .trailing], 10)
-                                                .padding([.top, .bottom], 5)
-                                                .foregroundColor(Color.white)
-                                        }
+                        // MARK: - Tags
+                        if let recipeTags = viewModel.recipe?.recipeTags {
+                            HStack {
+                                Text("Tags:")
+                                    .font(Font.system(size: 13))
+                                    .fontWeight(Font.Weight.heavy)
+                                
+                                ForEach(recipeTags, id: \.self) { tag in
+                                    HStack {
+                                        Text(tag)
+                                            .font(Font.custom("HelveticaNeue-Medium", size: 12))
+                                            .padding([.leading, .trailing], 10)
+                                            .padding([.top, .bottom], 5)
+                                            .foregroundColor(Color.white)
                                     }
-                                    .background(Color(red: 43/255, green: 175/255, blue: 187/255))
-                                    .cornerRadius(7)
                                 }
-                                Spacer()
+                                .background(Color(red: 43/255, green: 175/255, blue: 187/255))
+                                .cornerRadius(7)
                             }
-                            
-                            Divider()
-                                .padding([.leading, .trailing], -12)
-                            
-                            // MARK: - Ingredients
-                            HStack(alignment: .center, spacing: 6) {
-                                Spacer()
-                                Text("measure")
-                                    .fontWeight(Font.Weight.bold)
-                                    .foregroundColor(Color.gray)
-                                Text("ingredient")
+                            .padding(.horizontal, 16)
+                            Spacer()
+                        }
+                        
+                        Divider()
+                            .padding([.leading, .trailing], -12)
+                        Spacer()
+                        
+                        // MARK: - Ingredients
+                        if let ingredients = viewModel.recipe?.ingredients {
+                            VStack(alignment: .leading, spacing: 16) {
+                                
+                                Text("Ingredients")
+                                    .font(.title2)
                                     .fontWeight(Font.Weight.heavy)
-                                Spacer()
-                            }.padding([.top, .bottom], 8)
-                            
-                            Divider()
-                                .padding([.leading, .trailing], -12)
-                            
-                            // MARK: - Instructions
-                            VStack(alignment: .leading) {
-                                Spacer()
-                                Text("COOKING INSTRUCTIONS")
-                                    .fontWeight(Font.Weight.heavy)
-                                    .font(Font.system(size: 18))
                                     .foregroundColor(Color.gray)
                                 
-                                Spacer()
-                                
-                                Spacer()
-                                Text(recipe.recipeInstructions)
-                                    .font(Font.custom("HelveticaNeue-Bold", size: 16))
-                                    .foregroundColor(Color.gray)
-                                Spacer()
+                                ForEach(ingredients, id: \.self) { ingredient in
+                                    HStack {
+                                        Text("\(ingredient.measure)")
+                                            .foregroundColor(Color.gray)
+                                            .fontWeight(Font.Weight.heavy)
+                                        Text("\(ingredient.ingredient)")
+                                    }
+                                    .font(Font.custom("HelveticaNeue", size: 18))
+                                }
                             }
-                            .padding(12)
+                            .padding([.horizontal, .bottom], 16)
+                        }
+                        
+                        Divider()
+                            .padding([.leading, .trailing], -12)
+                        
+                        // MARK: - Instructions
+                        VStack(alignment: .leading, spacing: 18) {
+                            Text("Cooking Instructions")
+                                .font(.title2)
+                                .fontWeight(Font.Weight.heavy)
+                                .foregroundColor(Color.gray)
                             
                             //TODO: gestionar error y loadingView
+                            // MARK: - Video player
                             HStack(alignment: .center) {
                                 YouTubePlayerView(YouTubePlayer(stringLiteral: recipe.recipeYoutubeUrl))
                             }
-                            .padding(8)
-                            .frame(width: 350, height: 200)
+                            .padding(.bottom, 10)
+                            .frame(height: 200)
                             
-                            Spacer()
+                            Text(recipe.recipeInstructions)
+                                .font(Font.custom("HelveticaNeue", size: 18))
+                                .foregroundColor(Color.black)
                         }
                         .padding(12)
-                        .navigationTitle(meal.mealTitle)
+                        
+                        Spacer()
                     }
-                    .background(Color.white)
-                    .cornerRadius(15)
-                    .shadow(color: Color.black.opacity(0.2), radius: 7, x: 0, y: 2)
-                    .padding(20)
+                    .padding(12)
+                    .navigationTitle(meal.mealTitle)
+                }
+                .background(Color.white)
+                .cornerRadius(15)
+                .shadow(color: Color.black.opacity(0.2), radius: 7, x: 0, y: 2)
+                .padding(20)
             }
         }.task {
             await viewModel.getRecipe(mealId: Int(meal.mealId) ?? 1)
