@@ -12,8 +12,11 @@ import PhotosUI
 struct PhotoGalleryView: View {
     @StateObject private var viewModel: PhotoGalleryViewModel
     @EnvironmentObject var coordinator: Coordinator
+    private let permissionUtils = PermissionUtils()
     
     let gridItemLayout = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
+    
+    @State private var showImagePicker = false
     @State private var selectedItem: PhotosPickerItem? = nil
     @State private var imageName: String = ""
     
@@ -53,16 +56,29 @@ struct PhotoGalleryView: View {
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.horizontal)
                     //TODO: Gestionar permisos cámara y permitir acceso a cámara de fotos
-                    PhotosPicker(selection: $selectedItem, matching: .images, photoLibrary: .shared()) {
-                        Image(systemName: "camera.fill")
-                            .font(.system(size: 30))
-                            .foregroundColor(.black)
-                            .shadow(color: .gray, radius: 0.2, x: 1, y: 1)
+                    
+                    Button {
+                        Task {
+                            await permissionUtils.requestPhotoLibraryAccess()
+                            /*if await permissionUtils.hasPhotoLibraryPermission {
+                                showImagePicker = true
+                            }*/
+                        }
+                    } label: {
+                        /*PhotosPicker(selection: $selectedItem, matching: .images, photoLibrary: .shared()) {*/
+                            Image(systemName: "camera.fill")
+                                .font(.system(size: 30))
+                                .foregroundColor(.black)
+                                .shadow(color: .gray, radius: 0.2, x: 1, y: 1)
+                        //}
                     }
+                    
                     Text("Share your recipes with our community!")
                         .foregroundStyle(.black)
                         .bold()
-                }
+                }/*.sheet(isPresented: $showImagePicker) {
+                    PhotosPicker("", selection: $selectedItem, matching: .images, photoLibrary: .shared())
+                }*/
                 .padding()
                 .frame(maxWidth: .infinity)
                 .background(Color.lightGreen.opacity(0.5))
