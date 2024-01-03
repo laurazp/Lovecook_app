@@ -15,7 +15,7 @@ struct LogInView: View {
     @State private var userPassword: String = ""
     
     var body: some View {
-        VStack(spacing: 18) {
+        VStack(spacing: 22) {
             Text("WELCOME BACK!")
                 .font(Font.system(size: 20))
                 .fontWeight(Font.Weight.bold)
@@ -25,16 +25,17 @@ struct LogInView: View {
                 .fontWeight(Font.Weight.bold)
                 .foregroundColor(Color.gray)
              
-            VStack {
+            VStack(spacing: 46) {
                 GoogleSignInButton()
                         .padding()
                         .onTapGesture {
                           viewModel.signIn()
                         }
                 
-                //TODO: Botón para acceder a login de Apple ???
+                SignInWithAppleSwiftUIButton()
+                //TODO: aún falta que lleve a página de inicio al loguear
             }
-            .frame(height: 120)
+            .frame(height: 130)
 
             Text("- or continue with e-mail -")
                 .font(Font.system(size: 16))

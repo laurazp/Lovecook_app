@@ -97,5 +97,8 @@ final class AuthenticationManager {
             completion(.sessionError)
         }
     }
-
+    
+    func signInWithApple() {
+        
+    }
 }

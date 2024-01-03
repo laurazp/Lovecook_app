@@ -33,4 +33,8 @@ class AuthenticationViewModel: ObservableObject {
             self.state = .signedOut
         }
     }
+    
+    func signInWithApple() {
+        self.authenticationManager.signInWithApple()
+    }
 }

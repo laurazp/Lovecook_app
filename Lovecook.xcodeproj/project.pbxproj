@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		22106CD02B2A95300090F25B /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22106CCF2B2A95300090F25B /* AuthenticationViewModel.swift */; };
 		22106CD22B2A9DC40090F25B /* GoogleSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22106CD12B2A9DC40090F25B /* GoogleSignInButton.swift */; };
+		22166FC22B4585B200D061AD /* SignInWithAppleSwiftUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22166FC12B4585B200D061AD /* SignInWithAppleSwiftUIButton.swift */; };
 		22259F102B2A8E5A00C4BF84 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 22259F0F2B2A8E5A00C4BF84 /* FirebaseAnalyticsOnDeviceConversion */; };
 		22259F122B2A8E5A00C4BF84 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 22259F112B2A8E5A00C4BF84 /* FirebaseAnalyticsSwift */; };
 		22259F162B2A8E5A00C4BF84 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 22259F152B2A8E5A00C4BF84 /* FirebaseAppCheck */; };
@@ -154,6 +155,8 @@
 		22106CCD2B2A940D0090F25B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		22106CCF2B2A95300090F25B /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		22106CD12B2A9DC40090F25B /* GoogleSignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInButton.swift; sourceTree = "<group>"; };
+		22166FC02B45851000D061AD /* Lovecook.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lovecook.entitlements; sourceTree = "<group>"; };
+		22166FC12B4585B200D061AD /* SignInWithAppleSwiftUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleSwiftUIButton.swift; sourceTree = "<group>"; };
 		22259F8C2B2A92AB00C4BF84 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		222A8FD42B27DDA700A55B65 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
 		222A8FD72B27E42A00A55B65 /* ApiRecipeToRecipeMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRecipeToRecipeMapper.swift; sourceTree = "<group>"; };
@@ -415,6 +418,7 @@
 				2279304F2B2B72F0006C9EDA /* CheckboxToggleStyle.swift */,
 				22728F2B2B37C3A900C3916E /* UserNetworkImage.swift */,
 				22B047DB2B44A1270086094A /* CustomImageView.swift */,
+				22166FC12B4585B200D061AD /* SignInWithAppleSwiftUIButton.swift */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -473,6 +477,7 @@
 		22A76EB52B03E55D0055A36D /* Lovecook */ = {
 			isa = PBXGroup;
 			children = (
+				22166FC02B45851000D061AD /* Lovecook.entitlements */,
 				22106CCD2B2A940D0090F25B /* Info.plist */,
 				22A76EB62B03E55D0055A36D /* LovecookApp.swift */,
 				22A76EB82B03E55D0055A36D /* ContentView.swift */,
@@ -892,6 +897,7 @@
 				222A95D62B0EBB6D00E2AAD5 /* ApiMeal.swift in Sources */,
 				22B047B32B3CD6090086094A /* SignUpViewModel.swift in Sources */,
 				22A76ECD2B03F1F10055A36D /* CategoriesView.swift in Sources */,
+				22166FC22B4585B200D061AD /* SignInWithAppleSwiftUIButton.swift in Sources */,
 				222A95E12B0EC72A00E2AAD5 /* MealItemView.swift in Sources */,
 				22A76EE92B03F63C0055A36D /* Category.swift in Sources */,
 				22B047DA2B449D4B0086094A /* FavoriteItemView.swift in Sources */,
@@ -1044,6 +1050,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Lovecook/Lovecook.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Lovecook/Preview Content\"";
@@ -1075,6 +1082,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Lovecook/Lovecook.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Lovecook/Preview Content\"";
