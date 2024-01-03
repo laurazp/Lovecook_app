@@ -136,6 +136,7 @@
 		22B047D82B4329850086094A /* FavoriteRecipeToMealMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B047D72B4329850086094A /* FavoriteRecipeToMealMapper.swift */; };
 		22B047DA2B449D4B0086094A /* FavoriteItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B047D92B449D4B0086094A /* FavoriteItemView.swift */; };
 		22B047DC2B44A1270086094A /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B047DB2B44A1270086094A /* CustomImageView.swift */; };
+		22B047E22B44DEEB0086094A /* PermissionUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B047E12B44DEEB0086094A /* PermissionUtils.swift */; };
 		22E32D2B2B286E0D003731E5 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E32D2A2B286E0D003731E5 /* Recipe.swift */; };
 		22F3665F2B0CAD6C007F7E8C /* CategoriesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F3665E2B0CAD6C007F7E8C /* CategoriesRepository.swift */; };
 		22F366612B0CAFA3007F7E8C /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F366602B0CAFA3007F7E8C /* NetworkClient.swift */; };
@@ -217,6 +218,7 @@
 		22B047D72B4329850086094A /* FavoriteRecipeToMealMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRecipeToMealMapper.swift; sourceTree = "<group>"; };
 		22B047D92B449D4B0086094A /* FavoriteItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemView.swift; sourceTree = "<group>"; };
 		22B047DB2B44A1270086094A /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		22B047E12B44DEEB0086094A /* PermissionUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionUtils.swift; sourceTree = "<group>"; };
 		22E32D2A2B286E0D003731E5 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		22F3665E2B0CAD6C007F7E8C /* CategoriesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesRepository.swift; sourceTree = "<group>"; };
 		22F366602B0CAFA3007F7E8C /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
@@ -484,6 +486,7 @@
 				22A76EDC2B03F5340055A36D /* Data */,
 				22A76EE02B03F5980055A36D /* NetworkClient */,
 				228D52EE2B1F9FE700C45BC9 /* Widgets */,
+				22B047E02B44DEDA0086094A /* Utils */,
 				228D52ED2B1F9F4500C45BC9 /* Assets */,
 				22259F8C2B2A92AB00C4BF84 /* GoogleService-Info.plist */,
 				22A76EBA2B03E55E0055A36D /* Assets.xcassets */,
@@ -624,6 +627,14 @@
 				22A76EC12B03E55E0055A36D /* Lovecook.xcdatamodeld */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		22B047E02B44DEDA0086094A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				22B047E12B44DEEB0086094A /* PermissionUtils.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		22E32D262B286D82003731E5 /* Categories */ = {
@@ -870,6 +881,7 @@
 				228D53052B228B8700C45BC9 /* RecipesView.swift in Sources */,
 				222A95D42B0EB9D500E2AAD5 /* MealsByCategoryViewModel.swift in Sources */,
 				228D52F22B1FA03900C45BC9 /* LottieView.swift in Sources */,
+				22B047E22B44DEEB0086094A /* PermissionUtils.swift in Sources */,
 				22728F2F2B37C4D700C3916E /* PhotoGalleryView.swift in Sources */,
 				228D53012B22827600C45BC9 /* MealsResponse.swift in Sources */,
 				2262B7A82B385E5E0008B17E /* ApiMealToMealMapper.swift in Sources */,
@@ -1040,6 +1052,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Lovecook/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs your permission to capture photos to upload them to our community photo gallery.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1070,6 +1083,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Lovecook/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs your permission to capture photos to upload them to our community photo gallery.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
