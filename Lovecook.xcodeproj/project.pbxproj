@@ -10,6 +10,7 @@
 		22106CD02B2A95300090F25B /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22106CCF2B2A95300090F25B /* AuthenticationViewModel.swift */; };
 		22106CD22B2A9DC40090F25B /* GoogleSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22106CD12B2A9DC40090F25B /* GoogleSignInButton.swift */; };
 		22166FC22B4585B200D061AD /* SignInWithAppleSwiftUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22166FC12B4585B200D061AD /* SignInWithAppleSwiftUIButton.swift */; };
+		22166FC62B45DD3E00D061AD /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22166FC52B45DD3E00D061AD /* Ingredient.swift */; };
 		22259F102B2A8E5A00C4BF84 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 22259F0F2B2A8E5A00C4BF84 /* FirebaseAnalyticsOnDeviceConversion */; };
 		22259F122B2A8E5A00C4BF84 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 22259F112B2A8E5A00C4BF84 /* FirebaseAnalyticsSwift */; };
 		22259F162B2A8E5A00C4BF84 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 22259F152B2A8E5A00C4BF84 /* FirebaseAppCheck */; };
@@ -157,6 +158,7 @@
 		22106CD12B2A9DC40090F25B /* GoogleSignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInButton.swift; sourceTree = "<group>"; };
 		22166FC02B45851000D061AD /* Lovecook.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lovecook.entitlements; sourceTree = "<group>"; };
 		22166FC12B4585B200D061AD /* SignInWithAppleSwiftUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleSwiftUIButton.swift; sourceTree = "<group>"; };
+		22166FC52B45DD3E00D061AD /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		22259F8C2B2A92AB00C4BF84 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		222A8FD42B27DDA700A55B65 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
 		222A8FD72B27E42A00A55B65 /* ApiRecipeToRecipeMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRecipeToRecipeMapper.swift; sourceTree = "<group>"; };
@@ -676,6 +678,7 @@
 				2262B7A52B385E3B0008B17E /* Meal.swift */,
 				B64A931C2B40219600E39A2D /* Photo.swift */,
 				B64A931E2B42CD0500E39A2D /* FavoriteRecipe.swift */,
+				22166FC52B45DD3E00D061AD /* Ingredient.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -901,6 +904,7 @@
 				222A95E12B0EC72A00E2AAD5 /* MealItemView.swift in Sources */,
 				22A76EE92B03F63C0055A36D /* Category.swift in Sources */,
 				22B047DA2B449D4B0086094A /* FavoriteItemView.swift in Sources */,
+				22166FC62B45DD3E00D061AD /* Ingredient.swift in Sources */,
 				B64A93212B42D0B400E39A2D /* GetFavoriteRecipesUseCase.swift in Sources */,
 				222A8FD52B27DDA700A55B65 /* RoundedCorners.swift in Sources */,
 				22B047B82B3CE39F0086094A /* AuthDataResultModel.swift in Sources */,
