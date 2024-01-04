@@ -40,4 +40,10 @@ class AuthenticationViewModel: ObservableObject {
             self.state = .signedIn
         }
     }
+    
+    func checkSignInWithAppleState() -> Bool {
+        self.authenticationManager.checkSignInWithAppleState { [unowned self] state in
+            self.state = state
+        }
+    }
 }

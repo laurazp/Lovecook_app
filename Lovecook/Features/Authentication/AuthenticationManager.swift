@@ -126,8 +126,61 @@ final class AuthenticationManager {
             }
             
             print("Firebase sign in with Apple successful")
+            //TODO: access `authResult` to add user info in UserAccountView and store it!
+            let userID = authResult?.user.uid
+            let userName = authResult?.additionalUserInfo?.username
+            
             completion(.signedIn)
-            //TODO: access `authResult` to add user info in UserAccountView
         }
     }
+    
+    func checkSignInWithAppleState(completion: @escaping AuthenticationManagerCompletion) -> Bool {
+        /*let appleIDProvider = ASAuthorizationAppleIDProvider()
+        appleIDProvider.getCredentialState(forUserID: userID) { (credentialState, error) in
+            switch credentialState {
+            case .authorized:
+                completion(.signedIn)
+                break
+            case .revoked, .notFound:
+                DispatchQueue.main.async {
+                    completion(.signedOut)
+                }
+                break
+            default:
+                break
+            }
+        }*/
+        return true
+    }
+    
+    //TODO: revisar y terminar
+    /*func appleSignOut(completion: @escaping AuthenticationManagerCompletion) {
+        do {
+            try Auth.auth().signOut()
+            
+            guard let userID = currentAppleUserID else {
+                            completion(.sessionError)
+                            return
+                        }
+                
+            let appleIDProvider = ASAuthorizationAppleIDProvider()
+            appleIDProvider.getCredentialState(forUserID: userID) { credentialState, error in
+                switch credentialState {
+                case .authorized:
+                    //todo: revoke
+                    break
+                case .revoked, .notFound:
+                    // Already signed out or user doesn't exist
+                    completion(.signedOut)
+                case .transferred:
+                    break
+                @unknown default:
+                    completion(.sessionError)
+                }
+            }
+        } catch {
+            print(error.localizedDescription)
+            completion(.sessionError)
+        }
+    }*/
 }
