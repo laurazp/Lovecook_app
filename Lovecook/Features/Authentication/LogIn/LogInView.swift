@@ -31,11 +31,11 @@ struct LogInView: View {
                         .onTapGesture {
                           viewModel.signIn()
                         }
-                
                 SignInWithAppleSwiftUIButton()
                 //TODO: aún falta que lleve a página de inicio al loguear
+                
             }
-            .frame(height: 130)
+            .frame(height: 150)
 
             Text("- or continue with e-mail -")
                 .font(Font.system(size: 16))
