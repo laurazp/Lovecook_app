@@ -28,7 +28,7 @@ final class AuthenticationManager {
         return AuthDataResultModel(user: authResult.user)
     }
 
-    func checkSignInState(completion: @escaping AuthenticationManagerCompletion) -> Bool {
+    func checkSignInWithGoogleState(completion: @escaping AuthenticationManagerCompletion) -> Bool {
         if GIDSignIn.sharedInstance.hasPreviousSignIn() {
             GIDSignIn.sharedInstance.restorePreviousSignIn { [unowned self] user, error in
                 if let error = error {
@@ -45,7 +45,7 @@ final class AuthenticationManager {
         }
     }
     
-    func signIn(completion: @escaping AuthenticationManagerCompletion) {
+    func signInWithGoogle(completion: @escaping AuthenticationManagerCompletion) {
         guard let clientID = FirebaseApp.app()?.options.clientID else { return }
         
         let configuration = GIDConfiguration(clientID: clientID)
@@ -135,21 +135,19 @@ final class AuthenticationManager {
     }
     
     func checkSignInWithAppleState(completion: @escaping AuthenticationManagerCompletion) -> Bool {
-        /*let appleIDProvider = ASAuthorizationAppleIDProvider()
-        appleIDProvider.getCredentialState(forUserID: userID) { (credentialState, error) in
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        appleIDProvider.getCredentialState(forUserID: Auth.auth().currentUser?.uid ?? "") { (credentialState, error) in
             switch credentialState {
             case .authorized:
                 completion(.signedIn)
-                break
             case .revoked, .notFound:
                 DispatchQueue.main.async {
                     completion(.signedOut)
                 }
-                break
             default:
                 break
             }
-        }*/
+        }
         return true
     }
     

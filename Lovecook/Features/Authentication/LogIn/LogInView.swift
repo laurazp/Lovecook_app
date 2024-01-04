@@ -29,11 +29,9 @@ struct LogInView: View {
                 GoogleSignInButton()
                         .padding()
                         .onTapGesture {
-                          viewModel.signIn()
+                          viewModel.signInWithGoogle()
                         }
                 SignInWithAppleSwiftUIButton()
-                //TODO: aún falta que lleve a página de inicio al loguear
-                
             }
             .frame(height: 150)
 

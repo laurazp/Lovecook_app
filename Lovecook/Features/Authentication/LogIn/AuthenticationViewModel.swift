@@ -17,14 +17,14 @@ class AuthenticationViewModel: ObservableObject {
     @Published var state: SignInState = .signedOut
     private var authenticationManager =  AuthenticationManager()
     
-    func checkSignInState() -> Bool {
-        authenticationManager.checkSignInState { [unowned self] state in
+    func checkSignInWithGoogleState() -> Bool {
+        authenticationManager.checkSignInWithGoogleState { [unowned self] state in
             self.state = state
         }
     }
     
-    func signIn() {
-        self.authenticationManager.signIn { [unowned self] state in
+    func signInWithGoogle() {
+        self.authenticationManager.signInWithGoogle { [unowned self] state in
             self.state = .signedIn
         }
     }
@@ -42,7 +42,7 @@ class AuthenticationViewModel: ObservableObject {
     }
     
     func checkSignInWithAppleState() -> Bool {
-        self.authenticationManager.checkSignInWithAppleState { [unowned self] state in
+        authenticationManager.checkSignInWithAppleState { [unowned self] state in
             self.state = state
         }
     }
