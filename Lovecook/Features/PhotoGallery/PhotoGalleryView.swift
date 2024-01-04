@@ -59,10 +59,15 @@ struct PhotoGalleryView: View {
                     
                     Button {
                         Task {
-                            await permissionUtils.requestPhotoLibraryAccess()
-                            /*if await permissionUtils.hasPhotoLibraryPermission {
-                                showImagePicker = true
-                            }*/
+                            await permissionUtils.requestPhotoLibraryAccess() { granted in
+                                if granted {
+                                    showImagePicker = true
+                                } else {
+                                    showImagePicker = false
+                                    print("Permission denied.")
+                                    // TODO: Alert to go to settings
+                                }
+                            }
                         }
                     } label: {
                         /*PhotosPicker(selection: $selectedItem, matching: .images, photoLibrary: .shared()) {*/
@@ -76,9 +81,9 @@ struct PhotoGalleryView: View {
                     Text("Share your recipes with our community!")
                         .foregroundStyle(.black)
                         .bold()
-                }/*.sheet(isPresented: $showImagePicker) {
-                    PhotosPicker("", selection: $selectedItem, matching: .images, photoLibrary: .shared())
-                }*/
+                }.sheet(isPresented: $showImagePicker) {
+                    PhotosPicker("Choose an image", selection: $selectedItem, matching: .images, photoLibrary: .shared())
+                }
                 .padding()
                 .frame(maxWidth: .infinity)
                 .background(Color.lightGreen.opacity(0.5))

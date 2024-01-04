@@ -21,20 +21,21 @@ struct PermissionUtils {
         }
     }
     
-    func requestPhotoLibraryAccess() async {
+    func requestPhotoLibraryAccess(completion: @escaping (Bool) -> Void) async {
         if await hasPhotoLibraryPermission {
             // Permission already granted
             print("Access granted.")
-            openPhotoPicker()
+            completion(true)
         } else {
             // Request permission
             PHPhotoLibrary.requestAuthorization { newStatus in
                 if newStatus == .authorized {
                     print("Access granted.")
-                    openPhotoPicker()
+                    completion(true)
                 } else {
                     print("Access denied.")
                     //TODO: alert to go to settings
+                    completion(false)
                 }
             }
         }
