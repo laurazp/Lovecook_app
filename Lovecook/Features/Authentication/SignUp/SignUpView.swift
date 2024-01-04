@@ -11,6 +11,10 @@ struct SignUpView: View {
     @EnvironmentObject var coordinator: Coordinator
     @EnvironmentObject var viewModel: SignUpViewModel
     
+    /*@State private var userEmail: String = ""
+    @State private var userPassword: String = ""
+    @State private var isAccepted: Bool = false*/
+    
     var body: some View {
         VStack(spacing: 24) {
             Text("SIGN UP")
@@ -36,11 +40,10 @@ struct SignUpView: View {
             Button {
                 viewModel.register()
             } label: {
-                NavigationLink(destination: coordinator.makeUserMainView) {
-                    Text("Sign up")
-                        .frame(maxWidth: .infinity)
-                        .fontWeight(.bold)
-                    .foregroundColor(Color.white)}
+                Text("Sign up")
+                    .frame(maxWidth: .infinity)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.white)
             }
             .cornerRadius(20)
             .buttonStyle(.borderedProminent)
@@ -56,6 +59,6 @@ struct SignUpView: View {
     let viewModel = SignUpViewModel()
     
     return SignUpView()
-        .environmentObject(viewModel)
         .environmentObject(coordinator)
+        .environmentObject(viewModel)
 }

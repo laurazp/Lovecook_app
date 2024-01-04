@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AuthView: View {
     @EnvironmentObject var viewModel: AuthenticationViewModel
+    @EnvironmentObject var signUpViewModel: SignUpViewModel
     @State var isLoggedIn = false
     
     var body: some View {
@@ -76,7 +77,9 @@ struct AuthView: View {
 
 #Preview {
     let viewModel = AuthenticationViewModel()
+    let signUpViewModel = SignUpViewModel()
     
     return AuthView()
         .environmentObject(viewModel)
+        .environmentObject(signUpViewModel)
 }

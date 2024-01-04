@@ -23,6 +23,11 @@ final class AuthenticationManager {
     
     init() { }
     
+    func createUser(email: String, password: String) async throws -> AuthDataResultModel {
+        let authResult = try await Auth.auth().createUser(withEmail: email, password: password)
+        return AuthDataResultModel(user: authResult.user)
+    }
+
     func checkSignInState(completion: @escaping AuthenticationManagerCompletion) -> Bool {
         if GIDSignIn.sharedInstance.hasPreviousSignIn() {
             GIDSignIn.sharedInstance.restorePreviousSignIn { [unowned self] user, error in
