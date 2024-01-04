@@ -39,4 +39,12 @@ class UserFavoritesViewModel: ObservableObject {
         deleteFavoriteRecipeUseCase.execute(for: recipe)
         getAllFavorites()
     }
+    
+    func deleteAllFavorites() {
+        for favorite in favoritesList {
+            deleteFavorite(recipe: favorite)
+        }
+        favoritesList.removeAll()
+        getAllFavorites()
+    }
 }

@@ -51,6 +51,15 @@ struct UserFavoritesView: View {
                                     .tint(.red)
                                 }
                         }
+                    }.toolbar {
+                        ToolbarItem {
+                            Button(action: {
+                                viewModel.deleteAllFavorites()
+                            }) {
+                                Label("Delete", systemImage: "trash")
+                            }
+                            .tint(.red)
+                        }
                     }
                     .listStyle(PlainListStyle())
                     .listRowInsets(EdgeInsets())
