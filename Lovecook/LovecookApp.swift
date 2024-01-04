@@ -17,7 +17,7 @@ struct LovecookApp: App {
     let coordinator = Coordinator()
     @StateObject var viewModel = AuthenticationViewModel()
     @StateObject var signUpViewModel = SignUpViewModel()
-  
+    
     init() {
         setupFirebase()
     }
@@ -28,8 +28,6 @@ struct LovecookApp: App {
                 .environmentObject(coordinator)
                 .environmentObject(viewModel)
                 .environmentObject(signUpViewModel)
-//                .environment(\.managedObjectContext, CoreDataPersistenceController.shared.viewContext)
-            //.environment(\.managedObjectContext, coreDataPersistenceController.container.viewContext)
         }
     }
 }

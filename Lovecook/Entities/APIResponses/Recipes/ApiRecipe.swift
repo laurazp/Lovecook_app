@@ -60,7 +60,7 @@ struct ApiRecipe: Codable, Identifiable {
     let measure18: String?
     let measure19: String?
     let measure20: String?
-        
+    
     enum CodingKeys: String, CodingKey {
         case recipeId = "idMeal"
         case recipeTitle = "strMeal"

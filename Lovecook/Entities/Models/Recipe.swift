@@ -20,7 +20,7 @@ struct Recipe {
     let recipeTags: [String]
     let recipeYoutubeUrl: String
     var ingredients: [Ingredient]
-
+    
     static var example: Recipe {
         Recipe(
             recipeId: "5346",

@@ -670,8 +670,8 @@
 		22E32D282B286D9A003731E5 /* Recipes */ = {
 			isa = PBXGroup;
 			children = (
-				228D53022B2282F800C45BC9 /* RecipeResponse.swift */,
 				222A95D72B0EBBB100E2AAD5 /* ApiRecipe.swift */,
+				228D53022B2282F800C45BC9 /* RecipeResponse.swift */,
 			);
 			path = Recipes;
 			sourceTree = "<group>";

@@ -41,6 +41,8 @@ class Coordinator: ObservableObject {
         let recipesLocalService = RecipesLocalService(persistanceController: persistanceController)
         self.recipesRepository = RecipesRepository(remoteService: recipesRemoteService, localService: recipesLocalService)
         self.getRecipeUseCase = GetRecipeUseCase(recipesRepository: recipesRepository)
+        
+        // MARK: - Favorites
         self.addRecipeToFavoritesUseCase = AddRecipeToFavoritesUseCase(recipesRepository: recipesRepository)
         self.getFavoriteRecipesUseCase = GetFavoriteRecipesUseCase(recipesRepository: recipesRepository)
         self.deleteFavoriteRecipeUseCase  = DeleteFavoriteRecipeUseCase(recipesRepository: recipesRepository)
@@ -94,12 +96,14 @@ class Coordinator: ObservableObject {
     private func makeRecipesViewModel() -> RecipesViewModel {
         return RecipesViewModel(getRecipeUseCase: getRecipeUseCase, addRecipeToFavoritesUseCase: addRecipeToFavoritesUseCase, deleteFavoriteRecipeUseCase: deleteFavoriteRecipeUseCase, checkFavoriteAddedUseCase: checkFavoriteAddedUseCase)
     }
+    
     private func makePhotoGalleryViewModel() -> PhotoGalleryViewModel {
         return PhotoGalleryViewModel()
     }
+    
     private func makeUserFavoritesViewModel() -> UserFavoritesViewModel {
         return UserFavoritesViewModel(getFavoritesUseCase: getFavoriteRecipesUseCase,
-                                      addRecipeToFavoritesUseCase: addRecipeToFavoritesUseCase, 
+                                      addRecipeToFavoritesUseCase: addRecipeToFavoritesUseCase,
                                       deleteFavoriteRecipeUseCase: deleteFavoriteRecipeUseCase)
     }
 }
