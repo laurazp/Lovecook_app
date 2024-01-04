@@ -36,16 +36,6 @@ class SignUpViewModel: ObservableObject {
         }
     }
     
-    func checkAuthenticatedUser() -> Bool {
-        do {
-            let currentUser = try self.authenticationManager.getAuthenticatedUser()
-            return true
-        } catch {
-            print("Error: \(error.localizedDescription)")
-            return false
-        }
-    }
-    
     //TODO: es necesario aquí para loguear nada más registrarse??
     func login() {
         Auth.auth().signIn(withEmail: userEmail, password: userPassword) { authResult, error in
