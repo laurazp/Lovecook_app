@@ -30,7 +30,7 @@ struct MainView: View {
 
 #Preview {
     let coordinator = Coordinator()
-
+    
     return MainView()
         .environmentObject(coordinator)
 }

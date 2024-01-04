@@ -518,13 +518,13 @@
 		22A76EC92B03F1B60055A36D /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				22728F2D2B37C4BF00C3916E /* PhotoGallery */,
 				22A027AF2B2BE0BF00F44C68 /* Main */,
 				22FFA15A2B23E29300811574 /* Authentication */,
-				22A76ED02B03F2120055A36D /* User */,
 				22A76ECA2B03F1BE0055A36D /* Categories */,
 				222A95D92B0EBCDC00E2AAD5 /* MealsByCategory */,
 				222A95BB2B0D70BB00E2AAD5 /* Recipes */,
+				22728F2D2B37C4BF00C3916E /* PhotoGallery */,
+				22A76ED02B03F2120055A36D /* User */,
 			);
 			path = Features;
 			sourceTree = "<group>";
