@@ -24,31 +24,37 @@ struct UserFavoritesView: View {
             if viewModel.isLoading {
                 ProgressView()
             } else {
-                List {
-                    ForEach(viewModel.favoritesList, id: \.id) { favorite in
-                        createRow(for: favorite)
-                            .frame(maxWidth: .infinity)
-                            .listRowSeparator(.hidden)
-                            .listRowBackground(Color.clear)
-                            .swipeActions(edge: .leading) {
-                                Button {
-                                    if let index = viewModel.favoritesList.firstIndex(of: favorite) {
-                                        viewModel.favoritesList.remove(at: index)
-                                        viewModel.deleteFavorite(recipe: favorite)
-                                        
-                                        Toast.default(
-                                            image: UIImage(systemName: "heart")!,
-                                            title: "Favorite deleted").show()
+                if (viewModel.favoritesList.isEmpty) {
+                    VStack {
+                        Text("No favorites added yet.")
+                    }.frame(height: UIScreen.main.bounds.size.height / 2, alignment: .center)
+                } else {
+                    List {
+                        ForEach(viewModel.favoritesList, id: \.id) { favorite in
+                            createRow(for: favorite)
+                                .frame(maxWidth: .infinity)
+                                .listRowSeparator(.hidden)
+                                .listRowBackground(Color.clear)
+                                .swipeActions(edge: .leading) {
+                                    Button {
+                                        if let index = viewModel.favoritesList.firstIndex(of: favorite) {
+                                            viewModel.favoritesList.remove(at: index)
+                                            viewModel.deleteFavorite(recipe: favorite)
+                                            
+                                            Toast.default(
+                                                image: UIImage(systemName: "heart")!,
+                                                title: "Favorite deleted").show()
+                                        }
+                                    } label: {
+                                        Label("Delete", systemImage: "trash")
                                     }
-                                } label: {
-                                    Label("Delete", systemImage: "trash")
+                                    .tint(.red)
                                 }
-                                .tint(.red)
-                            }
+                        }
                     }
+                    .listStyle(PlainListStyle())
+                    .listRowInsets(EdgeInsets())
                 }
-                .listStyle(PlainListStyle())
-                .listRowInsets(EdgeInsets())
             }
         }.alert("Error", isPresented: Binding.constant(viewModel.error != nil)) {
             Button("OK") {}
