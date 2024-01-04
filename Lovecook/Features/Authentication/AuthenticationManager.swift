@@ -9,6 +9,7 @@ import Foundation
 import FirebaseAuth
 import GoogleSignIn
 import FirebaseCore
+import AuthenticationServices
 
 typealias AuthenticationManagerCompletion = (SignInState)->Void
 
@@ -60,7 +61,7 @@ final class AuthenticationManager {
         }
     }
     
-    private func authenticateUser(for user: GIDGoogleUser?, 
+    private func authenticateUser(for user: GIDGoogleUser?,
                                   with error: Error?,
                                   completion: @escaping AuthenticationManagerCompletion) {
         if let error = error {
@@ -98,7 +99,30 @@ final class AuthenticationManager {
         }
     }
     
-    func signInWithApple() {
+    func signInWithApple(authResults: ASAuthorization, completion: @escaping AuthenticationManagerCompletion) {
+        guard let credential = authResults.credential as? ASAuthorizationAppleIDCredential else {
+            print("Unable to get Apple credential")
+            return
+        }
         
+        let token = credential.identityToken
+        guard let tokenString = String(data: token!, encoding: .utf8) else {
+            print("Unable to convert token to string")
+            return
+        }
+        
+        let oauthCredential = OAuthProvider.credential(withProviderID: "apple.com", idToken: tokenString, rawNonce: nil)
+        
+        Auth.auth().signIn(with: oauthCredential) { (authResult, error) in
+            if let error = error {
+                print("Firebase sign in with Apple failed: \(error.localizedDescription)")
+                completion(.sessionError)
+                return
+            }
+            
+            print("Firebase sign in with Apple successful")
+            completion(.signedIn)
+            //TODO: access `authResult` to add user info in UserAccountView
+        }
     }
 }

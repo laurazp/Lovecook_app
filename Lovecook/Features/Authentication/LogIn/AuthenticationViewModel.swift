@@ -10,6 +10,7 @@ import FirebaseCore
 import FirebaseAuth
 import Firebase
 import GoogleSignIn
+import AuthenticationServices
 
 class AuthenticationViewModel: ObservableObject {
 
@@ -34,7 +35,9 @@ class AuthenticationViewModel: ObservableObject {
         }
     }
     
-    func signInWithApple() {
-        self.authenticationManager.signInWithApple()
+    func signInWithApple(authResults: ASAuthorization) {
+        self.authenticationManager.signInWithApple(authResults: authResults) { [unowned self] state in
+            self.state = .signedIn
+        }
     }
 }

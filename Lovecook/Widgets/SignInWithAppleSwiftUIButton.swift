@@ -10,6 +10,7 @@ import AuthenticationServices
 
 struct SignInWithAppleSwiftUIButton: View {
     @Environment(\.colorScheme) var colorScheme
+    @EnvironmentObject var viewModel: AuthenticationViewModel
 
     var body: some View {
       if colorScheme.self == .dark {
@@ -27,7 +28,7 @@ struct SignInWithAppleSwiftUIButton: View {
             switch result {
             case .success(let authResults):
                 print("Authorisation successful \(authResults)")
-                
+                viewModel.signInWithApple(authResults: authResults)
             case .failure(let error):
                 print("Authorisation failed: \(error.localizedDescription)")
             }
