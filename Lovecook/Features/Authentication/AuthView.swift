@@ -68,7 +68,17 @@ struct AuthView: View {
                         .opacity(0.8)
                 )
                 .onAppear {
-                    isLoggedIn = viewModel.checkSignInState()
+                    //isLoggedIn = viewModel.checkSignInWithGoogleState()
+                    if isLoggedIn == false {
+                            if viewModel.checkSignInWithGoogleState() {
+                                isLoggedIn = true
+                            } else if viewModel.checkSignInWithAppleState() {
+                                print("signed in with apple")
+                                isLoggedIn = true
+                            } else {
+                                isLoggedIn = false
+                            }
+                        }
                 }
             }
         }
