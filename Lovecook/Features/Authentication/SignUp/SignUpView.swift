@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SignUpView: View {
-    @EnvironmentObject var viewModel: SignUpViewModel
+    @EnvironmentObject var viewModel: AuthenticationViewModel
     
     var body: some View {
         VStack(spacing: 24) {

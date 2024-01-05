@@ -9,7 +9,6 @@ import SwiftUI
 
 struct AuthView: View {
     @EnvironmentObject var viewModel: AuthenticationViewModel
-    @EnvironmentObject var signUpViewModel: SignUpViewModel
     @State var isLoggedIn = false
     
     var body: some View {
@@ -69,17 +68,18 @@ struct AuthView: View {
                         .opacity(0.8)
                 )
                 .onAppear {
-                    //isLoggedIn = viewModel.checkSignInWithGoogleState()
-                    if isLoggedIn == false {
-                            if viewModel.checkSignInWithGoogleState() {
-                                isLoggedIn = true
-                            } else if viewModel.checkSignInWithAppleState() {
-                                print("signed in with apple")
-                                isLoggedIn = true
-                            } else {
-                                isLoggedIn = false
-                            }
+                    isLoggedIn = viewModel.checkSignInWithGoogleState()
+                    //TODO: checkear si hay sesión previa iniciada
+                    /*if isLoggedIn == false {
+                        if viewModel.checkSignInWithGoogleState() {
+                            isLoggedIn = true
+                        } else if viewModel.checkSignInWithAppleState() {
+                            print("signed in with apple")
+                            isLoggedIn = true
+                        } else {
+                            isLoggedIn = false
                         }
+                    }*/
                 }
             }
         }
@@ -88,9 +88,7 @@ struct AuthView: View {
 
 #Preview {
     let viewModel = AuthenticationViewModel()
-    let signUpViewModel = SignUpViewModel()
     
     return AuthView()
         .environmentObject(viewModel)
-        .environmentObject(signUpViewModel)
 }
