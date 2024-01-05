@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SplashView: View {
     
-    struct Layout {
+    private struct Layout {
         static let frameSize: CGFloat = 200
         static let animationFilename = "lottie_animation"
     }
