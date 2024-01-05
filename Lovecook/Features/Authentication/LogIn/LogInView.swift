@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Firebase
+import Toast
 
 struct LogInView: View {
     @EnvironmentObject var viewModel: AuthenticationViewModel
@@ -41,27 +41,28 @@ struct LogInView: View {
             
             TextField("Enter your Email", text: $userEmail)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
+                .textInputAutocapitalization(.never)
+                .disableAutocorrection(true)
             
             SecureField("Password", text: $userPassword)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
+                .textInputAutocapitalization(.never)
+                .disableAutocorrection(true)
             
-            Button {
+            GreenRoundedButton(buttonText: "Log in") {
                 //TODO: log in with email??
-            } label: {
-                NavigationLink(destination: MainView()) {
-                    Text("Log in")
-                        .frame(maxWidth: .infinity)
-                        .fontWeight(.bold)
-                    .foregroundColor(Color.white)}
             }
-            .cornerRadius(20)
-            .buttonStyle(.borderedProminent)
-            .tint(Color.lightGreen)
-            .controlSize(.large)
             
             Text("Forgot your password?")
                 .font(.caption)
                 .foregroundColor(Color.gray)
+                .onTapGesture {
+                    if viewModel.resetPassword(withEmail: userEmail) {
+                        Toast.default(
+                            image: UIImage(systemName: "envelope.fill")!,
+                            title: "Please check your email").show()
+                    }
+                }
         }
         .padding()
     }

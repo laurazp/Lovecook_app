@@ -13,6 +13,7 @@
 		22166FC62B45DD3E00D061AD /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22166FC52B45DD3E00D061AD /* Ingredient.swift */; };
 		22166FC92B46250700D061AD /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 22166FC82B46250700D061AD /* Toast */; };
 		22166FCB2B462BDD00D061AD /* CustomAlertDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22166FCA2B462BDD00D061AD /* CustomAlertDialog.swift */; };
+		22166FCD2B4833D300D061AD /* GreenRoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22166FCC2B4833D300D061AD /* GreenRoundedButton.swift */; };
 		22259F102B2A8E5A00C4BF84 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 22259F0F2B2A8E5A00C4BF84 /* FirebaseAnalyticsOnDeviceConversion */; };
 		22259F122B2A8E5A00C4BF84 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 22259F112B2A8E5A00C4BF84 /* FirebaseAnalyticsSwift */; };
 		22259F162B2A8E5A00C4BF84 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 22259F152B2A8E5A00C4BF84 /* FirebaseAppCheck */; };
@@ -162,6 +163,7 @@
 		22166FC12B4585B200D061AD /* SignInWithAppleSwiftUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleSwiftUIButton.swift; sourceTree = "<group>"; };
 		22166FC52B45DD3E00D061AD /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		22166FCA2B462BDD00D061AD /* CustomAlertDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertDialog.swift; sourceTree = "<group>"; };
+		22166FCC2B4833D300D061AD /* GreenRoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenRoundedButton.swift; sourceTree = "<group>"; };
 		22259F8C2B2A92AB00C4BF84 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		222A8FD42B27DDA700A55B65 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
 		222A8FD72B27E42A00A55B65 /* ApiRecipeToRecipeMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRecipeToRecipeMapper.swift; sourceTree = "<group>"; };
@@ -426,6 +428,7 @@
 				22B047DB2B44A1270086094A /* CustomImageView.swift */,
 				22166FC12B4585B200D061AD /* SignInWithAppleSwiftUIButton.swift */,
 				22166FCA2B462BDD00D061AD /* CustomAlertDialog.swift */,
+				22166FCC2B4833D300D061AD /* GreenRoundedButton.swift */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -902,6 +905,7 @@
 				228D53012B22827600C45BC9 /* MealsResponse.swift in Sources */,
 				2262B7A82B385E5E0008B17E /* ApiMealToMealMapper.swift in Sources */,
 				22728F252B378C0700C3916E /* UserFavoritesViewModel.swift in Sources */,
+				22166FCD2B4833D300D061AD /* GreenRoundedButton.swift in Sources */,
 				222A95D82B0EBBB100E2AAD5 /* ApiRecipe.swift in Sources */,
 				22728F332B37C64D00C3916E /* PhotoGalleryViewModel.swift in Sources */,
 				22A76EDB2B03F4A20055A36D /* GetCategoriesUseCase.swift in Sources */,

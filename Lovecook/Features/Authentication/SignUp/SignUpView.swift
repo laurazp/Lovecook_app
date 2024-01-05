@@ -8,12 +8,8 @@
 import SwiftUI
 
 struct SignUpView: View {
-    @EnvironmentObject var coordinator: Coordinator
+    //@EnvironmentObject var coordinator: Coordinator
     @EnvironmentObject var viewModel: SignUpViewModel
-    
-    /*@State private var userEmail: String = ""
-    @State private var userPassword: String = ""
-    @State private var isAccepted: Bool = false*/
     
     var body: some View {
         VStack(spacing: 24) {
@@ -37,18 +33,9 @@ struct SignUpView: View {
             }
             .toggleStyle(CheckboxToggleStyle.init())
             
-            Button {
+            GreenRoundedButton(buttonText: "Sign up") {
                 viewModel.register()
-            } label: {
-                Text("Sign up")
-                    .frame(maxWidth: .infinity)
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.white)
             }
-            .cornerRadius(20)
-            .buttonStyle(.borderedProminent)
-            .tint(Color.lightGreen)
-            .controlSize(.large)
         }
         .padding()
     }
