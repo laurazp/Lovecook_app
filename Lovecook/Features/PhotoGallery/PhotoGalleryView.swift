@@ -8,6 +8,7 @@
 import SwiftUI
 import Kingfisher
 import PhotosUI
+import Toast
 
 struct PhotoGalleryView: View {
     @StateObject private var viewModel: PhotoGalleryViewModel
@@ -57,32 +58,29 @@ struct PhotoGalleryView: View {
                         .padding(.horizontal)
                     //TODO: Gestionar permisos cámara y permitir acceso a cámara de fotos
                     
-                    Button {
-                        Task {
-                            await permissionUtils.requestPhotoLibraryAccess() { granted in
-                                if granted {
-                                    showImagePicker = true
-                                } else {
-                                    showImagePicker = false
-                                    print("Permission denied.")
-                                    // TODO: Alert to go to settings
-                                }
-                            }
-                        }
-                    } label: {
-                        /*PhotosPicker(selection: $selectedItem, matching: .images, photoLibrary: .shared()) {*/
-                            Image(systemName: "camera.fill")
-                                .font(.system(size: 30))
-                                .foregroundColor(.black)
-                                .shadow(color: .gray, radius: 0.2, x: 1, y: 1)
-                        //}
+                    PhotosPicker(selection: $selectedItem, matching: .images, photoLibrary: .shared()) {
+                        Image(systemName: "camera.fill")
+                            .font(.system(size: 30))
+                            .foregroundColor(showImagePicker ? .black : .gray)
+                            .shadow(color: .gray, radius: 0.2, x: 1, y: 1)
                     }
+                    .disabled(!showImagePicker)
                     
                     Text("Share your recipes with our community!")
                         .foregroundStyle(.black)
                         .bold()
-                }.sheet(isPresented: $showImagePicker) {
-                    PhotosPicker("Choose an image", selection: $selectedItem, matching: .images, photoLibrary: .shared())
+                }
+                .onAppear {
+                    Task {
+                        await permissionUtils.requestPhotoLibraryAccess() { granted in
+                            if granted {
+                                showImagePicker = true
+                            } else {
+                                showImagePicker = false
+                                print("Permission denied.")
+                            }
+                        }
+                    }
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
