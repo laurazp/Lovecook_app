@@ -11,6 +11,7 @@ import FirebaseCore
 import FirebaseAuth
 import Firebase
 import GoogleSignIn
+import Toast
 
 struct ContentView: View {
     @EnvironmentObject var viewModel: AuthenticationViewModel
@@ -18,17 +19,11 @@ struct ContentView: View {
     var body: some View {
         
         switch viewModel.state {
-        case .signedOut, .sessionError: AuthView().overlay {
-            if viewModel.state == .sessionError {
-                errorView
-            }
+        case .signedOut, .sessionError: AuthView().alert("Something went wrong...", isPresented: Binding.constant(viewModel.state == .sessionError)) {
+            Button("OK") {}
         }
         case .signedIn: MainView()
         }
-    }
-    
-    var errorView: some View {
-        Text("Something went wrong...")
     }
 }
 
