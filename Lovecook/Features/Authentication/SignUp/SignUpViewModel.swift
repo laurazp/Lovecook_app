@@ -6,42 +6,31 @@
 //
 
 import Foundation
-import Firebase
 
-@MainActor
 class SignUpViewModel: ObservableObject {
     
     private var authenticationManager =  AuthenticationManager()
-    
     @Published var state: SignInState = .signedOut
+    
     @Published var userEmail: String = ""
     @Published var userPassword: String = ""
     @Published var isAccepted: Bool = false
     
+    @MainActor
     func register() {
         //TODO: gestionar isAccepted
-        guard !userEmail.isEmpty, !userPassword.isEmpty else {
-            print("No email or password found.")
+        if isAccepted {
+            guard !userEmail.isEmpty, !userPassword.isEmpty else {
+                print("No email or password found.")
+                return
+            }
+            
+            authenticationManager.registerWithEmailAndPassword(email: userEmail, password: userPassword) { [unowned self] state in
+                self.state = .signedIn
+            }
+        } else {
+            print("You have to accept the Terms and conditions to register.")
             return
-        }
-        
-        Task {
-            do {
-                let user = try await self.authenticationManager.createUser(email: userEmail, password: userPassword) 
-                print("Success creating the user!")
-                print(user)
-            } catch {
-                print("Error: \(error)")
-            }
-        }
-    }
-    
-    //TODO: es necesario aquí para loguear nada más registrarse??
-    func login() {
-        Auth.auth().signIn(withEmail: userEmail, password: userPassword) { authResult, error in
-            if error != nil {
-                print(error!.localizedDescription)
-            }
         }
     }
 }

@@ -6,16 +6,12 @@
 //
 
 import Foundation
-import FirebaseCore
-import FirebaseAuth
-import Firebase
-import GoogleSignIn
 import AuthenticationServices
 
 class AuthenticationViewModel: ObservableObject {
 
-    @Published var state: SignInState = .signedOut
     private var authenticationManager =  AuthenticationManager()
+    @Published var state: SignInState = .signedOut
     
     func checkSignInWithGoogleState() -> Bool {
         authenticationManager.checkSignInWithGoogleState { [unowned self] state in
@@ -45,5 +41,15 @@ class AuthenticationViewModel: ObservableObject {
         authenticationManager.checkSignInWithAppleState { [unowned self] state in
             self.state = state
         }
+    }
+    
+    //TODO: Revisar si funciona
+    func resetPassword(withEmail email: String) -> Bool {
+        guard !email.isEmpty else {
+            print("Please enter your email.")
+            return false
+        }
+        authenticationManager.resetUserPassword(withEmail: email)
+        return true
     }
 }

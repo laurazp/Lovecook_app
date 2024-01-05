@@ -7,6 +7,8 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseDatabase
+import FirebaseStorage
 import GoogleSignIn
 import FirebaseCore
 import AuthenticationServices
@@ -23,11 +25,7 @@ final class AuthenticationManager {
     
     init() { }
     
-    func createUser(email: String, password: String) async throws -> AuthDataResultModel {
-        let authResult = try await Auth.auth().createUser(withEmail: email, password: password)
-        return AuthDataResultModel(user: authResult.user)
-    }
-
+    // MARK: - GoogleSignIn
     func checkSignInWithGoogleState(completion: @escaping AuthenticationManagerCompletion) -> Bool {
         if GIDSignIn.sharedInstance.hasPreviousSignIn() {
             GIDSignIn.sharedInstance.restorePreviousSignIn { [unowned self] user, error in
@@ -104,6 +102,7 @@ final class AuthenticationManager {
         }
     }
     
+    // MARK: - AppleSignIn
     func signInWithApple(authResults: ASAuthorization, completion: @escaping AuthenticationManagerCompletion) {
         guard let credential = authResults.credential as? ASAuthorizationAppleIDCredential else {
             print("Unable to get Apple credential")
@@ -153,32 +152,71 @@ final class AuthenticationManager {
     
     //TODO: revisar y terminar
     /*func appleSignOut(completion: @escaping AuthenticationManagerCompletion) {
-        do {
-            try Auth.auth().signOut()
-            
-            guard let userID = currentAppleUserID else {
-                            completion(.sessionError)
-                            return
-                        }
-                
-            let appleIDProvider = ASAuthorizationAppleIDProvider()
-            appleIDProvider.getCredentialState(forUserID: userID) { credentialState, error in
-                switch credentialState {
-                case .authorized:
-                    //todo: revoke
-                    break
-                case .revoked, .notFound:
-                    // Already signed out or user doesn't exist
-                    completion(.signedOut)
-                case .transferred:
-                    break
-                @unknown default:
-                    completion(.sessionError)
-                }
+     do {
+     try Auth.auth().signOut()
+     
+     guard let userID = currentAppleUserID else {
+     completion(.sessionError)
+     return
+     }
+     
+     let appleIDProvider = ASAuthorizationAppleIDProvider()
+     appleIDProvider.getCredentialState(forUserID: userID) { credentialState, error in
+     switch credentialState {
+     case .authorized:
+     //todo: revoke
+     break
+     case .revoked, .notFound:
+     // Already signed out or user doesn't exist
+     completion(.signedOut)
+     case .transferred:
+     break
+     @unknown default:
+     completion(.sessionError)
+     }
+     }
+     } catch {
+     print(error.localizedDescription)
+     completion(.sessionError)
+     }
+     }*/
+    
+    // MARK: - Email & password SignIn and Register
+    func registerWithEmailAndPassword(email: String, password: String, completion: @escaping AuthenticationManagerCompletion) {
+        Task {
+            do {
+                let user = try await createUser(email: email, password: password)
+                print("Success creating the user!")
+                print(user)
+            } catch {
+                print("Error: \(error)")
             }
-        } catch {
-            print(error.localizedDescription)
-            completion(.sessionError)
         }
-    }*/
+    }
+    
+    func createUser(email: String, password: String) async throws -> AuthDataResultModel {
+        let authResult = try await Auth.auth().createUser(withEmail: email, password: password)
+        return AuthDataResultModel(user: authResult.user)
+    }
+    
+    func loginWithEmailAndPassword(email: String, password: String, completion: @escaping AuthenticationManagerCompletion) {
+        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+            if let error = error {
+                print("Log in failed: \(error.localizedDescription)")
+                let user = Auth.auth().currentUser
+                completion(.sessionError)
+                return
+            } else {
+                completion(.signedIn)
+            }
+        }
+    }
+    
+    func resetUserPassword(withEmail email: String) {
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            }
+        }
+    }
 }
