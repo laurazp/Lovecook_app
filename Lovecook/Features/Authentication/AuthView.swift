@@ -31,7 +31,8 @@ struct AuthView: View {
                             Text("Log in")
                                 .frame(maxWidth: .infinity)
                                 .fontWeight(.bold)
-                            .foregroundColor(Color.white)}
+                                .foregroundColor(Color.white)
+                        }
                     }
                     .cornerRadius(20)
                     .buttonStyle(.borderedProminent)

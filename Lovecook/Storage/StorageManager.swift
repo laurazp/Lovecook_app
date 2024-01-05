@@ -17,7 +17,7 @@ final class StorageManager {
     private var imagesReference: StorageReference {
         storage.child("images")
     }
-   
+    
     func saveImage(data: Data, title: String? = nil) async throws -> (path: String, name: String, title: String?) {
         let metaData = StorageMetadata()
         metaData.contentType = "image/jpeg"
@@ -34,8 +34,4 @@ final class StorageManager {
         
         return (returnedPath, returnedName, title)
     }
-    
-    /*func saveUser(userId: String) -> StorageReference {
-        storage.child("users").child(userId)
-    }*/
 }
