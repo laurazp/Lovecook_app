@@ -50,7 +50,7 @@ struct LogInView: View {
                 .disableAutocorrection(true)
             
             GreenRoundedButton(buttonText: "Log in") {
-                //TODO: log in with email??
+                viewModel.logInWithEmailAndPassword(email: userEmail, password: userPassword)
             }
             
             Text("Forgot your password?")

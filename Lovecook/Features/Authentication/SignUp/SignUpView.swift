@@ -8,13 +8,18 @@
 import SwiftUI
 
 struct SignUpView: View {
-    //@EnvironmentObject var coordinator: Coordinator
     @EnvironmentObject var viewModel: SignUpViewModel
     
     var body: some View {
         VStack(spacing: 24) {
             Text("SIGN UP")
+                .font(Font.system(size: 20))
+                .fontWeight(Font.Weight.bold)
+                .foregroundColor(Color.darkBlue)
             Text("Thanks for joining us!")
+                .font(Font.system(size: 16))
+                .fontWeight(Font.Weight.bold)
+                .foregroundColor(Color.gray)
             
             TextField("Enter your email", text: $viewModel.userEmail)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -42,10 +47,5 @@ struct SignUpView: View {
 }
 
 #Preview {
-    let coordinator = Coordinator()
-    let viewModel = SignUpViewModel()
-    
-    return SignUpView()
-        .environmentObject(coordinator)
-        .environmentObject(viewModel)
+    SignUpView()
 }
