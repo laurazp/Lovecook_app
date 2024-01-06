@@ -312,6 +312,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22166FCE2B498D1600D061AD /* Recipes */ = {
+			isa = PBXGroup;
+			children = (
+				222A95E72B0ECDAA00E2AAD5 /* RecipesRemoteService.swift */,
+				22B047BD2B3F858E0086094A /* RecipesLocalService.swift */,
+			);
+			path = Recipes;
+			sourceTree = "<group>";
+		};
+		22166FCF2B498D4800D061AD /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				22B047B42B3CE1C90086094A /* AuthenticationManager.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
 		221BD0CD2B3CD468000726EB /* LogIn */ = {
 			isa = PBXGroup;
 			children = (
@@ -483,7 +500,6 @@
 				22A76EEA2B03F8A80055A36D /* Coordinator.swift */,
 				22A76EE52B03F5FE0055A36D /* Entities */,
 				222A8FD62B27E3C600A55B65 /* Mappers */,
-				22728F362B37CF0E00C3916E /* Storage */,
 				22A76EC92B03F1B60055A36D /* Features */,
 				22A76ED92B03F4820055A36D /* UseCases */,
 				22A76EDC2B03F5340055A36D /* Data */,
@@ -568,6 +584,8 @@
 		22A76EDC2B03F5340055A36D /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				22166FCF2B498D4800D061AD /* Authentication */,
+				22728F362B37CF0E00C3916E /* Storage */,
 				22B047BF2B4077D40086094A /* CoreData */,
 				22F3665D2B0CAD50007F7E8C /* Repositories */,
 				22A76EDD2B03F5530055A36D /* Services */,
@@ -580,8 +598,7 @@
 			children = (
 				22A76EDE2B03F5620055A36D /* CategoriesRemoteService.swift */,
 				222A95DE2B0EC32400E2AAD5 /* MealsByCategoryRemoteService.swift */,
-				222A95E72B0ECDAA00E2AAD5 /* RecipesRemoteService.swift */,
-				22B047BD2B3F858E0086094A /* RecipesLocalService.swift */,
+				22166FCE2B498D1600D061AD /* Recipes */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -695,7 +712,6 @@
 			isa = PBXGroup;
 			children = (
 				22FFA15B2B23E35D00811574 /* AuthView.swift */,
-				22B047B42B3CE1C90086094A /* AuthenticationManager.swift */,
 				22106CCF2B2A95300090F25B /* AuthenticationViewModel.swift */,
 				221BD0CD2B3CD468000726EB /* LogIn */,
 				22B047B12B3CD5EC0086094A /* SignUp */,

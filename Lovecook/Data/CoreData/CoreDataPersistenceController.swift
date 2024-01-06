@@ -62,7 +62,6 @@ class CoreDataPersistenceController/*: ObservableObject*/ {
                     saveContext()
                 }
             } catch {
-                //TODO: Gestionar error ??
                 print("Error deleting favorite recipe: \(error)")
             }
     }
