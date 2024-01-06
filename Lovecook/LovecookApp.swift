@@ -16,7 +16,6 @@ import CoreData
 struct LovecookApp: App {
     let coordinator = Coordinator()
     @StateObject var viewModel = AuthenticationViewModel()
-    @StateObject var signUpViewModel = SignUpViewModel()
     
     init() {
         setupFirebase()
@@ -27,7 +26,6 @@ struct LovecookApp: App {
             SplashView()
                 .environmentObject(coordinator)
                 .environmentObject(viewModel)
-                .environmentObject(signUpViewModel)
         }
     }
 }

@@ -8,6 +8,7 @@
 import Foundation
 import AuthenticationServices
 import Toast
+import GoogleSignIn
 
 class AuthenticationViewModel: ObservableObject {
 
@@ -17,8 +18,13 @@ class AuthenticationViewModel: ObservableObject {
     @Published var userEmail: String = ""
     @Published var userPassword: String = ""
     @Published var isAccepted: Bool = false
-    
-    var userType: String = ""
+        
+    // MARK: - GoogleSignIn
+    func signInWithGoogle() {
+        self.authenticationManager.signInWithGoogle { [unowned self] state in
+            self.state = .signedIn
+        }
+    }
     
     func checkSignInWithGoogleState() -> Bool {
         authenticationManager.checkSignInWithGoogleState { [unowned self] state in
@@ -26,18 +32,7 @@ class AuthenticationViewModel: ObservableObject {
         }
     }
     
-    func signInWithGoogle() {
-        self.authenticationManager.signInWithGoogle { [unowned self] state in
-            self.state = .signedIn
-        }
-    }
-    
-    func signOut() {
-        self.authenticationManager.signOut { [unowned self] state in
-            self.state = .signedOut
-        }
-    }
-    
+    // MARK: - AppleSignIn
     func signInWithApple(authResults: ASAuthorization) {
         self.authenticationManager.signInWithApple(authResults: authResults) { [unowned self] state in
             self.state = .signedIn
@@ -50,12 +45,13 @@ class AuthenticationViewModel: ObservableObject {
         }
     }
     
+    // MARK: - Email & password SignIn and Register
     func logInWithEmailAndPassword(email: String, password: String) {
         guard !email.isEmpty, !password.isEmpty else {
+            Toast.default(image: UIImage(systemName: "info.circle")!, title: "Email and password needed.").show()
             print("No email or password found.")
             return
         }
-        
         authenticationManager.loginWithEmailAndPassword(email: email, password: password) { [unowned self] state in
             self.state = state
         }
@@ -73,7 +69,11 @@ class AuthenticationViewModel: ObservableObject {
     func register() {
         if isAccepted {
             guard !userEmail.isEmpty, !userPassword.isEmpty else {
-                print("No email or password found.")
+                Toast.default(
+                    image: UIImage(systemName: "envelope.fill")!,
+                    title: "Email and password needed",
+                    subtitle: "Please enter valid email and password"
+                ).show()
                 return
             }
             
@@ -81,22 +81,28 @@ class AuthenticationViewModel: ObservableObject {
                 self.state = .signedIn
             }
         } else {
-            print("You have to accept the Terms and conditions to register.")
+            Toast.default(
+                image: UIImage(systemName: "pencil.and.list.clipboard")!,
+                title: "Terms and conditions",
+                subtitle: "You have to accept Terms and conditions"
+            ).show()
             return
         }
     }
     
-    func getUserInfo() -> String {
-        switch authenticationManager.getUserInfo() {
-        case "email":
-            return ""
-        case "google":
-            return ""
-        case "apple":
-            return ""
-        default:
-            break
+    // MARK: - Common
+    func signOut() {
+        self.authenticationManager.signOut { [unowned self] state in
+            self.state = .signedOut
         }
-        return ""
+    }
+    
+    func getUser() -> GIDGoogleUser? {
+        return GIDSignIn.sharedInstance.currentUser
+    }
+    
+    //TODO: modificar o borrar --> userInfo = [userName, userEmail, userImage]
+    func getUserInfo() -> [String] {
+        return authenticationManager.getUserInfo()
     }
 }
