@@ -164,6 +164,7 @@ final class AuthenticationManager {
     func registerWithEmailAndPassword(email: String, password: String, completion: @escaping AuthenticationManagerCompletion) {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error as? NSError {
+                completion(.sessionError)
                 switch AuthErrorCode(_nsError: error).code {
                 case .operationNotAllowed:
                     print("The given sign-in provider is disabled for this Firebase project. Enable it in the Firebase console, under the sign-in method tab of the Auth section.")
@@ -177,9 +178,12 @@ final class AuthenticationManager {
                     print("Error: \(error.localizedDescription)")
                 }
             }
-            print("Success creating the user!")
-            //TODO: Store user data in Firebase storage
-            let user  = result?.user
+            if let result = result {
+                print("Success creating the user!")
+                completion(.signedIn)
+                //TODO: Store user data in Firebase storage
+                let user  = result.user
+            }
         }
     }
     

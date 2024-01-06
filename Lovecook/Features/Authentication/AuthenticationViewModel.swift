@@ -76,9 +76,8 @@ class AuthenticationViewModel: ObservableObject {
                 ).show()
                 return
             }
-            
             authenticationManager.registerWithEmailAndPassword(email: userEmail, password: userPassword) { [unowned self] state in
-                self.state = .signedIn
+                self.state = state
             }
         } else {
             Toast.default(
