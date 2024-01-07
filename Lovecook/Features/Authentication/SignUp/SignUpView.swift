@@ -22,14 +22,10 @@ struct SignUpView: View {
                 .foregroundColor(Color.gray)
             
             TextField("Enter your email", text: $viewModel.userEmail)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .textInputAutocapitalization(.never)
-                .disableAutocorrection(true)
+                .authenticationTextfieldStyle()
             
             SecureField("Choose a password", text: $viewModel.userPassword)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .textInputAutocapitalization(.never)
-                .disableAutocorrection(true)
+                .authenticationTextfieldStyle()
             
             Toggle(isOn: $viewModel.isAccepted) {
                 Text("I have read and agree to the Terms and Conditions")

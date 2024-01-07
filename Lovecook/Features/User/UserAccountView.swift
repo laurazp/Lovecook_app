@@ -33,7 +33,7 @@ struct UserAccountView: View {
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
-                .background(Color.lightGreen.opacity(0.3))
+                .background(Color.lightGreen)
                 .cornerRadius(12)
                 
                 Button {

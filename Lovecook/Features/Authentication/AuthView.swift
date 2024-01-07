@@ -8,6 +8,15 @@
 import SwiftUI
 
 struct AuthView: View {
+    
+    private struct Layout {
+        static let appTitle = "LoveCook"
+        static let logInButtonTitle = "Log in"
+        static let signUpButtonTitle = "Sign up"
+        static let accountSubtitle = "Don't have an account yet?"
+        static let backgroundImageName = "food_background"
+    }
+    
     @EnvironmentObject var viewModel: AuthenticationViewModel
     @State var isLoggedIn = false
     
@@ -18,7 +27,7 @@ struct AuthView: View {
                 VStack(spacing: 18) {
                     Spacer()
                     
-                    Text("LoveCook")
+                    Text(Layout.appTitle)
                         .foregroundStyle(.white)
                         .fontWeight(.bold)
                         .font(.largeTitle)
@@ -27,7 +36,7 @@ struct AuthView: View {
                     
                     Button {} label: {
                         NavigationLink(destination: LogInView()) {
-                            Text("Log in")
+                            Text(Layout.logInButtonTitle)
                                 .frame(maxWidth: .infinity)
                                 .fontWeight(.bold)
                                 .foregroundColor(Color.white)
@@ -38,13 +47,13 @@ struct AuthView: View {
                     .tint(Color.lightGreen)
                     .controlSize(.large)
                     
-                    Text("Don't have an account yet?")
+                    Text(Layout.accountSubtitle)
                         .foregroundStyle(.white)
                         .opacity(0.8)
                         .font(.caption2)
                     
                     NavigationLink(destination: SignUpView()) {
-                        Text("Sign up")
+                        Text(Layout.signUpButtonTitle)
                             .frame(maxWidth: .infinity)
                             .padding()
                             .background(Color.white)
@@ -61,7 +70,7 @@ struct AuthView: View {
                 }
                 .padding(28)
                 .background(
-                    Image("food_background")
+                    Image(Layout.backgroundImageName)
                         .resizable()
                         .edgesIgnoringSafeArea(.all)
                         .aspectRatio(contentMode: .fill)
@@ -69,17 +78,6 @@ struct AuthView: View {
                 )
                 .onAppear {
                     isLoggedIn = viewModel.checkSignInWithGoogleState()
-                    //TODO: checkear si hay sesión previa iniciada
-                    /*if isLoggedIn == false {
-                        if viewModel.checkSignInWithGoogleState() {
-                            isLoggedIn = true
-                        } else if viewModel.checkSignInWithAppleState() {
-                            print("signed in with apple")
-                            isLoggedIn = true
-                        } else {
-                            isLoggedIn = false
-                        }
-                    }*/
                 }
             }
         }
