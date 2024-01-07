@@ -13,6 +13,7 @@ import Toast
 struct PhotoGalleryView: View {
     @StateObject private var viewModel: PhotoGalleryViewModel
     @EnvironmentObject var coordinator: Coordinator
+    @Environment(\.colorScheme) var colorScheme
     private let permissionUtils = PermissionUtils()
     
     let gridItemLayout = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
@@ -39,7 +40,6 @@ struct PhotoGalleryView: View {
                                 
                                 Text(photo.name)
                                     .lineLimit(1)
-                                    .foregroundStyle(.black)
                                     .bold()
                                     .shadow(color: .gray, radius: 5, x: 3, y: 3)
                             }
@@ -50,12 +50,12 @@ struct PhotoGalleryView: View {
                 
                 VStack(spacing: 14) {
                     Text("Enter a name for your image before choosing one!")
-                        .foregroundStyle(.black)
                         .bold()
                         .font(.caption)
                     TextField("Your image name", text: $imageName)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.horizontal)
+                        .foregroundColor(colorScheme == .dark ? .white : .black)
                     //TODO: Gestionar permisos cámara y permitir acceso a cámara de fotos
                     
                     PhotosPicker(selection: $selectedItem, matching: .images, photoLibrary: .shared()) {
@@ -67,7 +67,6 @@ struct PhotoGalleryView: View {
                     .disabled(!showImagePicker)
                     
                     Text("Share your recipes with our community!")
-                        .foregroundStyle(.black)
                         .bold()
                 }
                 .onAppear {
@@ -84,7 +83,7 @@ struct PhotoGalleryView: View {
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
-                .background(Color.lightGreen.opacity(0.5))
+                .background(Color.lightGreen)
                 .cornerRadius(15)
                 .shadow(color: Color.black.opacity(0.2), radius: 7, x: 0, y: 2)
                 .padding([.horizontal, .vertical], 20)

@@ -15,14 +15,15 @@ struct RecipesView: View {
     var meal: Meal
     @StateObject private var viewModel: RecipesViewModel
     @EnvironmentObject var coordinator: Coordinator
-    @State var isFavorite: Bool
+    @State private var isFavorite: Bool
     
+    @Environment(\.colorScheme) var colorScheme
     @Environment(\.managedObjectContext) private var viewContext
     
     init(meal: Meal, viewModel: RecipesViewModel, isFavorite: Bool) {
         _viewModel = StateObject(wrappedValue: viewModel)
         self.meal = meal
-        self.isFavorite = viewModel.checkIfFavorite(meal: self.meal)
+        self._isFavorite = State(initialValue: viewModel.checkIfFavorite(meal: meal))
     }
     
     var body: some View {
@@ -76,7 +77,7 @@ struct RecipesView: View {
                         // MARK: - Category
                         HStack(alignment: .center, spacing: 0) {
                             Text("Category:  ")
-                                .foregroundColor(Color.black)
+                                .foregroundColor(colorScheme == .dark ? .white : .black)
                                 .fontWeight(Font.Weight.bold)
                             Text(recipe.recipeCategory)
                                 .foregroundColor(Color.gray)
@@ -126,6 +127,7 @@ struct RecipesView: View {
                                             .foregroundColor(Color.gray)
                                             .fontWeight(Font.Weight.heavy)
                                         Text("\(ingredient.ingredient)")
+                                            .foregroundColor(colorScheme == .dark ? .white : .black)
                                     }
                                     .font(Font.custom("HelveticaNeue", size: 18))
                                 }
@@ -153,7 +155,7 @@ struct RecipesView: View {
                             
                             Text(recipe.recipeInstructions)
                                 .font(Font.custom("HelveticaNeue", size: 18))
-                                .foregroundColor(Color.black)
+                                .foregroundColor(colorScheme == .dark ? .white : .black)
                         }
                         .padding(12)
                         
@@ -162,9 +164,9 @@ struct RecipesView: View {
                     .padding(12)
                     .navigationTitle(meal.mealTitle)
                 }
-                .background(Color.white)
+                .background(colorScheme == .dark ? Color.black : Color.white)
                 .cornerRadius(15)
-                .shadow(color: Color.black.opacity(0.2), radius: 7, x: 0, y: 2)
+                .shadow(color: colorScheme == .dark ? Color.white.opacity(0.2) : Color.black.opacity(0.2), radius: 7, x: 0, y: 2)
                 .padding(20)
             }
         }.task {

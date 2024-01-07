@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CategoryItemView: View {
+    @Environment(\.colorScheme) var colorScheme
     let category: Category
     
     var body: some View {
@@ -23,7 +24,7 @@ struct CategoryItemView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
-                .shadow(color: .black, radius: 5, x: 3, y: 5)
+                .shadow(color: colorScheme == .dark ? Color.gray : Color.black, radius: 5, x: 3, y: 2)
                 .padding(12)
                 .frame(width: 190, height: 200)
                 .cornerRadius(16)
