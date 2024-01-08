@@ -12,7 +12,6 @@
 		22166FC22B4585B200D061AD /* SignInWithAppleSwiftUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22166FC12B4585B200D061AD /* SignInWithAppleSwiftUIButton.swift */; };
 		22166FC62B45DD3E00D061AD /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22166FC52B45DD3E00D061AD /* Ingredient.swift */; };
 		22166FC92B46250700D061AD /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 22166FC82B46250700D061AD /* Toast */; };
-		22166FCB2B462BDD00D061AD /* CustomAlertDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22166FCA2B462BDD00D061AD /* CustomAlertDialog.swift */; };
 		22166FCD2B4833D300D061AD /* GreenRoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22166FCC2B4833D300D061AD /* GreenRoundedButton.swift */; };
 		22166FD32B49B46A00D061AD /* AuthenticationTextfieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22166FD22B49B46A00D061AD /* AuthenticationTextfieldStyle.swift */; };
 		22166FD62B4C4B5000D061AD /* ErrorLoadingListAlertDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22166FD52B4C4B5000D061AD /* ErrorLoadingListAlertDialog.swift */; };
@@ -161,7 +160,6 @@
 		22166FC02B45851000D061AD /* Lovecook.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lovecook.entitlements; sourceTree = "<group>"; };
 		22166FC12B4585B200D061AD /* SignInWithAppleSwiftUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleSwiftUIButton.swift; sourceTree = "<group>"; };
 		22166FC52B45DD3E00D061AD /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
-		22166FCA2B462BDD00D061AD /* CustomAlertDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertDialog.swift; sourceTree = "<group>"; };
 		22166FCC2B4833D300D061AD /* GreenRoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenRoundedButton.swift; sourceTree = "<group>"; };
 		22166FD22B49B46A00D061AD /* AuthenticationTextfieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationTextfieldStyle.swift; sourceTree = "<group>"; };
 		22166FD52B4C4B5000D061AD /* ErrorLoadingListAlertDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLoadingListAlertDialog.swift; sourceTree = "<group>"; };
@@ -448,7 +446,6 @@
 				2279304F2B2B72F0006C9EDA /* CheckboxToggleStyle.swift */,
 				22728F2B2B37C3A900C3916E /* UserNetworkImage.swift */,
 				22B047DB2B44A1270086094A /* CustomImageView.swift */,
-				22166FCA2B462BDD00D061AD /* CustomAlertDialog.swift */,
 				22166FD02B49B3F200D061AD /* Modifiers */,
 				22166FD12B49B40200D061AD /* Buttons */,
 			);
@@ -882,7 +879,6 @@
 				2262B7A42B38494E0008B17E /* UserFavoritesView.swift in Sources */,
 				B64A931F2B42CD0500E39A2D /* FavoriteRecipe.swift in Sources */,
 				228D52FF2B224E8600C45BC9 /* CategoriesResponse.swift in Sources */,
-				22166FCB2B462BDD00D061AD /* CustomAlertDialog.swift in Sources */,
 				228D53072B228B9C00C45BC9 /* RecipesViewModel.swift in Sources */,
 				22B047C12B4077F00086094A /* CoreDataPersistenceController.swift in Sources */,
 				222A95DF2B0EC32400E2AAD5 /* MealsByCategoryRemoteService.swift in Sources */,
