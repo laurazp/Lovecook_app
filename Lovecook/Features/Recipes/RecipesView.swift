@@ -12,6 +12,21 @@ import CoreData
 import Toast
 
 struct RecipesView: View {
+    
+    private struct Layout {
+        static let favoriteButtonImageName = "heart"
+        static let favoriteButtonClickedImageName = "heart.fill"
+        static let favoriteAddedToastText = "Favorite added"
+        static let favoriteDeletedToastText = "Favorite deleted"
+        static let categoryTitle = "Category:  "
+        static let tagsTitle = "Tags:"
+        static let ingredientsTitle = "Ingredients"
+        static let cookingInstructionsTitle = "Cooking Instructions"
+        static let videoPlayerHeight: CGFloat = 200
+        static let textFontName: String = "HelveticaNeue"
+        static let tagsFontName: String = "HelveticaNeue-Medium"
+    }
+    
     var meal: Meal
     @StateObject private var viewModel: RecipesViewModel
     @EnvironmentObject var coordinator: Coordinator
@@ -56,12 +71,12 @@ struct RecipesView: View {
                             isFavorite ? viewModel.addRecipeToFavorites(recipe: recipe) : viewModel.deleteRecipeFromFavorites(recipe: recipe)
                             
                             isFavorite ? Toast.default(
-                                image: UIImage(systemName: "heart.fill")!,
-                                title: "Favorite added").show() : Toast.default(
-                                    image: UIImage(systemName: "heart")!,
-                                    title: "Favorite deleted").show()
+                                image: UIImage(systemName: Layout.favoriteButtonClickedImageName)!,
+                                title: Layout.favoriteAddedToastText).show() : Toast.default(
+                                    image: UIImage(systemName: Layout.favoriteButtonImageName)!,
+                                    title: Layout.favoriteDeletedToastText).show()
                         } label: {
-                            Image(systemName: "heart.fill")
+                            Image(systemName: Layout.favoriteButtonClickedImageName)
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: 23, height: 20)
@@ -76,32 +91,32 @@ struct RecipesView: View {
                     VStack(alignment: .leading, spacing: 8) {
                         // MARK: - Category
                         HStack(alignment: .center, spacing: 0) {
-                            Text("Category:  ")
+                            Text(Layout.categoryTitle)
                                 .foregroundColor(colorScheme == .dark ? .white : .black)
                                 .fontWeight(Font.Weight.bold)
                             Text(recipe.recipeCategory)
                                 .foregroundColor(Color.gray)
                         }
-                        .font(Font.custom("HelveticaNeue", size: 14))
+                        .font(Font.custom(Layout.textFontName, size: 14))
                         .padding(.horizontal, 16)
                         
                         // MARK: - Tags
                         if let recipeTags = viewModel.recipe?.recipeTags {
                             HStack {
-                                Text("Tags:")
+                                Text(Layout.tagsTitle)
                                     .font(Font.system(size: 13))
                                     .fontWeight(Font.Weight.heavy)
                                 
                                 ForEach(recipeTags, id: \.self) { tag in
                                     HStack {
                                         Text(tag)
-                                            .font(Font.custom("HelveticaNeue-Medium", size: 12))
+                                            .font(Font.custom(Layout.tagsFontName, size: 12))
                                             .padding([.leading, .trailing], 10)
                                             .padding([.top, .bottom], 5)
                                             .foregroundColor(Color.white)
                                     }
                                 }
-                                .background(Color(red: 43/255, green: 175/255, blue: 187/255))
+                                .background(Color.teal)
                                 .cornerRadius(7)
                             }
                             .padding(.horizontal, 16)
@@ -116,7 +131,7 @@ struct RecipesView: View {
                         if let ingredients = viewModel.recipe?.ingredients {
                             VStack(alignment: .leading, spacing: 16) {
                                 
-                                Text("Ingredients")
+                                Text(Layout.ingredientsTitle)
                                     .font(.title2)
                                     .fontWeight(Font.Weight.heavy)
                                     .foregroundColor(Color.gray)
@@ -129,7 +144,7 @@ struct RecipesView: View {
                                         Text("\(ingredient.ingredient)")
                                             .foregroundColor(colorScheme == .dark ? .white : .black)
                                     }
-                                    .font(Font.custom("HelveticaNeue", size: 18))
+                                    .font(Font.custom(Layout.textFontName, size: 18))
                                 }
                             }
                             .padding([.horizontal, .bottom], 16)
@@ -140,7 +155,7 @@ struct RecipesView: View {
                         
                         // MARK: - Instructions
                         VStack(alignment: .leading, spacing: 18) {
-                            Text("Cooking Instructions")
+                            Text(Layout.cookingInstructionsTitle)
                                 .font(.title2)
                                 .fontWeight(Font.Weight.heavy)
                                 .foregroundColor(Color.gray)
@@ -150,10 +165,10 @@ struct RecipesView: View {
                                 YouTubePlayerView(YouTubePlayer(stringLiteral: recipe.recipeYoutubeUrl))
                             }
                             .padding(.bottom, 10)
-                            .frame(height: 200)
+                            .frame(height: Layout.videoPlayerHeight)
                             
                             Text(recipe.recipeInstructions)
-                                .font(Font.custom("HelveticaNeue", size: 18))
+                                .font(Font.custom(Layout.textFontName, size: 18))
                                 .foregroundColor(colorScheme == .dark ? .white : .black)
                         }
                         .padding(12)

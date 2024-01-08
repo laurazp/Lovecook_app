@@ -11,6 +11,15 @@ import PhotosUI
 import Toast
 
 struct PhotoGalleryView: View {
+    
+    private struct Layout {
+        static let galleryTitle = "Gallery"
+        static let uploadImageText = "Enter a name for your image before choosing one!"
+        static let imageNameTextfieldHint = "Your image name"
+        static let photoPickerImageName = "camera.fill"
+        static let shareRecipesText = "Share your recipes with our community!"
+    }
+    
     @StateObject private var viewModel: PhotoGalleryViewModel
     @EnvironmentObject var coordinator: Coordinator
     @Environment(\.colorScheme) var colorScheme
@@ -45,28 +54,28 @@ struct PhotoGalleryView: View {
                             }
                         }
                     }
-                    .navigationTitle("Gallery")
+                    .navigationTitle(Layout.galleryTitle)
                 }.padding()
                 
+                // MARK: - Upload image
                 VStack(spacing: 14) {
-                    Text("Enter a name for your image before choosing one!")
+                    Text(Layout.uploadImageText)
                         .bold()
                         .font(.caption)
-                    TextField("Your image name", text: $imageName)
+                    TextField(Layout.imageNameTextfieldHint, text: $imageName)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.horizontal)
                         .foregroundColor(colorScheme == .dark ? .white : .black)
-                    //TODO: Gestionar permisos cámara y permitir acceso a cámara de fotos
                     
                     PhotosPicker(selection: $selectedItem, matching: .images, photoLibrary: .shared()) {
-                        Image(systemName: "camera.fill")
+                        Image(systemName: Layout.photoPickerImageName)
                             .font(.system(size: 30))
                             .foregroundColor(showImagePicker ? .black : .gray)
                             .shadow(color: .gray, radius: 0.2, x: 1, y: 1)
                     }
                     .disabled(!showImagePicker)
                     
-                    Text("Share your recipes with our community!")
+                    Text(Layout.shareRecipesText)
                         .bold()
                 }
                 .onAppear {
@@ -76,7 +85,6 @@ struct PhotoGalleryView: View {
                                 showImagePicker = true
                             } else {
                                 showImagePicker = false
-                                print("Permission denied.")
                             }
                         }
                     }
@@ -88,16 +96,13 @@ struct PhotoGalleryView: View {
                 .shadow(color: Color.black.opacity(0.2), radius: 7, x: 0, y: 2)
                 .padding([.horizontal, .vertical], 20)
             }
-        }.alert("Error", isPresented: Binding.constant(viewModel.error != nil)) {
-            Button("OK") {}
-            Button("Retry") {
-                Task {
-                    viewModel.getPhotosFromFirebase()
-                }
+        }
+        .errorLoadingListAlertDialog(error: viewModel.error, errorMessage: viewModel.error?.localizedDescription, retryButtonAction: {
+            Task {
+                viewModel.getPhotosFromFirebase()
             }
-        } message: {
-            Text(viewModel.error?.localizedDescription ?? "")
-        }.task {
+        })
+        .task {
             viewModel.getPhotosFromFirebase()
         }.onChange(of: selectedItem) { newValue in
             guard let newValue else { return }

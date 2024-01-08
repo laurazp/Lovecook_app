@@ -25,7 +25,7 @@ class PhotoGalleryViewModel: ObservableObject {
         
         storageRef.listAll { (result, error) in
             if let error = error {
-                print("Error while listing all files: ", error)
+                print(error.localizedDescription)
             }
             
             if let result = result {
@@ -33,13 +33,12 @@ class PhotoGalleryViewModel: ObservableObject {
                     
                     item.downloadURL { (url, error) in
                         if let error = error {
-                            print("Error getting download URL: \(error)")
+                            print(error.localizedDescription)
                         } else {
                             item.getMetadata { metadata, _ in
                                 if let downloadURL = url {
                                     self.photos.append(
-                                        Photo(url: downloadURL, name: metadata?.customMetadata?["title"] ?? item.name)
-                                    )
+                                        Photo(url: downloadURL, name: metadata?.customMetadata?["title"] ?? item.name))
                                 }
                             }
                         }
@@ -52,29 +51,15 @@ class PhotoGalleryViewModel: ObservableObject {
     func saveUserImage(item: PhotosPickerItem, title: String, completion: @escaping (String) -> Void) {
         Task {
             guard let data = try await item.loadTransferable(type: Data.self) else { return }
-            let (path, name, title) = try await StorageManager.shared.saveImage(data: data, title: title/*, userId: user.userId*/)
-            print("SUCCESS!")
+            let (path, name, title) = try await StorageManager.shared.saveImage(data: data, title: title)
             let storageRef = storage.child("images").child(name)
             storageRef.downloadURL(completion: { [unowned self] (url, error) in
                 guard error == nil, let url = url else {
-                    print("Failed to download url:", error!)
                     return
                 }
                 self.photos.append(Photo(url: url, name: title ?? name))
                 completion("")
             })
-        }
-    }
-    
-    //TODO: revisar!!
-    func delete() {
-        let storageRef = storage.child("images")
-
-        // Delete the file
-        storageRef.delete {error in
-            if let error = error {
-                print("Error deleting item", error)
-            }
         }
     }
 }

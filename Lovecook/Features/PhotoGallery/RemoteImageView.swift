@@ -6,8 +6,15 @@
 //
 
 import SwiftUI
+import Toast
 
 struct RemoteImageView: View {
+    
+    private struct Layout {
+        static let errorToastImageName = "exclamationmark.octagon"
+        static let errorToastText = "Error downloading image: "
+    }
+    
     let downloadURL: URL
     @State private var imageData: Data?
     
@@ -21,7 +28,7 @@ struct RemoteImageView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .shadow(radius: 5)
         } else {
-            ProgressView() //TODO: Placeholder while loading or if there's an error ??
+            ProgressView()
                 .onAppear(perform: loadData)
         }
     }
@@ -29,7 +36,9 @@ struct RemoteImageView: View {
     func loadData() {
         URLSession.shared.dataTask(with: downloadURL) { data, _, error in
             if let error = error {
-                print("Error downloading image: \(error)")
+                Toast.default(
+                    image: UIImage(systemName: Layout.errorToastImageName)!,
+                    title: ("\(Layout.errorToastText)\(error)")).show()
                 return
             }
             
