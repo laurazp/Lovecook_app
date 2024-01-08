@@ -9,6 +9,15 @@ import SwiftUI
 import Toast
 
 struct UserFavoritesView: View {
+    
+    private struct Layout {
+        static let noFavoritesText = "No favorites added yet."
+        static let deleteFavoriteToastImageName = "heart"
+        static let deleteFavoriteToastText = "Favorite deleted"
+        static let deleteFavoriteButtonImageName = "trash"
+        static let deleteFavoriteButtonText = "Delete"
+    }
+    
     @EnvironmentObject var coordinator: Coordinator
     @StateObject var viewModel: UserFavoritesViewModel
     @Environment(\.managedObjectContext) var viewContext
@@ -26,7 +35,7 @@ struct UserFavoritesView: View {
             } else {
                 if (viewModel.favoritesList.isEmpty) {
                     VStack {
-                        Text("No favorites added yet.")
+                        Text(Layout.noFavoritesText)
                     }.frame(height: UIScreen.main.bounds.size.height / 2, alignment: .center)
                 } else {
                     List {
@@ -42,11 +51,11 @@ struct UserFavoritesView: View {
                                             viewModel.deleteFavorite(recipe: favorite)
                                             
                                             Toast.default(
-                                                image: UIImage(systemName: "heart")!,
-                                                title: "Favorite deleted").show()
+                                                image: UIImage(systemName: Layout.deleteFavoriteToastImageName)!,
+                                                title: Layout.deleteFavoriteToastText).show()
                                         }
                                     } label: {
-                                        Label("Delete", systemImage: "trash")
+                                        Label(Layout.deleteFavoriteButtonText, systemImage: Layout.deleteFavoriteButtonImageName)
                                     }
                                     .tint(.red)
                                 }
@@ -56,7 +65,7 @@ struct UserFavoritesView: View {
                             Button(action: {
                                 viewModel.deleteAllFavorites()
                             }) {
-                                Label("Delete", systemImage: "trash")
+                                Label(Layout.deleteFavoriteButtonText, systemImage: Layout.deleteFavoriteButtonImageName)
                             }
                             .tint(.red)
                         }
@@ -65,16 +74,13 @@ struct UserFavoritesView: View {
                     .listRowInsets(EdgeInsets())
                 }
             }
-        }.alert("Error", isPresented: Binding.constant(viewModel.error != nil)) {
-            Button("OK") {}
-            Button("Retry") {
-                Task {
-                    viewModel.getAllFavorites()
-                }
+        }
+        .errorLoadingListAlertDialog(error: viewModel.error, errorMessage: viewModel.error?.localizedDescription, retryButtonAction: {
+            Task {
+                viewModel.getAllFavorites()
             }
-        } message: {
-            Text(viewModel.error?.localizedDescription ?? "")
-        }.task {
+        })
+        .task {
             viewModel.getAllFavorites()
         }
     }

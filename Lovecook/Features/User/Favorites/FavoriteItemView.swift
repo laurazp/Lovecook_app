@@ -9,11 +9,17 @@ import SwiftUI
 import Kingfisher
 
 struct FavoriteItemView: View {
+    
+    private struct Layout {
+        static let placeholderImageName = "meal_placeholder"
+        static let favoriteDefaultTitle = "Unknown"
+    }
+    
     let favoriteItem: FavoriteRecipe
     
     var body: some View {
         ZStack {
-            CustomImageView(imageURL: favoriteItem.image, placeholder: "meal_placeholder")
+            CustomImageView(imageURL: favoriteItem.image, placeholder: Layout.placeholderImageName)
                 .aspectRatio(contentMode: .fill)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .shadow(color: .black, radius: 7, x: 3, y: 5)
@@ -21,7 +27,7 @@ struct FavoriteItemView: View {
                 .background(.black)
                 .cornerRadius(16)
             
-            Text(favoriteItem.title ?? "Unknown")
+            Text(favoriteItem.title ?? Layout.favoriteDefaultTitle)
                 .font(.title3)
                 .foregroundStyle(.white)
                 .bold()
@@ -35,7 +41,5 @@ struct FavoriteItemView: View {
 }
 
 #Preview {
-    FavoriteItemView(favoriteItem: FavoriteRecipe(title: "Apple pie", id: "1234", image: ""))
+    FavoriteItemView(favoriteItem: .example)
 }
-
-

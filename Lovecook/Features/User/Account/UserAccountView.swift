@@ -9,6 +9,12 @@ import SwiftUI
 import GoogleSignIn
 
 struct UserAccountView: View {
+    
+    private struct Layout {
+        static let signOutButtonTitle = "Sign out"
+        static let defaultUserDataText = "Unable to retrieve user data."
+    }
+    
     @EnvironmentObject var viewModel: AuthenticationViewModel
         
     var body: some View {
@@ -26,7 +32,7 @@ struct UserAccountView: View {
                     Text(user?.profile?.name ?? "")
                         .font(.headline)
                     
-                    Text(user?.profile?.email ?? "")
+                    Text(user?.profile?.email ?? Layout.defaultUserDataText)
                         .font(.subheadline)
                     
                     Spacer()
@@ -39,7 +45,7 @@ struct UserAccountView: View {
                 Button {
                     viewModel.signOut()
                 } label: {
-                    Text("Sign out")
+                    Text(Layout.signOutButtonTitle)
                         .frame(maxWidth: .infinity)
                         .fontWeight(.bold)
                         .foregroundColor(Color.white)

@@ -24,9 +24,7 @@ class UserFavoritesViewModel: ObservableObject {
         self.deleteFavoriteRecipeUseCase = deleteFavoriteRecipeUseCase
     }
     
-    //TODO: @MainActor
     func getAllFavorites() {
-        //TODO: gestionar carga o errores?
         favoritesList =  getFavoritesUseCase.execute()
     }
     
