@@ -12,6 +12,7 @@ import FirebaseStorage
 import GoogleSignIn
 import FirebaseCore
 import AuthenticationServices
+import Toast
 
 typealias AuthenticationManagerCompletion = (SignInState)->Void
 
@@ -154,15 +155,29 @@ final class AuthenticationManager {
             if let error = error as? NSError {
                 completion(.sessionError)
                 
+                /* Toasts showing errors shouldn't be called from AuthenticationManager,
+                 * but due to lack of time, I'm calling them from here and it will be
+                 * on the TODO list for a future implementation.
+                 */
                 switch AuthErrorCode(_nsError: error).code {
                 case .operationNotAllowed:
-                    print("The given sign-in provider is disabled for this Firebase project. Enable it in the Firebase console, under the sign-in method tab of the Auth section.")
+                    break
                 case .emailAlreadyInUse:
+                    Toast.default(
+                        image: UIImage(systemName: "info")!,
+                        title: "Email already in use",
+                        subtitle: "Email is already in use.").show()
                     print("Email already in use.")
                 case .invalidEmail:
-                    print("The email address has an incorrect format.")
+                    Toast.default(
+                        image: UIImage(systemName: "info")!,
+                        title: "Incorrect email address",
+                        subtitle: "Email has an incorrect format.").show()
                 case .weakPassword:
-                    print("The password must be 6 characters long or more.")
+                    Toast.default(
+                        image: UIImage(systemName: "info")!,
+                        title: "Weak password",
+                        subtitle: "It must be 6 characters or more.").show()
                 default:
                     print("Error: \(error.localizedDescription)")
                 }
