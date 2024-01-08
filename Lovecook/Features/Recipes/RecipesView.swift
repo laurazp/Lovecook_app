@@ -145,7 +145,6 @@ struct RecipesView: View {
                                 .fontWeight(Font.Weight.heavy)
                                 .foregroundColor(Color.gray)
                             
-                            //TODO: gestionar error y loadingView
                             // MARK: - Video player
                             HStack(alignment: .center) {
                                 YouTubePlayerView(YouTubePlayer(stringLiteral: recipe.recipeYoutubeUrl))
@@ -169,17 +168,14 @@ struct RecipesView: View {
                 .shadow(color: colorScheme == .dark ? Color.white.opacity(0.2) : Color.black.opacity(0.2), radius: 7, x: 0, y: 2)
                 .padding(20)
             }
-        }.task {
-            await viewModel.getRecipe(mealId: Int(meal.mealId) ?? 1)
-        }.alert("Error", isPresented: Binding.constant(viewModel.error != nil)) {
-            Button("OK") {}
-            Button("Retry") {
-                Task {
-                    await viewModel.getRecipe(mealId: Int(meal.mealId) ?? 1)
-                }
+        }
+        .errorLoadingListAlertDialog(error: viewModel.error, errorMessage: viewModel.error?.localizedDescription, retryButtonAction: {
+            Task {
+                await viewModel.getRecipe(mealId: Int(meal.mealId) ?? 1)
             }
-        } message: {
-            Text(viewModel.error?.localizedDescription ?? "")
+        })
+        .task {
+            await viewModel.getRecipe(mealId: Int(meal.mealId) ?? 1)
         }
     }
 }
