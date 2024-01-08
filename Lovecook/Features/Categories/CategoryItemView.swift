@@ -23,12 +23,9 @@ struct CategoryItemView: View {
             Image(category.categoryTitle)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
+                .clipShape(RoundedRectangle(cornerRadius: 16))
                 .shadow(color: colorScheme == .dark ? Color.gray : Color.black, radius: 5, x: 3, y: 2)
                 .padding(12)
-                .frame(width: 190, height: 200)
-                .cornerRadius(16)
-            
             
             VStack {
                 Text(category.categoryTitle)

@@ -349,6 +349,14 @@
 			path = Buttons;
 			sourceTree = "<group>";
 		};
+		22166FD42B4C48EC00D061AD /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				22A76ED12B03F21C0055A36D /* UserAccountView.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
 		221BD0CD2B3CD468000726EB /* LogIn */ = {
 			isa = PBXGroup;
 			children = (
@@ -370,7 +378,8 @@
 		222A95BB2B0D70BB00E2AAD5 /* Recipes */ = {
 			isa = PBXGroup;
 			children = (
-				222A95E32B0ECA4100E2AAD5 /* RecipesView */,
+				228D53042B228B8700C45BC9 /* RecipesView.swift */,
+				228D53062B228B9C00C45BC9 /* RecipesViewModel.swift */,
 			);
 			path = Recipes;
 			sourceTree = "<group>";
@@ -385,35 +394,18 @@
 		222A95D92B0EBCDC00E2AAD5 /* MealsByCategory */ = {
 			isa = PBXGroup;
 			children = (
-				222A95E42B0ECA5500E2AAD5 /* MealsByCategoryView */,
-			);
-			path = MealsByCategory;
-			sourceTree = "<group>";
-		};
-		222A95E32B0ECA4100E2AAD5 /* RecipesView */ = {
-			isa = PBXGroup;
-			children = (
-				228D53042B228B8700C45BC9 /* RecipesView.swift */,
-				228D53062B228B9C00C45BC9 /* RecipesViewModel.swift */,
-			);
-			path = RecipesView;
-			sourceTree = "<group>";
-		};
-		222A95E42B0ECA5500E2AAD5 /* MealsByCategoryView */ = {
-			isa = PBXGroup;
-			children = (
 				222A95BC2B0D70E700E2AAD5 /* MealsByCategoryView.swift */,
 				222A95D32B0EB9D500E2AAD5 /* MealsByCategoryViewModel.swift */,
 				222A95E02B0EC72A00E2AAD5 /* MealItemView.swift */,
 			);
-			path = MealsByCategoryView;
+			path = MealsByCategory;
 			sourceTree = "<group>";
 		};
 		22728F262B378C1D00C3916E /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
-				22728F242B378C0700C3916E /* UserFavoritesViewModel.swift */,
 				2262B7A32B38494E0008B17E /* UserFavoritesView.swift */,
+				22728F242B378C0700C3916E /* UserFavoritesViewModel.swift */,
 				22B047D92B449D4B0086094A /* FavoriteItemView.swift */,
 			);
 			path = Favorites;
@@ -561,7 +553,9 @@
 		22A76ECA2B03F1BE0055A36D /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				22A76ED32B03F3990055A36D /* CategoriesView */,
+				22A76ECC2B03F1F10055A36D /* CategoriesView.swift */,
+				22A76ED52B03F3B90055A36D /* CategoriesViewModel.swift */,
+				222A95B92B0D6FBD00E2AAD5 /* CategoryItemView.swift */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -569,21 +563,11 @@
 		22A76ED02B03F2120055A36D /* User */ = {
 			isa = PBXGroup;
 			children = (
-				22728F262B378C1D00C3916E /* Favorites */,
-				22A76ED12B03F21C0055A36D /* UserAccountView.swift */,
 				22728F222B36515100C3916E /* UserMainView.swift */,
+				22166FD42B4C48EC00D061AD /* Account */,
+				22728F262B378C1D00C3916E /* Favorites */,
 			);
 			path = User;
-			sourceTree = "<group>";
-		};
-		22A76ED32B03F3990055A36D /* CategoriesView */ = {
-			isa = PBXGroup;
-			children = (
-				22A76ECC2B03F1F10055A36D /* CategoriesView.swift */,
-				22A76ED52B03F3B90055A36D /* CategoriesViewModel.swift */,
-				222A95B92B0D6FBD00E2AAD5 /* CategoryItemView.swift */,
-			);
-			path = CategoriesView;
 			sourceTree = "<group>";
 		};
 		22A76ED92B03F4820055A36D /* UseCases */ = {
