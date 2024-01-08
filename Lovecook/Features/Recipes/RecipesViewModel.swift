@@ -7,8 +7,14 @@
 
 import Foundation
 import SwiftUI
+import Toast
 
 class RecipesViewModel: ObservableObject {
+    
+    private struct Layout {
+        static let favoritesToastImageName = "heart"
+        static let favoritesToastText = "Recipe is already added to Favorites!"
+    }
     
     var recipe: Recipe?
     @Published var isLoading = false
@@ -42,8 +48,9 @@ class RecipesViewModel: ObservableObject {
     
     func addRecipeToFavorites(recipe: Recipe) {
         if (checkFavoriteAddedUseCase.checkFavorite(recipeTitle: recipe.recipeTitle)) {
-            //TODO: mostrar snackBar avisando que ya está añadido ??
-            print("Recipe is already added to Favorites!")
+            Toast.default(
+                image: UIImage(systemName: Layout.favoritesToastImageName)!,
+                title: Layout.favoritesToastText).show()
             return
         } else {
             addRecipeToFavoritesUseCase.execute(for: recipe)

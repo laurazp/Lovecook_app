@@ -7,7 +7,7 @@
 
 import CoreData
 
-class CoreDataPersistenceController/*: ObservableObject*/ {
+class CoreDataPersistenceController {
     let container: NSPersistentContainer
     
     var viewContext: NSManagedObjectContext {
@@ -34,7 +34,7 @@ class CoreDataPersistenceController/*: ObservableObject*/ {
     
     func getAllFavorites() -> [CDFavoriteRecipe] {
         let request = NSFetchRequest<CDFavoriteRecipe>(entityName: "CDFavoriteRecipe")
-
+        
         do {
             return try viewContext.fetch(request)
         } catch {
@@ -54,16 +54,15 @@ class CoreDataPersistenceController/*: ObservableObject*/ {
     
     func deleteFavorite(recipe: FavoriteRecipe) {
         let fetchRequest: NSFetchRequest<CDFavoriteRecipe> = CDFavoriteRecipe.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "id == %@", recipe.id)
-            
-            do {
-                if let favoriteToDelete = try viewContext.fetch(fetchRequest).first {
-                    viewContext.delete(favoriteToDelete)
-                    saveContext()
-                }
-            } catch {
-                //TODO: Gestionar error ??
-                print("Error deleting favorite recipe: \(error)")
+        fetchRequest.predicate = NSPredicate(format: "id == %@", recipe.id)
+        
+        do {
+            if let favoriteToDelete = try viewContext.fetch(fetchRequest).first {
+                viewContext.delete(favoriteToDelete)
+                saveContext()
             }
+        } catch {
+            print("Error deleting favorite recipe: \(error)")
+        }
     }
 }

@@ -11,4 +11,12 @@ struct FavoriteRecipe: Hashable {
     let title: String?
     let id: String
     let image: String
+    
+    static var example: FavoriteRecipe {
+        FavoriteRecipe(
+            title: "Apple pie", 
+            id: "1234",
+            image: "")
+    }
 }
+

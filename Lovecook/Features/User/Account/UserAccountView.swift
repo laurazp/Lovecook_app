@@ -9,11 +9,17 @@ import SwiftUI
 import GoogleSignIn
 
 struct UserAccountView: View {
+    
+    private struct Layout {
+        static let signOutButtonTitle = "Sign out"
+        static let defaultUserDataText = "Unable to retrieve user data."
+    }
+    
     @EnvironmentObject var viewModel: AuthenticationViewModel
-    
-    private let user = GIDSignIn.sharedInstance.currentUser
-    
+        
     var body: some View {
+        let user = viewModel.getUser()
+
         NavigationView {
             VStack(spacing: 28) {
                 UserNetworkImage(url: user?.profile?.imageURL(withDimension: 200))
@@ -22,24 +28,24 @@ struct UserAccountView: View {
                     .cornerRadius(8)
                     .clipShape(Circle())
        
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 18) {
                     Text(user?.profile?.name ?? "")
                         .font(.headline)
                     
-                    Text(user?.profile?.email ?? "")
+                    Text(user?.profile?.email ?? Layout.defaultUserDataText)
                         .font(.subheadline)
                     
                     Spacer()
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
-                .background(Color(.secondarySystemBackground))
+                .background(Color.lightGreen)
                 .cornerRadius(12)
                 
                 Button {
                     viewModel.signOut()
                 } label: {
-                    Text("Sign out")
+                    Text(Layout.signOutButtonTitle)
                         .frame(maxWidth: .infinity)
                         .fontWeight(.bold)
                         .foregroundColor(Color.white)

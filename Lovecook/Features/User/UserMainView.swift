@@ -8,15 +8,23 @@
 import SwiftUI
 
 struct UserMainView: View {
+    
+    private struct Layout {
+        static let userAccountTitle = "My account"
+        static let pickerTitle = "Choose an option:"
+        static let pickerAccountText = "Account Details"
+        static let pickerFavoritesText = "My Favorites"
+    }
+    
     @EnvironmentObject var coordinator: Coordinator
     @State private var selectedView = 0
     
     var body: some View {
         NavigationStack {
             VStack {
-                Picker("Choose an option:", selection: $selectedView) {
-                    Text("Account Details").tag(0)
-                    Text("My Favorites").tag(1)
+                Picker(Layout.pickerTitle, selection: $selectedView) {
+                    Text(Layout.pickerAccountText).tag(0)
+                    Text(Layout.pickerFavoritesText).tag(1)
                 }
                 .pickerStyle(.segmented)
                 
@@ -30,7 +38,7 @@ struct UserMainView: View {
                 }
                 Spacer()
             }
-            .navigationTitle("My account")
+            .navigationTitle(Layout.userAccountTitle)
             .padding()
             .frame(
                 maxWidth: .infinity,

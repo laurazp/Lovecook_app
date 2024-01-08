@@ -9,6 +9,11 @@ import SwiftUI
 import Kingfisher
 
 struct CategoriesView: View {
+    
+    private struct Layout {
+        static let categoriesTitle = "Categories"
+    }
+    
     @StateObject private var viewModel: CategoriesViewModel
     @EnvironmentObject var coordinator: Coordinator
     
@@ -34,20 +39,17 @@ struct CategoriesView: View {
                             }
                         }
                     }
-                    .navigationTitle("Categories")
+                    .navigationTitle(Layout.categoriesTitle)
                     .padding(12)
                 }
             }
-        }.alert("Error", isPresented: Binding.constant(viewModel.error != nil)) {
-            Button("OK") {}
-            Button("Retry") {
-                Task {
-                    await viewModel.getCategories()
-                }
+        }
+        .errorLoadingListAlertDialog(error: viewModel.error, errorMessage: viewModel.error?.localizedDescription, retryButtonAction: {
+            Task {
+                await viewModel.getCategories()
             }
-        } message: {
-            Text(viewModel.error?.localizedDescription ?? "")
-        }.task {
+        })
+        .task {
             await viewModel.getCategories()
         }
     }

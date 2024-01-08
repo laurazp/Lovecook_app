@@ -8,12 +8,26 @@
 import SwiftUI
 import Kingfisher
 import PhotosUI
+import Toast
 
 struct PhotoGalleryView: View {
+    
+    private struct Layout {
+        static let galleryTitle = "Gallery"
+        static let uploadImageText = "Enter a name for your image before choosing one!"
+        static let imageNameTextfieldHint = "Your image name"
+        static let photoPickerImageName = "camera.fill"
+        static let shareRecipesText = "Share your recipes with our community!"
+    }
+    
     @StateObject private var viewModel: PhotoGalleryViewModel
     @EnvironmentObject var coordinator: Coordinator
+    @Environment(\.colorScheme) var colorScheme
+    private let permissionUtils = PermissionUtils()
     
     let gridItemLayout = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
+    
+    @State private var showImagePicker = false
     @State private var selectedItem: PhotosPickerItem? = nil
     @State private var imageName: String = ""
     
@@ -29,63 +43,73 @@ struct PhotoGalleryView: View {
                 ScrollView {
                     LazyVGrid(columns: gridItemLayout, spacing: 18) {
                         ForEach(viewModel.photos, id: \.id) { photo in
-                            NavigationLink {
-                                //TODO: Detail?
-                                //coordinator.makePhotoDetailView()
-                            } label: {
-                                VStack(alignment: .center) {
-                                    RemoteImageView(downloadURL: photo.url)
-                                        .frame(width: 110, height: 120)
-                                    
-                                    Text(photo.name)
-                                        .lineLimit(1)
-                                        .foregroundStyle(.black)
-                                        .bold()
-                                        .shadow(color: .gray, radius: 5, x: 3, y: 3)
-                                }
+                            VStack(alignment: .center) {
+                                RemoteImageView(downloadURL: photo.url)
+                                    .frame(width: 110, height: 120)
+                                
+                                Text(photo.name)
+                                    .lineLimit(1)
+                                    .bold()
+                                    .shadow(color: .gray, radius: 5, x: 3, y: 3)
                             }
                         }
                     }
-                    //.id(UUID())
-                    //.id(viewModel.refreshView)
-                    .navigationTitle("Gallery")
-                    /*.onChange(of: viewModel.photos) {
-                        viewModel.getPhotosFromFirebase()
-                    }*/
-                }.padding(.horizontal)
+                    .navigationTitle(Layout.galleryTitle)
+                }.padding()
                 
-                VStack(spacing: 16) {
-                    TextField("Enter image name", text: $imageName)
+                // MARK: - Upload image
+                VStack(spacing: 14) {
+                    Text(Layout.uploadImageText)
+                        .bold()
+                        .font(.caption)
+                    TextField(Layout.imageNameTextfieldHint, text: $imageName)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.horizontal)
-                    //TODO: Gestionar permisos cámara y permitir acceso a cámara de fotos
+                        .foregroundColor(colorScheme == .dark ? .white : .black)
+                    
                     PhotosPicker(selection: $selectedItem, matching: .images, photoLibrary: .shared()) {
-                        Image(systemName: "camera.fill")
+                        Image(systemName: Layout.photoPickerImageName)
                             .font(.system(size: 30))
-                            .foregroundColor(.black)
+                            .foregroundColor(showImagePicker ? .black : .gray)
                             .shadow(color: .gray, radius: 0.2, x: 1, y: 1)
-//                            .padding()
                     }
-                    Text("Share your recipes with our community!")
-                        .foregroundStyle(.black)
+                    .disabled(!showImagePicker)
+                    
+                    Text(Layout.shareRecipesText)
                         .bold()
-                }.padding()
-            }
-        }.alert("Error", isPresented: Binding.constant(viewModel.error != nil)) {
-            Button("OK") {}
-            Button("Retry") {
-                Task {
-                    viewModel.getPhotosFromFirebase()
                 }
+                .onAppear {
+                    Task {
+                        await permissionUtils.requestPhotoLibraryAccess() { granted in
+                            if granted {
+                                showImagePicker = true
+                            } else {
+                                showImagePicker = false
+                            }
+                        }
+                    }
+                }
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(Color.lightGreen)
+                .cornerRadius(15)
+                .shadow(color: Color.black.opacity(0.2), radius: 7, x: 0, y: 2)
+                .padding([.horizontal, .vertical], 20)
             }
-        } message: {
-            Text(viewModel.error?.localizedDescription ?? "")
-        }.task {
-            viewModel.getPhotosFromFirebase()
-        }.onChange(of: selectedItem, perform: { newValue in
-            guard let newValue else { return }
-            viewModel.saveUserImage(item: newValue, title: imageName)
+        }
+        .errorLoadingListAlertDialog(error: viewModel.error, errorMessage: viewModel.error?.localizedDescription, retryButtonAction: {
+            Task {
+                viewModel.getPhotosFromFirebase()
+            }
         })
+        .task {
+            viewModel.getPhotosFromFirebase()
+        }.onChange(of: selectedItem) { newValue in
+            guard let newValue else { return }
+            viewModel.saveUserImage(item: newValue, title: imageName) { clearedText in
+                imageName = clearedText
+            }
+        }
     }
 }
 

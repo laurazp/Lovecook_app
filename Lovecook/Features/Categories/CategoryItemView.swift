@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CategoryItemView: View {
+    @Environment(\.colorScheme) var colorScheme
     let category: Category
     
     var body: some View {
@@ -22,22 +23,23 @@ struct CategoryItemView: View {
             Image(category.categoryTitle)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
-                .shadow(color: .black, radius: 5, x: 3, y: 5)
+                .clipShape(RoundedRectangle(cornerRadius: 16))
+                .shadow(color: colorScheme == .dark ? Color.gray : Color.black, radius: 5, x: 3, y: 2)
                 .padding(12)
-                .frame(width: 190, height: 200)
-                .cornerRadius(16)
-            
             
             VStack {
-                Spacer()
                 Text(category.categoryTitle)
                     .font(.largeTitle)
                     .foregroundStyle(.white)
                     .bold()
-                .shadow(color: .black, radius: 5, x: 3, y: 5)
+                    .shadow(color: .black, radius: 5, x: 3, y: 5)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.5)
+                    .padding(.horizontal)
+                    .padding(.top, 120)
+                Spacer()
             }
-                //TODO: tipografía ??
         }
         .frame(width: 190, height: 200)
     }

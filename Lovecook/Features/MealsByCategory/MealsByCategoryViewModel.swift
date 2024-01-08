@@ -11,7 +11,6 @@ class MealsByCategoryViewModel: ObservableObject {
     
     private let getMealsByCategoryUseCase: GetMealsByCategoryUseCase
     @Published var mealsByCategory = [Meal]()
-    //@Published var showErrorMessage = false
     @Published var isLoading = false
     @Published var error: Error?
     

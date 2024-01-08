@@ -31,16 +31,13 @@ struct MealsByCategoryView: View {
                 .navigationTitle(category.categoryTitle)
                 .listStyle(PlainListStyle())
             }
-        }.alert("Error", isPresented: Binding.constant(viewModel.error != nil)) {
-            Button("OK") {}
-            Button("Retry") {
-                Task {
-                    await viewModel.getMealsByCategory(category: category)
-                }
+        }
+        .errorLoadingListAlertDialog(error: viewModel.error, errorMessage: viewModel.error?.localizedDescription, retryButtonAction: {
+            Task {
+                await viewModel.getMealsByCategory(category: category)
             }
-        } message: {
-            Text(viewModel.error?.localizedDescription ?? "")
-        }.task {
+        })
+        .task {
             await viewModel.getMealsByCategory(category: category)
         }
     }
@@ -54,6 +51,7 @@ struct MealsByCategoryView: View {
                     .buttonStyle(PlainButtonStyle())
             )
             .buttonStyle(PlainButtonStyle())
+            .shadow(color: .gray, radius: 5, x: 3, y: 3)
     }
 }
 

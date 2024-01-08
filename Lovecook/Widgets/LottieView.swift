@@ -11,11 +11,10 @@ import SwiftUI
 struct LottieView: UIViewRepresentable {
     let filename: String
     let loopMode: LottieLoopMode
-
+    
     func updateUIView(_ uiView: UIViewType, context: Context) {
-        // empty
     }
-
+    
     func makeUIView(context: Context) -> UIView {
         let view = UIView()
         let animationView = LottieAnimationView(name: filename)
