@@ -29,8 +29,7 @@ final class AuthenticationManager {
     func checkSignInWithGoogleState(completion: @escaping AuthenticationManagerCompletion) -> Bool {
         if GIDSignIn.sharedInstance.hasPreviousSignIn() {
             GIDSignIn.sharedInstance.restorePreviousSignIn { [unowned self] user, error in
-                if let error = error {
-                    print("Error restoring previous sign-in: \(error.localizedDescription)")
+                if error != nil {
                     completion(.sessionError)
                 } else if let user = user {
                     authenticateUser(for: user, with: error, completion: completion)
@@ -53,8 +52,7 @@ final class AuthenticationManager {
         
         GIDSignIn.sharedInstance.signIn(withPresenting: rootViewController) { [unowned self] result, error in
             
-            if let error = error {
-                print("Error: \(error.localizedDescription)")
+            if error != nil {
                 completion(.sessionError)
             } else if let result = result {
                 authenticateUser(for: result.user, with: error, completion: completion)
@@ -105,31 +103,22 @@ final class AuthenticationManager {
     // MARK: - AppleSignIn
     func signInWithApple(authResults: ASAuthorization, completion: @escaping AuthenticationManagerCompletion) {
         guard let credential = authResults.credential as? ASAuthorizationAppleIDCredential else {
-            print("Unable to get Apple credential")
             return
         }
         
         let token = credential.identityToken
         guard let tokenString = String(data: token!, encoding: .utf8) else {
-            print("Unable to convert token to string")
             return
         }
         
         let oauthCredential = OAuthProvider.credential(withProviderID: "apple.com", idToken: tokenString, rawNonce: nil)
         
         Auth.auth().signIn(with: oauthCredential) { (authResult, error) in
-            if let error = error {
-                print("Firebase sign in with Apple failed: \(error.localizedDescription)")
+            if error != nil {
                 completion(.sessionError)
                 return
             }
-            
-            print("Firebase sign in with Apple successful")
             completion(.signedIn)
-            
-            //TODO: Store user data in Firebase storage
-            let userID = authResult?.user.uid
-            let userName = authResult?.additionalUserInfo?.username
         }
     }
     
@@ -155,7 +144,6 @@ final class AuthenticationManager {
             try Auth.auth().signOut()
             completion(.signedOut)
         } catch {
-            print(error.localizedDescription)
             completion(.sessionError)
         }
     }
@@ -165,6 +153,7 @@ final class AuthenticationManager {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error as? NSError {
                 completion(.sessionError)
+                
                 switch AuthErrorCode(_nsError: error).code {
                 case .operationNotAllowed:
                     print("The given sign-in provider is disabled for this Firebase project. Enable it in the Firebase console, under the sign-in method tab of the Auth section.")
@@ -178,20 +167,15 @@ final class AuthenticationManager {
                     print("Error: \(error.localizedDescription)")
                 }
             }
-            if let result = result {
-                print("Success creating the user!")
+            if result != nil {
                 completion(.signedIn)
-                //TODO: Store user data in Firebase storage
-                let user  = result.user
             }
         }
     }
     
     func loginWithEmailAndPassword(email: String, password: String, completion: @escaping AuthenticationManagerCompletion) {
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
-            if let error = error {
-                print("Log in failed: \(error.localizedDescription)")
-                let user = result?.user
+            if error != nil {
                 completion(.sessionError)
             } else {
                 completion(.signedIn)
@@ -200,7 +184,7 @@ final class AuthenticationManager {
     }
     
     func checkEmailSingInState(completion: @escaping AuthenticationManagerCompletion) -> Bool {
-        if let user = Auth.auth().currentUser {
+        if Auth.auth().currentUser != nil {
             return true
         } else {
             return false
@@ -213,23 +197,5 @@ final class AuthenticationManager {
                 print("Error: \(error.localizedDescription)")
             }
         }
-    }
-    
-    //TODO: cambiar de [] a map y terminar o borrar!!
-    func getUserInfo() -> [String] {
-        var userInfo = ["", "", ""]
-        
-        let googleUser = checkSignInWithGoogleState {_ in
-            let userName = GIDSignIn.sharedInstance.currentUser?.profile?.name ?? ""
-            let userEmail = GIDSignIn.sharedInstance.currentUser?.profile?.email ?? ""
-            let userImage = GIDSignIn.sharedInstance.currentUser?.profile?.imageURL(withDimension: 200)?.absoluteString ?? ""
-            userInfo = [userName, userEmail, userImage]
-        }
-        
-        let appleUser = checkSignInWithAppleState { _ in
-            userInfo = ["", "", ""]
-        }
-        
-        return userInfo
     }
 }

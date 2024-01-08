@@ -11,14 +11,14 @@ import Toast
 import GoogleSignIn
 
 class AuthenticationViewModel: ObservableObject {
-
+    
     private var authenticationManager =  AuthenticationManager()
     @Published var state: SignInState = .signedOut
     
     @Published var userEmail: String = ""
     @Published var userPassword: String = ""
     @Published var isAccepted: Bool = false
-        
+    
     // MARK: - GoogleSignIn
     func signInWithGoogle() {
         self.authenticationManager.signInWithGoogle { [unowned self] state in
@@ -48,8 +48,9 @@ class AuthenticationViewModel: ObservableObject {
     // MARK: - Email & password SignIn and Register
     func logInWithEmailAndPassword(email: String, password: String) {
         guard !email.isEmpty, !password.isEmpty else {
-            Toast.default(image: UIImage(systemName: "info.circle")!, title: "Email and password needed.").show()
-            print("No email or password found.")
+            Toast.default(
+                image: UIImage(systemName: "info.circle")!,
+                title: "Email and password needed.").show()
             return
         }
         authenticationManager.loginWithEmailAndPassword(email: email, password: password) { [unowned self] state in
@@ -59,7 +60,9 @@ class AuthenticationViewModel: ObservableObject {
     
     func resetPassword(withEmail email: String) -> Bool {
         guard !email.isEmpty else {
-            Toast.default(image: UIImage(systemName: "info.circle")!, title: "Please enter your email.").show()
+            Toast.default(
+                image: UIImage(systemName: "info.circle")!,
+                title: "Please enter your email.").show()
             return false
         }
         authenticationManager.resetUserPassword(withEmail: email)
@@ -98,10 +101,5 @@ class AuthenticationViewModel: ObservableObject {
     
     func getUser() -> GIDGoogleUser? {
         return GIDSignIn.sharedInstance.currentUser
-    }
-    
-    //TODO: modificar o borrar --> userInfo = [userName, userEmail, userImage]
-    func getUserInfo() -> [String] {
-        return authenticationManager.getUserInfo()
     }
 }
